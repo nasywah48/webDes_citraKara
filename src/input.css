@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+@theme {
+    --font-cormorant: "Cormorant SC", serif;
+    --font-jakarta: "Plus Jakarta Sans", sans-serif;
+    --color-background: #030C19;
+    --color-primary: #6A3C2C;
+    --color-secondary: #FF9B54;
+}
+
+// biar CDnya muter
+#budayaScroll {
+    --size: clamp(200px, 26vw, 290px);
+    position: relative;
+    background: #020611;
+    color: #fff;
+}

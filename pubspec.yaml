@@ -1,0 +1,34 @@
+// const hero = document.getElementById("hero");
+// const videoContainer = document.getElementById("videoContainer");
+// const heroText = document.getElementById("heroText");
+
+// window.addEventListener("scroll", () => {
+//     const heroHeight = hero.offsetHeight - window.innerHeight;
+
+//     let progress = window.scrollY / heroHeight;
+//     progress = Math.max(0, Math.min(progress, 1));
+
+//     // size awal
+//     const startSize = 500;
+
+//     // biar buletnya full screen
+//     const endSize = Math.sqrt(
+//         window.innerWidth ** 2 +
+//         window.innerHeight ** 2
+//     );
+
+//     // buletnya besar
+//     const size =
+//         startSize + (endSize - startSize) * progress;
+
+//     videoContainer.style.width = `${size}px`;
+//     videoContainer.style.height = `${size}px`;
+
+//     // biar dia g berubah kotak ditengah tengah
+//     videoContainer.style.borderRadius = "50%";
+
+//     // smoth text ilang
+//     heroText.style.opacity = 1 - progress;
+// });
+
+Playfair Display

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="src/output.css">
+    <title>CitraKara</title>
+</head>
+
+<body>
+
+    <!-- navbar -->
+    <nav class="absolute left-1/2 top-6 z-50 w-[90%] -translate-x-1/2 rounded-full border border-white/20 bg-white/10 px-6 py-3 backdrop-blur-md">
+        <div class="flex items-center justify-between">
+
+            <a href="#" class="w-40"><img src="assets/logo_citraKara_2.png" alt=""></a>
+
+            <!-- Menu -->
+            <div class="hidden items-center gap-8 md:flex">
+
+                <a href="coba.html" class="text-sm text-white/80 transition hover:text-white">
+                    Home
+                </a>
+
+                <a href="#" class="text-sm text-white/80 transition hover:text-white">
+                    Culture
+                </a>
+
+                <a href="#" class="text-sm text-white/80 transition hover:text-white">
+                    Heritage
+                </a>
+
+                <a href="#" class="text-sm text-white/80 transition hover:text-white">
+                    About
+                </a>
+            </div>
+
+            <a href="#" class="rounded-full bg-white px-5 py-2 text-sm font-medium text-black transition hover:bg-white/80">blalbaa</a>
+        </div>
+    </nav>
+
+    <!-- hero section -->
+    <section class="relative h-screen w-full overflow-hidden">
+
+        <!-- Video -->
+        <video autoplay muted loop playsinline class="absolute inset-0 h-full w-full object-cover">
+            <source src="assets/hero_video.mp4" type="video/mp4">
+        </video>
+
+        <!-- Dark Effect -->
+        <div class="absolute inset-0 bg-black/35"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+
+        <div class="relative z-10 flex h-full items-center justify-center text-center text-white">
+            <div>
+                <h1 class="text-6xl font-bold">
+                    CitraKara
+                </h1>
+
+                <p class="mt-4 text-lg">
+                    Preserving Culture Through Digital Experience
+                </p>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- SECTION 5: REKOMENDASI DESTINASI -->
+    <section id="destinasi" class="relative overflow-hidden bg-[#020611] pb-28 pt-10 font-jakarta text-white">
+
+        <div class="mx-auto max-w-6xl px-6">
+            <p data-reveal class="m-0 flex items-center gap-4 text-[0.65rem] uppercase tracking-[0.25em] text-secondary">
+                <span class="h-px w-10 bg-secondary"></span> Rekomendasi Destinasi
+            </p>
+            <h2 data-reveal class="mt-6 max-w-xl text-4xl font-extralight leading-[1.15] text-white/90 md:text-6xl">
+                Jelajahi Keindahan Nusantara
+            </h2>
+            <p data-reveal class="mt-6 max-w-md text-sm leading-relaxed text-white/60">
+                Dari Sabang sampai Merauke, setiap daerah di Indonesia menyimpan pesona yang tak terlupakan.
+                Temukan destinasi terbaik untuk pengalaman liburan yang berkesan.
+            </p>
+        </div>
+
+        <!-- carousel -->
+        <div class="mx-auto mt-14">
+            <div class="flex snap-x snap-mandatory gap-20 overflow-x-auto scroll-pl-6 px-6 pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+
+                <!-- Borobudur -->
+                <a href="#" data-reveal class="group block w-56 shrink-0 snap-start no-underline md:w-72">
+                    <div class="relative aspect-[4/4.4] overflow-hidden rounded-[5rem] bg-white/10">
+                        <img src="assets/destinasi/borobudur.jpg" alt="Candi Borobudur" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-black/25"></div>
+                        <span class="absolute left-4 top-4 rounded-full bg-white/15 px-3 py-1 text-[0.55rem] uppercase tracking-[0.15em] text-white/85 backdrop-blur-md">Warisan Dunia</span>
+                    </div>
+                    <div class="mt-4 flex items-center justify-between gap-3">
+                        <h3 class="m-0 text-base font-normal text-white md:text-lg">Candi Borobudur</h3>
+                        <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/30 text-white/80 transition group-hover:bg-white group-hover:text-black"><i class="ri-arrow-right-line"></i></span>
+                    </div>
+                    <p class="mt-2 text-xs leading-relaxed text-white/45">Candi Buddha terbesar di dunia dengan relief dan stupa yang berdiri sejak abad ke-9.</p>
+                </a>
+
+                <!-- Raja Ampat -->
+                <a href="#" data-reveal class="group block w-56 shrink-0 snap-start no-underline md:w-72">
+                    <div class="relative aspect-[4/4.4] overflow-hidden rounded-[5rem] bg-white/10">
+                        <img src="assets/destinasi/raja-ampat.jpg" alt="Raja Ampat" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-black/25"></div>
+                        <span class="absolute left-4 top-4 rounded-full bg-white/15 px-3 py-1 text-[0.55rem] uppercase tracking-[0.15em] text-white/85 backdrop-blur-md">Surga Bahari</span>
+                    </div>
+                    <div class="mt-4 flex items-center justify-between gap-3">
+                        <h3 class="m-0 text-base font-normal text-white md:text-lg">Raja Ampat</h3>
+                        <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/30 text-white/80 transition group-hover:bg-white group-hover:text-black"><i class="ri-arrow-right-line"></i></span>
+                    </div>
+                    <p class="mt-2 text-xs leading-relaxed text-white/45">Gugusan pulau di Papua Barat Daya dengan keanekaragaman laut yang termasuk paling kaya di dunia.</p>
+                </a>
+
+                <!-- Danau Toba -->
+                <a href="#" data-reveal class="group block w-56 shrink-0 snap-start no-underline md:w-72">
+                    <div class="relative aspect-[4/4.4] overflow-hidden rounded-[5rem] bg-white/10">
+                        <img src="assets/destinasi/danau-toba.jpg" alt="Danau Toba" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-black/25"></div>
+                        <span class="absolute left-4 top-4 rounded-full bg-white/15 px-3 py-1 text-[0.55rem] uppercase tracking-[0.15em] text-white/85 backdrop-blur-md">Danau Vulkanik</span>
+                    </div>
+                    <div class="mt-4 flex items-center justify-between gap-3">
+                        <h3 class="m-0 text-base font-normal text-white md:text-lg">Danau Toba</h3>
+                        <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/30 text-white/80 transition group-hover:bg-white group-hover:text-black"><i class="ri-arrow-right-line"></i></span>
+                    </div>
+                    <p class="mt-2 text-xs leading-relaxed text-white/45">Danau vulkanik terbesar di dunia di Sumatra Utara, terbentuk dari letusan gunung api purba.</p>
+                </a>
+
+                <!-- Labuan Bajo -->
+                <a href="#" data-reveal class="group block w-56 shrink-0 snap-start no-underline md:w-72">
+                    <div class="relative aspect-[4/4.4] overflow-hidden rounded-[5rem] bg-white/10">
+                        <img src="assets/destinasi/labuan-bajo.jpg" alt="Labuan Bajo" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-black/25"></div>
+                        <span class="absolute left-4 top-4 rounded-full bg-white/15 px-3 py-1 text-[0.55rem] uppercase tracking-[0.15em] text-white/85 backdrop-blur-md">Gerbang Komodo</span>
+                    </div>
+                    <div class="mt-4 flex items-center justify-between gap-3">
+                        <h3 class="m-0 text-base font-normal text-white md:text-lg">Labuan Bajo</h3>
+                        <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/30 text-white/80 transition group-hover:bg-white group-hover:text-black"><i class="ri-arrow-right-line"></i></span>
+                    </div>
+                    <p class="mt-2 text-xs leading-relaxed text-white/45">Gerbang menuju Taman Nasional Komodo di Nusa Tenggara Timur, dengan pulau, pantai, dan satwa purba.</p>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- second section-->
+     <section>
+        <h3></h3>
+     </section>
+
+</body>
+</html>
