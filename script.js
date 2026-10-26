@@ -11,6 +11,7 @@ const heroFinal      = document.getElementById("heroFinal");
 
 const hero = videoContainer.closest("section");
 
+
 // CONFIG 
 const START_RADIUS = 250;
 const APPEAR_END   = 0.25;
@@ -72,6 +73,37 @@ function updateHero(p) {
 
     if (darkOverlay) darkOverlay.style.opacity = 0.3 + 0.45 * p;
 }
+
+// sound
+const music = document.getElementById("bgMusic");
+const musicToggle = document.getElementById("musicToggle");
+const musicIcon = document.getElementById("musicIcon");
+const musicLabel = document.getElementById("musicLabel");
+
+musicToggle.addEventListener("click", async () => {
+    if (music.paused) {
+        try {
+            await music.play();
+
+            musicLabel.textContent = "Music On";
+            musicIcon.className = "ri-volume-up-line text-lg";
+            musicToggle.setAttribute("aria-label", "Matikan musik");
+            musicToggle.setAttribute("aria-pressed", "true");
+        } catch (error) {
+            console.error("Musik gagal diputar:", error);
+            musicLabel.textContent = "Try Again";
+        }
+    } else {
+        music.pause();
+
+        musicLabel.textContent = "Music Off";
+        musicIcon.className = "ri-music-2-line text-lg";
+        musicToggle.setAttribute("aria-label", "Putar musik");
+        musicToggle.setAttribute("aria-pressed", "false");
+    }
+});
+
+
 
 // EVENTS  
 let current = getProgress();

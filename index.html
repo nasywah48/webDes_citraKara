@@ -62,6 +62,30 @@
     </div>
 </section>
 
+
+<!-- Background Music -->
+<audio id="bgMusic" loop preload="none">
+    <source src="assets/sound_landing_page.mp3" type="audio/mpeg">
+</audio>
+
+<!-- <audio controls loop>
+  <source src="assets/" type="audio/mpeg">
+  Browser kamu tidak mendukung audio.
+</audio> -->
+
+<!-- Music Toggle -->
+<button
+    id="musicToggle"
+    type="button"
+    aria-label="Putar musik"
+    aria-pressed="false"
+    class="fixed bottom-6 right-6 z-50 flex items-center gap-3 rounded-full border border-white/30 bg-black/70 px-5 py-3 text-sm text-white shadow-xl backdrop-blur-md transition hover:bg-black/90"
+>
+    <i id="musicIcon" class="ri-music-2-line text-lg"></i>
+    <span id="musicLabel">Music Off</span>
+</button>
+
+
 <!-- section 2 -->
 <section id="budayaScroll" class="relative bg-[#020611] font-jakarta text-white [--size:clamp(200px,26vw,290px)]" style="height:300vh">
     <div class="sticky top-0 h-1/3 overflow-hidden">
@@ -307,30 +331,121 @@
     <div class="mx-auto mt-12 grid max-w-6xl grid-cols-12 grid-rows-[12rem_15rem_12rem] gap-3 px-6 md:grid-rows-[16rem_21rem_16rem] md:gap-4">
 
         <!-- baris 1 -->
-        <div data-reveal class="col-span-7 overflow-hidden bg-white/10">
-            <img src="assets/destinasi/destinasi_1.png" alt="Teluk dan perbukitan saat senja" class="h-full w-full object-cover transition-transform duration-700 hover:scale-105">
+        <div data-reveal class="group relative col-span-7 overflow-hidden bg-black">
+            <img src="assets/destinasi/destinasi_1.png" alt="Teluk dan perbukitan saat senja" class="h-full w-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-50">
+
+            <div class="absolute inset-0 flex flex-col items-center justify-center bg-black/10 px-4 text-white transition-colors duration-500 group-hover:bg-black/20">
+                <div class="mb-3 flex translate-y-4 items-center gap-3 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+                    <span class="h-px w-8 bg-white"></span><span class="text-[10px] uppercase tracking-[0.3em] md:text-xs">Taman Nasional Komodo</span><span class="h-px w-8 bg-white"></span>
+                </div>
+
+                <h3 class="translate-y-5 text-center text-2xl font-black uppercase tracking-[0.15em] opacity-0 transition-all duration-700 group-hover:translate-y-0 group-hover:opacity-100 md:text-4xl">Pulau Padar</h3>
+
+                <div class="mt-4 flex translate-y-5 items-center gap-3 opacity-0 transition-all delay-100 duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+                    <span class="text-[10px] uppercase tracking-widest md:text-xs">Nusa Tenggara Timur</span><i class="ri-arrow-up-right-line text-xl"></i>
+                </div>
+            </div>
         </div>
-        <div data-reveal class="col-span-5 overflow-hidden bg-white/10">
-            <img src="assets/destinasi/destinasi_2.png" alt="Pantai dengan pepohonan" class="h-full w-full object-cover transition-transform duration-700 hover:scale-105">
+        <!-- 2 -->
+        <div data-reveal class="group relative col-span-5 overflow-hidden bg-black">
+            <img src="assets/destinasi/destinasi_2.png" alt="Teluk dan perbukitan saat senja" class="h-full w-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-50">
+
+            <div class="absolute inset-0 flex flex-col items-center justify-center bg-black/10 px-4 text-white transition-colors duration-500 group-hover:bg-black/20">
+                <div class="mb-3 flex translate-y-4 items-center gap-3 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+                    <span class="h-px w-8 bg-white"></span><span class="text-[10px] uppercase tracking-[0.3em] md:text-xs">Bulukumba</span><span class="h-px w-8 bg-white"></span>
+                </div>
+
+                <h3 class="translate-y-5 text-center text-2xl font-black uppercase tracking-[0.15em] opacity-0 transition-all duration-700 group-hover:translate-y-0 group-hover:opacity-100 md:text-4xl">Tanjung bira</h3>
+
+                <div class="mt-4 flex translate-y-5 items-center gap-3 opacity-0 transition-all delay-100 duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+                    <span class="text-[10px] uppercase tracking-widest md:text-xs">Sulawesi Selatan</span><i class="ri-arrow-up-right-line text-xl"></i>
+                </div>
+            </div>
         </div>
 
         <!-- baris 2 -->
-        <div data-reveal class="col-span-3 overflow-hidden bg-white/10">
-            <img src="assets/destinasi/destinasi_3.png" alt="Perbukitan hijau" class="h-full w-full object-cover transition-transform duration-700 hover:scale-105">
+        <div data-reveal class="group relative col-span-4 overflow-hidden bg-black">
+            <img src="assets/destinasi/destinasi_3.png" alt="Teluk dan perbukitan saat senja" class="h-full w-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-50">
+
+            <div class="absolute inset-0 flex flex-col items-center justify-center bg-black/10 px-4 text-white transition-colors duration-500 group-hover:bg-black/20">
+                <div class="mb-3 flex translate-y-4 items-center gap-3 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+                    <span class="h-px w-8 bg-white"></span><span class="text-[10px] uppercase tracking-[0.3em] md:text-xs">Bandung</span><span class="h-px w-8 bg-white"></span>
+                </div>
+
+                <h3 class="translate-y-5 text-center text-2xl font-black uppercase tracking-[0.15em] opacity-0 transition-all duration-700 group-hover:translate-y-0 group-hover:opacity-100 md:text-4xl">Tangkuban Perahu</h3>
+
+                <div class="mt-4 flex translate-y-5 items-center gap-3 opacity-0 transition-all delay-100 duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+                    <span class="text-[10px] uppercase tracking-widest md:text-xs">Jawa Barat</span><i class="ri-arrow-up-right-line text-xl"></i>
+                </div>
+            </div>
         </div>
-        <div data-reveal class="col-span-6 overflow-hidden bg-white/10">
-            <img src="assets/destinasi/destinasi_4.png" alt="Air terjun di tengah hutan" class="h-full w-full object-cover transition-transform duration-700 hover:scale-105">
+
+        <!-- 2 -->
+        <div data-reveal class="group relative col-span-4 overflow-hidden bg-black">
+            <img src="assets/destinasi/destinasi_4.png" alt="Teluk dan perbukitan saat senja" class="h-full w-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-50">
+
+            <div class="absolute inset-0 flex flex-col items-center justify-center bg-black/10 px-4 text-white transition-colors duration-500 group-hover:bg-black/20">
+                <div class="mb-3 flex translate-y-4 items-center gap-3 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+                    <span class="h-px w-8 bg-white"></span><span class="text-[10px] uppercase tracking-[0.3em] md:text-xs">Banggai</span><span class="h-px w-8 bg-white"></span>
+                </div>
+
+                <h3 class="translate-y-5 text-center text-2xl font-black uppercase tracking-[0.15em] opacity-0 transition-all duration-700 group-hover:translate-y-0 group-hover:opacity-100 md:text-4xl">Air Terjun Laumarang</h3>
+
+                <div class="mt-4 flex translate-y-5 items-center gap-3 opacity-0 transition-all delay-100 duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+                    <span class="text-[10px] uppercase tracking-widest md:text-xs">Sulawesi Tengah</span><i class="ri-arrow-up-right-line text-xl"></i>
+                </div>
+            </div>
         </div>
-        <div data-reveal class="col-span-3 overflow-hidden bg-white/10">
-            <img src="assets/destinasi/destinasi_5.png" alt="Jalan di tepi perbukitan" class="h-full w-full object-cover transition-transform duration-700 hover:scale-105">
+
+        <!-- 3 -->
+        <div data-reveal class="group relative col-span-4 overflow-hidden bg-black">
+            <img src="assets/destinasi/destinasi_5.png" alt="Teluk dan perbukitan saat senja" class="h-full w-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-50">
+
+            <div class="absolute inset-0 flex flex-col items-center justify-center bg-black/10 px-4 text-white transition-colors duration-500 group-hover:bg-black/20">
+                <div class="mb-3 flex translate-y-4 items-center gap-3 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+                    <span class="h-px w-8 bg-white"></span><span class="text-[10px] uppercase tracking-[0.3em] md:text-xs">Sorong</span><span class="h-px w-8 bg-white"></span>
+                </div>
+
+                <h3 class="translate-y-5 text-center text-2xl font-black uppercase tracking-[0.15em] opacity-0 transition-all duration-700 group-hover:translate-y-0 group-hover:opacity-100 md:text-4xl">Raja Ampat</h3>
+
+                <div class="mt-4 flex translate-y-5 items-center gap-3 opacity-0 transition-all delay-100 duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+                    <span class="text-[10px] uppercase tracking-widest md:text-xs">Papua Barat Daya</span><i class="ri-arrow-up-right-line text-xl"></i>
+                </div>
+            </div>
         </div>
 
         <!-- baris 3 -->
-        <div data-reveal class="col-span-5 overflow-hidden bg-white/10">
-            <img src="assets/destinasi/destinasi_6.png" alt="Pohon di tepi laut" class="h-full w-full object-cover transition-transform duration-700 hover:scale-105">
+        <div data-reveal class="group relative col-span-5 overflow-hidden bg-black">
+            <img src="assets/destinasi/destinasi_6.png" alt="Teluk dan perbukitan saat senja" class="h-full w-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-50">
+
+            <div class="absolute inset-0 flex flex-col items-center justify-center bg-black/10 px-4 text-white transition-colors duration-500 group-hover:bg-black/20">
+                <div class="mb-3 flex translate-y-4 items-center gap-3 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+                    <span class="h-px w-8 bg-white"></span><span class="text-[10px] uppercase tracking-[0.3em] md:text-xs">Probolinggo</span><span class="h-px w-8 bg-white"></span>
+                </div>
+
+                <h3 class="translate-y-5 text-center text-2xl font-black uppercase tracking-[0.15em] opacity-0 transition-all duration-700 group-hover:translate-y-0 group-hover:opacity-100 md:text-4xl">Gunung Bromo</h3>
+
+                <div class="mt-4 flex translate-y-5 items-center gap-3 opacity-0 transition-all delay-100 duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+                    <span class="text-[10px] uppercase tracking-widest md:text-xs">Jawa Timur</span><i class="ri-arrow-up-right-line text-xl"></i>
+                </div>
+            </div>
         </div>
-        <div data-reveal class="col-span-7 overflow-hidden bg-white/10">
-            <img src="assets/destinasi/destinasi_7.png" alt="Teluk dengan perbukitan" class="h-full w-full object-cover transition-transform duration-700 hover:scale-105">
+
+        <!-- 2 -->
+        <div data-reveal class="group relative col-span-7 overflow-hidden bg-black">
+            <img src="assets/destinasi/destinasi_7.png" alt="Teluk dan perbukitan saat senja" class="h-full w-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-50">
+
+            <div class="absolute inset-0 flex flex-col items-center justify-center bg-black/10 px-4 text-white transition-colors duration-500 group-hover:bg-black/20">
+                <div class="mb-3 flex translate-y-4 items-center gap-3 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+                    <span class="h-px w-8 bg-white"></span><span class="text-[10px] uppercase tracking-[0.3em] md:text-xs">Pulau Komodo</span><span class="h-px w-8 bg-white"></span>
+                </div>
+
+                <h3 class="translate-y-5 text-center text-2xl font-black uppercase tracking-[0.15em] opacity-0 transition-all duration-700 group-hover:translate-y-0 group-hover:opacity-100 md:text-4xl">Pantai Merah</h3>
+
+                <div class="mt-4 flex translate-y-5 items-center gap-3 opacity-0 transition-all delay-100 duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+                    <span class="text-[10px] uppercase tracking-widest md:text-xs">Nusa Tenggara Timur</span><i class="ri-arrow-up-right-line text-xl"></i>
+                </div>
+            </div>
         </div>
     </div>
 </section>
