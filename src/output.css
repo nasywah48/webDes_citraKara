@@ -905,8 +905,14 @@
     --tw-gradient-to: transparent;
     --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
   }
+  .\[mask-image\:linear-gradient\(to_bottom\,transparent\,black_4rem\,black_calc\(100\%_-_2rem\)\,transparent\)\] {
+    mask-image: linear-gradient(to bottom,transparent,black 4rem,black calc(100% - 2rem),transparent);
+  }
   .\[mask-image\:linear-gradient\(to_bottom\,transparent\,black_4rem\,black_calc\(100\%_-_4rem\)\,transparent\)\] {
     mask-image: linear-gradient(to bottom,transparent,black 4rem,black calc(100% - 4rem),transparent);
+  }
+  .\[mask-image\:linear-gradient\(to_bottom\,transparent\,black_4rem\,black_calc\(100\%_-_rem\)\,transparent\)\] {
+    mask-image: linear-gradient(to bottom,transparent,black 4rem,black calc(100% - rem),transparent);
   }
   .object-cover {
     object-fit: cover;

@@ -265,8 +265,8 @@ updateHero(current);
     const reveals = Array.from(document.querySelectorAll("[data-reveal]"));
 
     // ---------- CONFIG ----------
-    const DIST      = 140;   // jarak geser garis/bulatan (px). Harus lebih kecil dari 160 (-inset-y-40)
-    const DOT_BOOST = 0.9;   // bulatan di tengah layar membesar sampai 1 + 0.9 = 1.9x
+    const DIST      = 280;   // jarak geser garis/bulatan (px). Harus lebih kecil dari 160 (-inset-y-40)
+    const DOT_BOOST = 0.5;   // bulatan di tengah layar membesar sampai 1 + 0.9 = 1.9x
 
     const clamp = (v, min = 0, max = 1) => Math.min(max, Math.max(min, v));
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
