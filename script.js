@@ -11,7 +11,7 @@ const heroFinal      = document.getElementById("heroFinal");
 
 const hero = videoContainer.closest("section");
 
-// ---------- CONFIG ----------
+// CONFIG 
 const START_RADIUS = 250;
 const APPEAR_END   = 0.25;
 const EXPAND_END   = 0.8;
@@ -19,7 +19,7 @@ const FINAL_START  = 0.78;  // teks akhir mulai muncul
 const FINAL_END    = 0.95;  // teks akhir muncul penuh
 const SMOOTH       = 0.08;
 
-// ---------- HELPERS ----------
+// HELPERS 
 const clamp      = (v, min = 0, max = 1) => Math.min(max, Math.max(min, v));
 const lerp       = (a, b, t) => a + (b - a) * t;
 const easeOut    = (t) => 1 - Math.pow(1 - t, 3);
@@ -31,12 +31,12 @@ function getProgress() {
     return clamp(-hero.getBoundingClientRect().top / distance);
 }
 
-// ---------- ANIMATION ----------
+// ANIMATION 
 function updateHero(p) {
-    // fase 1: video muncul
+    // video muncul
     const a = smoothstep(clamp(p / APPEAR_END));
 
-    // fase 2: lingkaran membesar sampai fullscreen
+    // lingkaran membesar sampai fullscreen
     const e = easeOut(clamp((p - APPEAR_END) / (EXPAND_END - APPEAR_END)));
 
     const vw = window.innerWidth;
@@ -63,7 +63,7 @@ function updateHero(p) {
         textBottom.style.opacity   = fade;
     }
 
-    // fase 3: teks akhir "Jelajahi Keindahan NUSANTARA"
+    // teks "Jelajahi Keindahan NUSANTARA"
     const f = smoothstep(clamp((p - FINAL_START) / (FINAL_END - FINAL_START)));
     if (heroFinal) {
         heroFinal.style.opacity   = f;
@@ -73,7 +73,7 @@ function updateHero(p) {
     if (darkOverlay) darkOverlay.style.opacity = 0.3 + 0.45 * p;
 }
 
-// ---------- EVENTS (dengan inersia) ----------
+// EVENTS  
 let current = getProgress();
 let target  = current;
 let raf     = null;
@@ -99,9 +99,7 @@ window.addEventListener("resize", () => {
 updateHero(current);
 })();                                                            
 
-// ==========================================
-// SECTION BUDAYA: scroll vertikal -> geser horizontal
-// ==========================================
+// section 2: scroll vertikal -> geser horizontal
 (function () {
     const section = document.getElementById("budayaScroll");
     const track   = document.getElementById("discTrack");
@@ -109,7 +107,7 @@ updateHero(current);
 
     const items = Array.from(track.querySelectorAll(".disc"));
 
-    // ---------- CONFIG ----------
+    // CONFIG
     const START_INDEX = 2;     // piringan ke-3 (index 2) di tengah saat awal
     const MIN_SCALE   = 0.66;  // ukuran piringan yang jauh dari tengah
     const SCROLL_RATIO = 1;    // 1 = jarak scroll sama dengan jarak geser; makin besar makin pelan
@@ -170,9 +168,7 @@ updateHero(current);
     update();
 })();
 
-// ==========================================
-// SECTION BUDAYA: piringan berputar tanpa putus
-// ==========================================
+// section 3: piringan berputar tanpa putus
 (function () {
     const section = document.getElementById("budayaScroll");
     const stage   = document.getElementById("discTrack");
@@ -184,7 +180,7 @@ updateHero(current);
     const items = Array.from(stage.querySelectorAll(".disc"));
     const N = items.length;
 
-    // ---------- CONFIG ----------
+    // CONFIG
     const START_INDEX  = 2;     // piringan ke-3 di tengah saat awal
     const MIN_SCALE    = 0.66;  // ukuran piringan yang jauh dari tengah
     const GAP          = -48;   // jarak antar piringan (negatif = rapat)
@@ -271,7 +267,7 @@ updateHero(current);
     const clamp = (v, min = 0, max = 1) => Math.min(max, Math.max(min, v));
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    // ---------- 1. REVEAL SOFT ----------
+    // REVEAL SOFT 
     if (!reduceMotion) {
         reveals.forEach(el => {
             const group = el.closest("[data-item]") || el.parentElement;
@@ -302,7 +298,7 @@ updateHero(current);
         reveals.forEach(el => io.observe(el));
     }
 
-    // ---------- 2. GARIS & BULATAN BERLAWANAN ARAH ----------
+    // GARIS & BULATAN BERLAWANAN ARAH
     function update() {
         if (reduceMotion) return;
 
@@ -341,7 +337,7 @@ updateHero(current);
 })();
 
 
-// ---------- PETA INTERAKTIF ----------
+//  PETA INTERAKTIF "DIAANN GUWEH PUYENK"
 (function () {
     const mount   = document.getElementById("petaMount");
     const wrap    = document.getElementById("petaWrap");
