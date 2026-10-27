@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&display=swap" rel="stylesheet">
 
     <link rel="icon" type="image/png" href="assets/logo.png">
-    <title>CitraKara</title>
+    <title>CitraKara | Destinasi</title>
 </head>
 
 <body class="bg-background">
@@ -57,21 +57,35 @@
         <p class="mx-auto mt-4 max-w-md text-xs leading-relaxed text-white/60 md:text-sm">Klik peta di bawah ini untuk mulai mengeksplor destinasi wisata terbaik dari setiap provinsi di Indonesia.</p>
 
         <div id="petaWrap" class="relative mx-auto mt-14 w-full max-w-5xl">
-            <div id="petaMount"class="">
-                <img src="assets/destinasi_page/Indonesian_provinces_blank 2.svg" alt="">
+            <div id="petaMount"
+                class="min-h-40 text-sm text-white/60
+                        [&_svg]:block [&_svg]:h-auto [&_svg]:w-full
+                        [&_[data-region]]:cursor-pointer
+                        [&_[data-region]]:fill-[#7090c4]
+                        [&_[data-region]]:stroke-white
+                        [&_[data-region]]:[stroke-width:0.6]
+                        [&_[data-region]]:[vector-effect:non-scaling-stroke]
+                        [&_[data-region]]:outline-none
+                        [&_[data-region]]:transition-[fill,stroke]
+                        [&_[data-region]]:duration-300
+                        [&_[data-region][data-state=hover]]:fill-[#9fb8e3]
+                        [&_[data-region][data-state=hover]]:stroke-[#9fb8e3]
+                        [&_[data-region][data-state=active]]:fill-secondary
+                        [&_[data-region][data-state=active]]:stroke-secondary">
             </div>
 
-            <!-- label pulau -->
-            <span style="left:17%;top:27%" class="pointer-events-none absolute z-10 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap rounded-full bg-[#1f2a3d] px-4 py-1.5 text-xs font-semibold text-white after:absolute after:-bottom-1 after:left-1/2 after:h-2.5 after:w-2.5 after:-translate-x-1/2 after:rotate-45 after:rounded-sm after:bg-[#1f2a3d] after:content-[''] md:px-5 md:py-2 md:text-base">Sumatera</span>
-            <span style="left:43%;top:11%" class="pointer-events-none absolute z-10 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap rounded-full bg-[#1f2a3d] px-4 py-1.5 text-xs font-semibold text-white after:absolute after:-bottom-1 after:left-1/2 after:h-2.5 after:w-2.5 after:-translate-x-1/2 after:rotate-45 after:rounded-sm after:bg-[#1f2a3d] after:content-[''] md:px-5 md:py-2 md:text-base">Kalimantan</span>
-            <span style="left:60%;top:25%" class="pointer-events-none absolute z-10 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap rounded-full bg-[#1f2a3d] px-4 py-1.5 text-xs font-semibold text-white after:absolute after:-bottom-1 after:left-1/2 after:h-2.5 after:w-2.5 after:-translate-x-1/2 after:rotate-45 after:rounded-sm after:bg-[#1f2a3d] after:content-[''] md:px-5 md:py-2 md:text-base">Sulawesi</span>
-            <span style="left:84%;top:33%" class="pointer-events-none absolute z-10 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap rounded-full bg-[#1f2a3d] px-4 py-1.5 text-xs font-semibold text-white after:absolute after:-bottom-1 after:left-1/2 after:h-2.5 after:w-2.5 after:-translate-x-1/2 after:rotate-45 after:rounded-sm after:bg-[#1f2a3d] after:content-[''] md:px-5 md:py-2 md:text-base">Papua</span>
-            <span style="left:34%;top:64%" class="pointer-events-none absolute z-10 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap rounded-full bg-[#1f2a3d] px-4 py-1.5 text-xs font-semibold text-white after:absolute after:-bottom-1 after:left-1/2 after:h-2.5 after:w-2.5 after:-translate-x-1/2 after:rotate-45 after:rounded-sm after:bg-[#1f2a3d] after:content-[''] md:px-5 md:py-2 md:text-base">Jawa</span>
+            <!-- ... pill label pulau (Sumatera, Kalimantan, dst.) tetap di sini ... -->
 
-            <!-- hover -->
-            <div id="petaTooltip" class="pointer-events-none absolute z-30 hidden -translate-x-1/2 -translate-y-full whitespace-nowrap rounded-lg bg-[#1f2a3d] px-3 py-1.5 text-xs font-medium text-white shadow-lg"></div>
+            <div id="petaTooltip" data-visible="false"
+                class="pointer-events-none absolute z-30 hidden -translate-x-1/2 -translate-y-full whitespace-nowrap rounded-lg bg-[#1f2a3d] px-3 py-1.5 text-xs font-medium text-white shadow-lg data-[visible=true]:block"></div>
         </div>
 
+        <div id="petaInfo" inert data-visible="false" aria-live="polite"
+            class="mx-auto mt-8 flex max-w-sm translate-y-3 flex-col items-center gap-3 opacity-0 transition duration-300 data-[visible=true]:translate-y-0 data-[visible=true]:opacity-100">
+            <h3 id="petaNama" class="m-0 font-['Playfair_Display'] text-xl font-medium text-white md:text-2xl">&nbsp;</h3>
+            <a id="petaLink" href="#" class="inline-flex items-center gap-2 rounded-full border border-secondary/70 px-5 py-2 text-xs text-secondary no-underline transition hover:bg-secondary hover:text-black">Pelajari Lebih Lanjut <i class="ri-arrow-right-line"></i></a>
+        </div>
+        
         <div id="petaInfo" class="mx-auto mt-8 flex max-w-sm translate-y-3 flex-col items-center gap-3 opacity-0 transition duration-300">
             <h3 id="petaNama" class="m-0 font-['Playfair_Display'] text-xl font-medium text-white md:text-2xl">&nbsp;</h3>
             <a id="petaLink" href="#" class="inline-flex items-center gap-2 rounded-full border border-secondary/70 px-5 py-2 text-xs text-secondary no-underline transition hover:bg-secondary hover:text-black">Pelajari Lebih Lanjut <i class="ri-arrow-right-line"></i></a>
@@ -117,5 +131,6 @@
 </footer>
 
 <script src="script.js"></script>
+<script type="module" src="peta.js"></script>
 </body>
 </html>

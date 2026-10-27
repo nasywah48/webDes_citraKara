@@ -195,105 +195,74 @@ window.addEventListener("resize", () => {
 updateHero(current);
 })();                                                            
 
-
- // SECTION 2: Piringan bergerak mengikuti scroll halaman
+ // SECTION 2: Navigasi CD dengan tombol arrow
 (function () {
-    const section = document.getElementById("budayaScroll");
+    const viewport = document.getElementById("discViewport");
     const track = document.getElementById("discTrack");
+    const prev = document.getElementById("discPrev");
+    const next = document.getElementById("discNext");
 
-    if (!section || !track) return;
+    if (!viewport || !track || !prev || !next) return;
 
-    const items = Array.from(track.querySelectorAll(".disc"));
-    if (!items.length) return;
+    const cards = Array.from(track.querySelectorAll(".disc"));
+    if (!cards.length) return;
 
-    // CONFIG
-    const START_INDEX = 2;
-    const MIN_SCALE = 0.66;
-    const GAP = 24;
+    const ACTIVE_SCALE = 1;
+    const SIDE_SCALE = 0.80;
+    let activeIndex = 2;
 
-    const clamp = (v, min = 0, max = 1) =>
-        Math.min(max, Math.max(min, v));
-
-    const lerp = (a, b, t) => a + (b - a) * t;
-
-    let size = 0;
-    let step = 0;
-    let total = 0;
-    let ticking = false;
-
-    function measure() {
-        size = items[0].offsetWidth;
-        step = size + GAP;
-        total = items.length * step;
-
-        // Scroll halaman mengontrol pergerakan piringan
-        section.style.height =
-            `${window.innerHeight + total * 1.2}px`;
+    function getGap() {
+        return parseFloat(getComputedStyle(track).columnGap) || 0;
     }
 
-    function update() {
-        const maxScroll =
-            section.offsetHeight - window.innerHeight;
+    function getStep() {
+        const card = cards[0];
+        return card.getBoundingClientRect().width + getGap();
+    }
 
-        if (maxScroll <= 0) return;
+    function render() {
+        const step = getStep();
+        const viewportCenter = viewport.clientWidth / 2;
 
-        const rect = section.getBoundingClientRect();
-        const progress = clamp(-rect.top / maxScroll);
+        // Pusatkan CD aktif di tengah viewport
+        const targetScroll =
+            cards[activeIndex].offsetLeft +
+            cards[activeIndex].offsetWidth / 2 -
+            viewportCenter;
 
-        // Pusat layar
-        const centerX = window.innerWidth / 2;
+        viewport.scrollTo({
+            left: Math.max(
+                0,
+                Math.min(
+                    targetScroll,
+                    viewport.scrollWidth - viewport.clientWidth
+                )
+            ),
+            behavior: "smooth"
+        });
+        cards.forEach((card, index) => {
+            const distance = Math.abs(index - activeIndex);
+            const scale = distance === 0 ? ACTIVE_SCALE : SIDE_SCALE;
 
-        // Piringan bergerak sesuai scroll, bukan otomatis
-        const shift =
-            START_INDEX * step + progress * total;
-
-        items.forEach((item, i) => {
-            let relative = i * step - shift;
-
-            // Membuat susunan berulang tanpa duplikasi elemen
-            const half = total / 2;
-            relative =
-                ((relative + half) % total + total) % total - half;
-
-            const distance = Math.abs(relative);
-            const scaleProgress = clamp(distance / (size * 0.95));
-            const scale = lerp(1, MIN_SCALE, scaleProgress);
-
-            const x = centerX + relative - size / 2;
-
-            item.style.transform =
-                `translate3d(${x}px, 0, 0) scale(${scale})`;
-
-            item.style.opacity = clamp(
-                (half - distance) / step
-            );
-
-            item.style.zIndex = Math.round(scale * 100);
+            card.style.transform = `scale(${scale})`;
+            card.style.zIndex = distance === 0 ? "2" : "1";
+            card.style.opacity = distance > 2 ? "0.65" : "1";
         });
     }
 
-    function requestUpdate() {
-        if (ticking) return;
-
-        ticking = true;
-
-        requestAnimationFrame(() => {
-            update();
-            ticking = false;
-        });
-    }
-
-    window.addEventListener("scroll", requestUpdate, {
-        passive: true
+    next.addEventListener("click", () => {
+        activeIndex = Math.min(activeIndex + 1, cards.length - 1);
+        render();
     });
 
-    window.addEventListener("resize", () => {
-        measure();
-        update();
+    prev.addEventListener("click", () => {
+        activeIndex = Math.max(activeIndex - 1, 0);
+        render();
     });
 
-    measure();
-    update();
+    window.addEventListener("resize", render);
+
+    render();
 })();
 
 // section 3 garis/bulatan berlawanan arah
@@ -383,176 +352,3 @@ updateHero(current);
 })();
 
 
-//  PETA INTERAKTIF "DIAANN GUWEH PUYENK"
-(function () {
-    const mount   = document.getElementById("petaMount");
-    const wrap    = document.getElementById("petaWrap");
-    const tooltip = document.getElementById("petaTooltip");
-    const info    = document.getElementById("petaInfo");
-    const nama    = document.getElementById("petaNama");
-    const link    = document.getElementById("petaLink");
-    if (!mount) return;
-
-    const SVG_URL     = encodeURI("assets/destinasi/peta_provinsi.svg");  // ganti sesuai nama file barumu
-    const HOVER_FILL  = "#9fb8e3";
-    const ACTIVE_FILL = "#d97b3f";   // samakan dengan warna "secondary"
-
-    const slugify  = (s) => s.toLowerCase().trim().replace(/\s+/g, "-");
-    const prettify = (s) => s.replace(/[_-]+/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
-
-    // kode ISO 3166-2:ID -> nama provinsi (dipakai kalau SVG hanya punya kode di id)
-    const NAMA_PROVINSI = {
-        AC: "Aceh",                SU: "Sumatera Utara",      SB: "Sumatera Barat",
-        RI: "Riau",                JA: "Jambi",               SS: "Sumatera Selatan",
-        BE: "Bengkulu",            LA: "Lampung",             BB: "Kepulauan Bangka Belitung",
-        KR: "Kepulauan Riau",      JK: "DKI Jakarta",         JB: "Jawa Barat",
-        JT: "Jawa Tengah",         YO: "DI Yogyakarta",       JI: "Jawa Timur",
-        BT: "Banten",              BA: "Bali",                NB: "Nusa Tenggara Barat",
-        NT: "Nusa Tenggara Timur", KB: "Kalimantan Barat",    KT: "Kalimantan Tengah",
-        KS: "Kalimantan Selatan",  KI: "Kalimantan Timur",    KU: "Kalimantan Utara",
-        SA: "Sulawesi Utara",      ST: "Sulawesi Tengah",     SN: "Sulawesi Selatan",
-        SG: "Sulawesi Tenggara",   GO: "Gorontalo",           SR: "Sulawesi Barat",
-        MA: "Maluku",              MU: "Maluku Utara",        PA: "Papua",
-        PB: "Papua Barat",         PS: "Papua Selatan",       PT: "Papua Tengah",
-        PE: "Papua Pegunungan",    PD: "Papua Barat Daya"
-    };
-
-    function readName(el) {
-        const titleElement = el.querySelector(":scope > title");
-
-        // Ambil nama asli provinsi dari atribut SVG
-        const raw = (
-            el.getAttribute("data-name") ||
-            el.getAttribute("name") ||
-            el.getAttribute("title") ||
-            el.getAttribute("aria-label") ||
-            el.getAttribute("inkscape:label") ||
-            titleElement?.textContent ||
-            ""
-        ).trim();
-
-        // Hapus title agar tooltip browser tidak muncul bersamaan
-        if (titleElement) titleElement.remove();
-
-        if (raw) {
-            return raw;
-        }
-
-        // Jika nama tidak tersedia, gunakan ID provinsi
-        const code = (el.id || "")
-            .toUpperCase()
-            .replace(/[^A-Z]/g, "")
-            .replace(/^ID(?=[A-Z]{2}$)/, "");
-
-        return NAMA_PROVINSI[code] || "";
-    }
-
-    function initPeta(svg) {
-        const groups = new Map();               // nama provinsi -> semua bagiannya (pulau-pulau)
-        let unnamed = 0;
-
-        svg.querySelectorAll("path, polygon").forEach((el) => {
-            const name = readName(el);
-            if (!name) {                        // garis batas / bagian tanpa nama
-                el.style.pointerEvents = "none";
-                unnamed++;
-                return;
-            }
-            el.dataset.name = name;
-            el.style.cursor = "pointer";
-            el.style.transition = "fill .25s ease";
-            el.setAttribute("vector-effect", "non-scaling-stroke");
-            if (!groups.has(name)) groups.set(name, []);
-            groups.get(name).push(el);
-        });
-
-        if (!groups.size) {
-            console.error("SVG ini tidak punya nama provinsi di path-nya (data-name / name / title / id). Pakai SVG per provinsi yang sudah bernama.");
-            return;
-        }
-
-        let hovered = null;
-        let active  = null;
-
-        function render(name) {
-            if (!name) return;
-            const fill = name === active ? ACTIVE_FILL : name === hovered ? HOVER_FILL : "";
-            groups.get(name).forEach((p) => (p.style.fill = fill));
-        }
-
-        function moveTooltip(e) {
-            const r = wrap.getBoundingClientRect();
-            tooltip.style.left = `${e.clientX - r.left}px`;
-            tooltip.style.top  = `${e.clientY - r.top - 14}px`;
-        }
-
-        function selectProvince(name) {
-            const prev = active;
-            if (prev === name) {                // klik lagi = batal pilih
-                active = null;
-                render(name);
-                info.classList.add("opacity-0", "translate-y-3");
-                return;
-            }
-            active = name;
-            render(prev);
-            render(name);
-
-            nama.textContent = name;
-            link.href = `destinasi.html?provinsi=${slugify(name)}`;
-            info.classList.remove("opacity-0", "translate-y-3");
-        }
-
-        groups.forEach((els, name) => {
-            els.forEach((el) => {
-                el.addEventListener("pointerenter", (e) => {
-                    hovered = name;
-                    render(name);
-                    if (e.pointerType !== "mouse") return;
-                    tooltip.textContent = name;
-                    tooltip.classList.remove("hidden");
-                    moveTooltip(e);
-                });
-                el.addEventListener("pointermove", (e) => {
-                    if (e.pointerType === "mouse") moveTooltip(e);
-                });
-                el.addEventListener("pointerleave", () => {
-                    hovered = null;
-                    render(name);
-                    tooltip.classList.add("hidden");
-                });
-                el.addEventListener("click", () => selectProvince(name));
-            });
-
-            // akses keyboard: cukup di bagian pertama tiap provinsi
-            const first = els[0];
-            first.setAttribute("tabindex", "0");
-            first.setAttribute("role", "button");
-            first.setAttribute("aria-label", name);
-            first.addEventListener("keydown", (e) => {
-                if (e.key === "Enter" || e.key === " ") {
-                    e.preventDefault();
-                    selectProvince(name);
-                }
-            });
-        });
-
-        // cek di Console: harus ~34-38 provinsi. Hapus kalau sudah beres.
-        console.table([...groups].map(([n, els]) => ({ provinsi: n, bagian: els.length })));
-        if (unnamed) console.info(`${unnamed} path tanpa nama (garis batas/dekorasi) dibuat tidak bisa diklik.`);
-    }
-
-    fetch(SVG_URL)
-        .then((r) => {
-            if (!r.ok) throw new Error(r.status);
-            return r.text();
-        })
-        .then((text) => {
-            mount.innerHTML = text;
-            const svg = mount.querySelector("svg");
-            svg.removeAttribute("width");
-            svg.removeAttribute("height");
-            initPeta(svg);
-        })
-        .catch((err) => console.error("Gagal memuat peta:", err));
-})();

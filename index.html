@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&display=swap" rel="stylesheet">
 
     <link rel="icon" type="image/png" href="assets/logo.png">
-    <title>CitraKara</title>
+    <title>CitraKara | Beranda</title>
 </head>
 
 <body class="bg-background">
@@ -77,8 +77,8 @@
 </section>
 
 <!-- section 2 -->
-<section id="budayaScroll" class="relative bg-[#020611] font-jakarta text-white [--size:clamp(200px,26vw,290px)]" style="height:300vh">
-    <div class="sticky top-0 h-1/3 overflow-hidden">
+<section id="budayaScroll" class="relative overflow-hidden bg-[#020611] font-jakarta text-white [--size:clamp(200px,26vw,290px)]">
+    <div class="relative overflow-hidden py-120">        
         <img src="assets/megamendung_component.png" class="pointer-events-none absolute bottom-12 -right-16 z-0 w-68 select-none opacity-70 md:-right-10 md:w-[26rem]" alt="">
 
         <!-- pill atas -->
@@ -87,111 +87,126 @@
 
         <h2 class="absolute pb-6 left-6 top-[5.5rem] z-20 m-0 max-w-xl text-[clamp(1.9rem,3.6vw,3.2rem)] font-extralight leading-[1.25] text-white/80 md:left-12 md:top-[7rem]">Jelajahi Ragam Budaya <em class="font-bold italic text-secondary">Nusantara</em> Yang Penuh Makna dan Pesona.</h2>
 
-        <!-- CD -->
-        <div id="discTrack" class="absolute pb-10 inset-x-0 top-[56%] z-10 h-0">
+        <!-- Tombol navigasi CD -->
+        <div class="absolute inset-x-0 top-[56%] z-10 -translate-y-1/2">
 
-            <!-- tari -->
-            <article class="disc absolute left-0 top-0 mt-[calc(var(--size)_/_-2)] h-[var(--size)] w-[var(--size)] will-change-transform">
-                <div class="h-full w-full rounded-full p-1 bg-[linear-gradient(145deg,#f1f1f5,#6b6f7a_40%,#d9dbe2_70%,#555a66)]">
-                    <div class="relative h-full w-full overflow-hidden rounded-full bg-[#0b1220]">
-                        <img src="assets/kategori/tari_daerah.png" alt="Tari Tradisional" class="absolute inset-0 h-full w-full object-cover">
-                        <div class="absolute inset-0 bg-black/45"></div>
-                        <div class="absolute left-1/2 top-1/2 flex aspect-square w-[34%] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/40 backdrop-blur-[2px]">
-                            <div class="aspect-square w-[42%] rounded-full bg-[#141414]"></div>
-                        </div>
-                        <div class="absolute inset-x-0 top-[66%] text-center">
-                            <p class="text-[0.8rem] font-normal uppercase tracking-[0.2em] text-white/85">Tari Tradisional</p>
-                            <span class="mt-[0.15rem] block text-[0.5rem] text-white/60">Gerak yang Bercerita</span>
-                        </div>
+            <div class="relative mx-auto w-full">
+
+                <button id="discPrev" type="button" aria-label="CD sebelumnya" class="absolute left-2 top-1/2 z-30 -translate-y-1/2 rounded-full bg-white/10 p-3 text-white transition hover:bg-white/20">
+                    <i class="ri-arrow-left-line text-xl"></i>
+                </button>
+
+                <div id="discViewport" class="w-full overflow-hidden">
+                    <div id="discTrack" class="flex items-center gap-2 transition-transform duration-300">
+                            <!-- tari -->
+                            <article class="disc relative h-[var(--size)] w-[var(--size)] shrink-0 transition-transform duration-300">
+                                <div class="h-full w-full rounded-full p-1 bg-[linear-gradient(145deg,#f1f1f5,#6b6f7a_40%,#d9dbe2_70%,#555a66)]">
+                                    <div class="relative h-full w-full overflow-hidden rounded-full bg-[#0b1220]">
+                                        <img src="assets/kategori/tari_daerah.png" alt="Tari Tradisional" class="absolute inset-0 h-full w-full object-cover">
+                                        <div class="absolute inset-0 bg-black/45"></div>
+                                        <div class="absolute left-1/2 top-1/2 flex aspect-square w-[34%] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/40 backdrop-blur-[2px]">
+                                            <div class="aspect-square w-[42%] rounded-full bg-[#141414]"></div>
+                                        </div>
+                                        <div class="absolute inset-x-0 top-[66%] text-center">
+                                            <p class="text-[0.8rem] font-normal uppercase tracking-[0.2em] text-white/85 pt-6">Tari Tradisional</p>
+                                            <span class="mt-[0.15rem] block text-[0.5rem] text-white/60">Gerak yang Bercerita</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <!-- alat musik -->
+                            <article class="disc relative h-[var(--size)] w-[var(--size)] shrink-0 transition-transform duration-300">
+                                <div class="h-full w-full rounded-full p-1 bg-[linear-gradient(145deg,#f1f1f5,#6b6f7a_40%,#d9dbe2_70%,#555a66)]">
+                                    <div class="relative h-full w-full overflow-hidden rounded-full bg-[#0b1220]">
+                                        <img src="assets/kategori/alat_musik.png" alt="Musik Tradisional" class="absolute inset-0 h-full w-full object-cover">
+                                        <div class="absolute inset-0 bg-black/45"></div>
+                                        <div class="absolute left-1/2 top-1/2 flex aspect-square w-[34%] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/40 backdrop-blur-[2px]">
+                                            <div class="aspect-square w-[42%] rounded-full bg-[#141414]"></div>
+                                        </div>
+                                        <div class="absolute inset-x-0 top-[66%] text-center">
+                                            <p class="text-[0.8rem] font-normal uppercase tracking-[0.2em] text-white/85 pt-6">Musik Tradisional</p>
+                                            <span class="mt-[0.15rem] block text-[0.5rem] text-white/60">Harmoni dari Timur Hingga Barat</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <!-- kerajinan -->
+                            <article class="disc relative h-[var(--size)] w-[var(--size)] shrink-0 transition-transform duration-300">
+                                <div class="h-full w-full rounded-full p-1 bg-[linear-gradient(145deg,#f1f1f5,#6b6f7a_40%,#d9dbe2_70%,#555a66)]">
+                                    <div class="relative h-full w-full overflow-hidden rounded-full bg-[#0b1220]">
+                                        <img src="assets/kategori/kerajinan.png" alt="Kerajinan" class="absolute inset-0 h-full w-full object-cover">
+                                        <div class="absolute inset-0 bg-black/45"></div>
+                                        <div class="absolute left-1/2 top-1/2 flex aspect-square w-[34%] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/40 backdrop-blur-[2px]">
+                                            <div class="aspect-square w-[42%] rounded-full bg-[#141414]"></div>
+                                        </div>
+                                        <div class="absolute inset-x-0 top-[66%] text-center">
+                                            <p class="text-[0.8rem] font-normal uppercase tracking-[0.2em] text-white/85 pt-6">Kerajinan</p>
+                                            <span class="mt-[0.15rem] block text-[0.5rem] text-white/60">Karya Tangan Penuh Cerita</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <!-- rumah adat -->
+                            <article class="disc relative h-[var(--size)] w-[var(--size)] shrink-0 transition-transform duration-300">
+                                <div class="h-full w-full rounded-full p-1 bg-[linear-gradient(145deg,#f1f1f5,#6b6f7a_40%,#d9dbe2_70%,#555a66)]">
+                                    <div class="relative h-full w-full overflow-hidden rounded-full bg-[#0b1220]">
+                                        <img src="assets/kategori/rumah_adat.png" alt="Rumah Adat" class="absolute inset-0 h-full w-full object-cover">
+                                        <div class="absolute inset-0 bg-black/45"></div>
+                                        <div class="absolute left-1/2 top-1/2 flex aspect-square w-[34%] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/40 backdrop-blur-[2px]">
+                                            <div class="aspect-square w-[42%] rounded-full bg-[#141414]"></div>
+                                        </div>
+                                        <div class="absolute inset-x-0 top-[66%] text-center">
+                                            <p class="text-[0.8rem] font-normal uppercase tracking-[0.2em] text-white/85 pt-6">Rumah Adat</p>
+                                            <span class="mt-[0.15rem] block text-[0.5rem] text-white/60">Arsitektur Penuh Filosofi</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <!-- makanan -->
+                            <article class="disc relative h-[var(--size)] w-[var(--size)] shrink-0 transition-transform duration-300">
+                                <div class="h-full w-full rounded-full p-1 bg-[linear-gradient(145deg,#f1f1f5,#6b6f7a_40%,#d9dbe2_70%,#555a66)]">
+                                    <div class="relative h-full w-full overflow-hidden rounded-full bg-[#0b1220]">
+                                        <img src="assets/kategori/makanan_daerah.png" alt="Kuliner" class="absolute inset-0 h-full w-full object-cover">
+                                        <div class="absolute inset-0 bg-black/45"></div>
+                                        <div class="absolute left-1/2 top-1/2 flex aspect-square w-[34%] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/40 backdrop-blur-[2px]">
+                                            <div class="aspect-square w-[42%] rounded-full bg-[#141414]"></div>
+                                        </div>
+                                        <div class="absolute inset-x-0 top-[66%] text-center">
+                                            <p class="text-[0.8rem] font-normal uppercase tracking-[0.2em] text-white/85 pt-6">Kuliner</p>
+                                            <span class="mt-[0.15rem] block text-[0.5rem] text-white/60">Cita Rasa dari Tiap Daerah</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <!-- seni rupa -->
+                            <article class="disc relative h-[var(--size)] w-[var(--size)] shrink-0 transition-transform duration-300">
+                                <div class="h-full w-full rounded-full p-1 bg-[linear-gradient(145deg,#f1f1f5,#6b6f7a_40%,#d9dbe2_70%,#555a66)]">
+                                    <div class="relative h-full w-full overflow-hidden rounded-full bg-[#0b1220]">
+                                        <img src="assets/kategori/seni_rupa.png" alt="Pakaian Adat" class="absolute inset-0 h-full w-full object-cover">
+                                        <div class="absolute inset-0 bg-black/45"></div>
+                                        <div class="absolute left-1/2 top-1/2 flex aspect-square w-[34%] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/40 backdrop-blur-[2px]">
+                                            <div class="aspect-square w-[42%] rounded-full bg-[#141414]"></div>
+                                        </div>
+                                        <div class="absolute inset-x-0 top-[66%] text-center">
+                                            <p class="text-[0.8rem] font-normal uppercase tracking-[0.2em] text-white/85 pt-6">Pakaian Adat</p>
+                                            <span class="mt-[0.15rem] block text-[0.5rem] text-white/60">Identitas yang Dikenakan</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
                     </div>
                 </div>
-            </article>
 
-            <!-- alat musik -->
-            <article class="disc absolute left-0 top-0 mt-[calc(var(--size)_/_-2)] h-[var(--size)] w-[var(--size)] will-change-transform">
-                <div class="h-full w-full rounded-full p-1 bg-[linear-gradient(145deg,#f1f1f5,#6b6f7a_40%,#d9dbe2_70%,#555a66)]">
-                    <div class="relative h-full w-full overflow-hidden rounded-full bg-[#0b1220]">
-                        <img src="assets/kategori/alat_musik.png" alt="Musik Tradisional" class="absolute inset-0 h-full w-full object-cover">
-                        <div class="absolute inset-0 bg-black/45"></div>
-                        <div class="absolute left-1/2 top-1/2 flex aspect-square w-[34%] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/40 backdrop-blur-[2px]">
-                            <div class="aspect-square w-[42%] rounded-full bg-[#141414]"></div>
-                        </div>
-                        <div class="absolute inset-x-0 top-[66%] text-center">
-                            <p class="text-[0.8rem] font-normal uppercase tracking-[0.2em] text-white/85">Musik Tradisional</p>
-                            <span class="mt-[0.15rem] block text-[0.5rem] text-white/60">Harmoni dari Timur Hingga Barat</span>
-                        </div>
-                    </div>
-                </div>
-            </article>
+                <button id="discNext" type="button" aria-label="CD berikutnya" class="absolute right-2 top-1/2 z-30 -translate-y-1/2 rounded-full bg-white/10 p-3 text-white transition hover:bg-white/20">
+                    <i class="ri-arrow-right-line text-xl"></i>
+                </button>
 
-            <!-- kerajinan -->
-            <article class="disc absolute left-0 top-0 mt-[calc(var(--size)_/_-2)] h-[var(--size)] w-[var(--size)] will-change-transform">
-                <div class="h-full w-full rounded-full p-1 bg-[linear-gradient(145deg,#f1f1f5,#6b6f7a_40%,#d9dbe2_70%,#555a66)]">
-                    <div class="relative h-full w-full overflow-hidden rounded-full bg-[#0b1220]">
-                        <img src="assets/kategori/kerajinan.png" alt="Kerajinan" class="absolute inset-0 h-full w-full object-cover">
-                        <div class="absolute inset-0 bg-black/45"></div>
-                        <div class="absolute left-1/2 top-1/2 flex aspect-square w-[34%] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/40 backdrop-blur-[2px]">
-                            <div class="aspect-square w-[42%] rounded-full bg-[#141414]"></div>
-                        </div>
-                        <div class="absolute inset-x-0 top-[66%] text-center">
-                            <p class="text-[0.8rem] font-normal uppercase tracking-[0.2em] text-white/85">Kerajinan</p>
-                            <span class="mt-[0.15rem] block text-[0.5rem] text-white/60">Karya Tangan Penuh Cerita</span>
-                        </div>
-                    </div>
-                </div>
-            </article>
-
-            <!-- rumah adat -->
-            <article class="disc absolute left-0 top-0 mt-[calc(var(--size)_/_-2)] h-[var(--size)] w-[var(--size)] will-change-transform">
-                <div class="h-full w-full rounded-full p-1 bg-[linear-gradient(145deg,#f1f1f5,#6b6f7a_40%,#d9dbe2_70%,#555a66)]">
-                    <div class="relative h-full w-full overflow-hidden rounded-full bg-[#0b1220]">
-                        <img src="assets/kategori/rumah_adat.png" alt="Rumah Adat" class="absolute inset-0 h-full w-full object-cover">
-                        <div class="absolute inset-0 bg-black/45"></div>
-                        <div class="absolute left-1/2 top-1/2 flex aspect-square w-[34%] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/40 backdrop-blur-[2px]">
-                            <div class="aspect-square w-[42%] rounded-full bg-[#141414]"></div>
-                        </div>
-                        <div class="absolute inset-x-0 top-[66%] text-center">
-                            <p class="text-[0.8rem] font-normal uppercase tracking-[0.2em] text-white/85">Rumah Adat</p>
-                            <span class="mt-[0.15rem] block text-[0.5rem] text-white/60">Arsitektur Penuh Filosofi</span>
-                        </div>
-                    </div>
-                </div>
-            </article>
-
-            <!-- makanan -->
-            <article class="disc absolute left-0 top-0 mt-[calc(var(--size)_/_-2)] h-[var(--size)] w-[var(--size)] will-change-transform">
-                <div class="h-full w-full rounded-full p-1 bg-[linear-gradient(145deg,#f1f1f5,#6b6f7a_40%,#d9dbe2_70%,#555a66)]">
-                    <div class="relative h-full w-full overflow-hidden rounded-full bg-[#0b1220]">
-                        <img src="assets/kategori/makanan_daerah.png" alt="Kuliner" class="absolute inset-0 h-full w-full object-cover">
-                        <div class="absolute inset-0 bg-black/45"></div>
-                        <div class="absolute left-1/2 top-1/2 flex aspect-square w-[34%] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/40 backdrop-blur-[2px]">
-                            <div class="aspect-square w-[42%] rounded-full bg-[#141414]"></div>
-                        </div>
-                        <div class="absolute inset-x-0 top-[66%] text-center">
-                            <p class="text-[0.8rem] font-normal uppercase tracking-[0.2em] text-white/85">Kuliner</p>
-                            <span class="mt-[0.15rem] block text-[0.5rem] text-white/60">Cita Rasa dari Tiap Daerah</span>
-                        </div>
-                    </div>
-                </div>
-            </article>
-
-            <!-- seni rupa -->
-            <article class="disc absolute left-0 top-0 mt-[calc(var(--size)_/_-2)] h-[var(--size)] w-[var(--size)] will-change-transform">
-                <div class="h-full w-full rounded-full p-1 bg-[linear-gradient(145deg,#f1f1f5,#6b6f7a_40%,#d9dbe2_70%,#555a66)]">
-                    <div class="relative h-full w-full overflow-hidden rounded-full bg-[#0b1220]">
-                        <img src="assets/kategori/seni_rupa.png" alt="Pakaian Adat" class="absolute inset-0 h-full w-full object-cover">
-                        <div class="absolute inset-0 bg-black/45"></div>
-                        <div class="absolute left-1/2 top-1/2 flex aspect-square w-[34%] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/40 backdrop-blur-[2px]">
-                            <div class="aspect-square w-[42%] rounded-full bg-[#141414]"></div>
-                        </div>
-                        <div class="absolute inset-x-0 top-[66%] text-center">
-                            <p class="text-[0.8rem] font-normal uppercase tracking-[0.2em] text-white/85">Pakaian Adat</p>
-                            <span class="mt-[0.15rem] block text-[0.5rem] text-white/60">Identitas yang Dikenakan</span>
-                        </div>
-                    </div>
-                </div>
-            </article>
-
+            </div>
         </div>
 
         <!-- button lebih banyak -->

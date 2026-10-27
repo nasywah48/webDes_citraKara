@@ -219,6 +219,9 @@
   .pointer-events-none {
     pointer-events: none;
   }
+  .visible {
+    visibility: visible;
+  }
   .absolute {
     position: absolute;
   }
@@ -276,6 +279,9 @@
   .top-\[56\%\] {
     top: 56%;
   }
+  .top-\[58\%\] {
+    top: 58%;
+  }
   .top-\[66\%\] {
     top: 66%;
   }
@@ -290,6 +296,15 @@
   }
   .-right-20 {
     right: calc(var(--spacing) * -20);
+  }
+  .right-0 {
+    right: 0px;
+  }
+  .right-2 {
+    right: calc(var(--spacing) * 2);
+  }
+  .right-3 {
+    right: calc(var(--spacing) * 3);
   }
   .right-6 {
     right: calc(var(--spacing) * 6);
@@ -335,6 +350,9 @@
   }
   .left-2 {
     left: calc(var(--spacing) * 2);
+  }
+  .left-3 {
+    left: calc(var(--spacing) * 3);
   }
   .left-4 {
     left: calc(var(--spacing) * 4);
@@ -495,6 +513,9 @@
   .h-8 {
     height: calc(var(--spacing) * 8);
   }
+  .h-11 {
+    height: calc(var(--spacing) * 11);
+  }
   .h-64 {
     height: calc(var(--spacing) * 64);
   }
@@ -513,6 +534,12 @@
   .h-screen {
     height: 100vh;
   }
+  .min-h-40 {
+    min-height: calc(var(--spacing) * 40);
+  }
+  .min-h-screen {
+    min-height: 100vh;
+  }
   .w-1 {
     width: var(--spacing);
   }
@@ -530,6 +557,9 @@
   }
   .w-10 {
     width: calc(var(--spacing) * 10);
+  }
+  .w-11 {
+    width: calc(var(--spacing) * 11);
   }
   .w-12 {
     width: calc(var(--spacing) * 12);
@@ -593,6 +623,9 @@
   }
   .max-w-\[16rem\] {
     max-width: 16rem;
+  }
+  .max-w-\[1100px\] {
+    max-width: 1100px;
   }
   .max-w-md {
     max-width: var(--container-md);
@@ -716,6 +749,9 @@
   .gap-5 {
     gap: calc(var(--spacing) * 5);
   }
+  .gap-6 {
+    gap: calc(var(--spacing) * 6);
+  }
   .gap-8 {
     gap: calc(var(--spacing) * 8);
   }
@@ -727,6 +763,9 @@
   }
   .overflow-hidden {
     overflow: hidden;
+  }
+  .overflow-visible {
+    overflow: visible;
   }
   .overflow-x-auto {
     overflow-x: auto;
@@ -840,6 +879,12 @@
       background-color: color-mix(in oklab, var(--color-black) 45%, transparent);
     }
   }
+  .bg-black\/60 {
+    background-color: color-mix(in srgb, #000 60%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-black) 60%, transparent);
+    }
+  }
   .bg-black\/70 {
     background-color: color-mix(in srgb, #000 70%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
@@ -947,6 +992,9 @@
   .p-1 {
     padding: var(--spacing);
   }
+  .p-3 {
+    padding: calc(var(--spacing) * 3);
+  }
   .p-4 {
     padding: calc(var(--spacing) * 4);
   }
@@ -971,6 +1019,12 @@
   .px-6 {
     padding-inline: calc(var(--spacing) * 6);
   }
+  .px-14 {
+    padding-inline: calc(var(--spacing) * 14);
+  }
+  .px-16 {
+    padding-inline: calc(var(--spacing) * 16);
+  }
   .py-1 {
     padding-block: var(--spacing);
   }
@@ -986,6 +1040,21 @@
   .py-16 {
     padding-block: calc(var(--spacing) * 16);
   }
+  .py-24 {
+    padding-block: calc(var(--spacing) * 24);
+  }
+  .py-80 {
+    padding-block: calc(var(--spacing) * 80);
+  }
+  .py-120 {
+    padding-block: calc(var(--spacing) * 120);
+  }
+  .pt-6 {
+    padding-top: calc(var(--spacing) * 6);
+  }
+  .pt-8 {
+    padding-top: calc(var(--spacing) * 8);
+  }
   .pt-10 {
     padding-top: calc(var(--spacing) * 10);
   }
@@ -1000,6 +1069,9 @@
   }
   .pt-28 {
     padding-top: calc(var(--spacing) * 28);
+  }
+  .pt-80 {
+    padding-top: calc(var(--spacing) * 80);
   }
   .pb-4 {
     padding-bottom: calc(var(--spacing) * 4);
@@ -1278,6 +1350,11 @@
   .filter {
     filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
   }
+  .backdrop-blur {
+    --tw-backdrop-blur: blur(8px);
+    -webkit-backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
+    backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
+  }
   .backdrop-blur-\[2px\] {
     --tw-backdrop-blur: blur(2px);
     -webkit-backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
@@ -1438,6 +1515,17 @@
     .hover\:bg-secondary:hover {
       background-color: var(--color-secondary);
     }
+    .hover\:bg-white:hover {
+      background-color: var(--color-white);
+    }
+    .hover\:bg-white\/20:hover {
+      background-color: color-mix(in srgb, #fff 20%, transparent);
+    }
+    @supports (color: color-mix(in lab, red, red)) {
+      .hover\:bg-white\/20:hover {
+        background-color: color-mix(in oklab, var(--color-white) 20%, transparent);
+      }
+    }
     .hover\:bg-white\/80:hover {
       background-color: color-mix(in srgb, #fff 80%, transparent);
     }
@@ -1452,6 +1540,16 @@
     .hover\:text-white:hover {
       color: var(--color-white);
     }
+  }
+  .data-\[visible\=true\]\:block[data-visible="true"] {
+    display: block;
+  }
+  .data-\[visible\=true\]\:translate-y-0[data-visible="true"] {
+    --tw-translate-y: 0px;
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+  .data-\[visible\=true\]\:opacity-100[data-visible="true"] {
+    opacity: 100%;
   }
   @media (width >= 40rem) {
     .sm\:text-4xl {
@@ -1477,6 +1575,9 @@
     }
     .md\:top-\[26rem\] {
       top: 26rem;
+    }
+    .md\:top-\[60\%\] {
+      top: 60%;
     }
     .md\:top-\[82\%\] {
       top: 82%;
@@ -1601,8 +1702,14 @@
     .md\:px-8 {
       padding-inline: calc(var(--spacing) * 8);
     }
+    .md\:px-16 {
+      padding-inline: calc(var(--spacing) * 16);
+    }
     .md\:py-2 {
       padding-block: calc(var(--spacing) * 2);
+    }
+    .md\:py-24 {
+      padding-block: calc(var(--spacing) * 24);
     }
     .md\:pt-20 {
       padding-top: calc(var(--spacing) * 20);
@@ -1662,6 +1769,46 @@
     .md\:text-\[0\.7rem\] {
       font-size: 0.7rem;
     }
+  }
+  .\[\&_\[data-region\]\]\:cursor-pointer [data-region] {
+    cursor: pointer;
+  }
+  .\[\&_\[data-region\]\]\:fill-\[\#7090c4\] [data-region] {
+    fill: #7090c4;
+  }
+  .\[\&_\[data-region\]\]\:stroke-white [data-region] {
+    stroke: var(--color-white);
+  }
+  .\[\&_\[data-region\]\]\:\[stroke-width\:0\.6\] [data-region] {
+    stroke-width: 0.6;
+  }
+  .\[\&_\[data-region\]\]\:transition-\[fill\,stroke\] [data-region] {
+    transition-property: fill,stroke;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
+  .\[\&_\[data-region\]\]\:duration-300 [data-region] {
+    --tw-duration: 300ms;
+    transition-duration: 300ms;
+  }
+  .\[\&_\[data-region\]\]\:outline-none [data-region] {
+    --tw-outline-style: none;
+    outline-style: none;
+  }
+  .\[\&_\[data-region\]\]\:\[vector-effect\:non-scaling-stroke\] [data-region] {
+    vector-effect: non-scaling-stroke;
+  }
+  .\[\&_\[data-region\]\[data-state\=active\]\]\:fill-secondary [data-region][data-state=active] {
+    fill: var(--color-secondary);
+  }
+  .\[\&_\[data-region\]\[data-state\=active\]\]\:stroke-secondary [data-region][data-state=active] {
+    stroke: var(--color-secondary);
+  }
+  .\[\&_\[data-region\]\[data-state\=hover\]\]\:fill-\[\#9fb8e3\] [data-region][data-state=hover] {
+    fill: #9fb8e3;
+  }
+  .\[\&_\[data-region\]\[data-state\=hover\]\]\:stroke-\[\#9fb8e3\] [data-region][data-state=hover] {
+    stroke: #9fb8e3;
   }
   .\[\&_a\]\:transition a {
     transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter, display, content-visibility, overlay, pointer-events;
