@@ -195,6 +195,107 @@ window.addEventListener("resize", () => {
 updateHero(current);
 })();                                                            
 
+
+ // SECTION 2: Piringan bergerak mengikuti scroll halaman
+(function () {
+    const section = document.getElementById("budayaScroll");
+    const track = document.getElementById("discTrack");
+
+    if (!section || !track) return;
+
+    const items = Array.from(track.querySelectorAll(".disc"));
+    if (!items.length) return;
+
+    // CONFIG
+    const START_INDEX = 2;
+    const MIN_SCALE = 0.66;
+    const GAP = 24;
+
+    const clamp = (v, min = 0, max = 1) =>
+        Math.min(max, Math.max(min, v));
+
+    const lerp = (a, b, t) => a + (b - a) * t;
+
+    let size = 0;
+    let step = 0;
+    let total = 0;
+    let ticking = false;
+
+    function measure() {
+        size = items[0].offsetWidth;
+        step = size + GAP;
+        total = items.length * step;
+
+        // Scroll halaman mengontrol pergerakan piringan
+        section.style.height =
+            `${window.innerHeight + total * 1.2}px`;
+    }
+
+    function update() {
+        const maxScroll =
+            section.offsetHeight - window.innerHeight;
+
+        if (maxScroll <= 0) return;
+
+        const rect = section.getBoundingClientRect();
+        const progress = clamp(-rect.top / maxScroll);
+
+        // Pusat layar
+        const centerX = window.innerWidth / 2;
+
+        // Piringan bergerak sesuai scroll, bukan otomatis
+        const shift =
+            START_INDEX * step + progress * total;
+
+        items.forEach((item, i) => {
+            let relative = i * step - shift;
+
+            // Membuat susunan berulang tanpa duplikasi elemen
+            const half = total / 2;
+            relative =
+                ((relative + half) % total + total) % total - half;
+
+            const distance = Math.abs(relative);
+            const scaleProgress = clamp(distance / (size * 0.95));
+            const scale = lerp(1, MIN_SCALE, scaleProgress);
+
+            const x = centerX + relative - size / 2;
+
+            item.style.transform =
+                `translate3d(${x}px, 0, 0) scale(${scale})`;
+
+            item.style.opacity = clamp(
+                (half - distance) / step
+            );
+
+            item.style.zIndex = Math.round(scale * 100);
+        });
+    }
+
+    function requestUpdate() {
+        if (ticking) return;
+
+        ticking = true;
+
+        requestAnimationFrame(() => {
+            update();
+            ticking = false;
+        });
+    }
+
+    window.addEventListener("scroll", requestUpdate, {
+        passive: true
+    });
+
+    window.addEventListener("resize", () => {
+        measure();
+        update();
+    });
+
+    measure();
+    update();
+})();
+
 // section 3 garis/bulatan berlawanan arah
 (function () {
     const section  = document.getElementById("sejarah");
