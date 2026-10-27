@@ -43,6 +43,18 @@
             <video autoplay muted loop playsinline preload="metadata" class="h-full w-full object-cover">
                 <source src="assets/hero_video.mp4" type="video/mp4">
             </video>
+            
+            <!-- Background Music -->
+            <audio id="bgMusic" loop preload="none">
+                <source src="assets/sound_landing_page.mp3" type="audio/mpeg">
+            </audio>
+
+            <!-- Music Toggle -->
+            <button id="musicToggle" type="button" aria-label="Putar musik" aria-pressed="false" class="fixed bottom-6 right-6 z-50 flex items-center gap-3 rounded-full border border-white/30 bg-black/70 px-5 py-3 text-sm text-white shadow-xl backdrop-blur-md transition hover:bg-black/90">
+                <i id="musicIcon" class="ri-music-2-line text-lg"></i>
+                <span id="musicLabel">Music Off</span>
+            </button>
+
             <div id="videoShade" class="absolute inset-0 bg-black" style="opacity:.5"></div>
         </div>
 
@@ -61,30 +73,6 @@
 
     </div>
 </section>
-
-
-<!-- Background Music -->
-<audio id="bgMusic" loop preload="none">
-    <source src="assets/sound_landing_page.mp3" type="audio/mpeg">
-</audio>
-
-<!-- <audio controls loop>
-  <source src="assets/" type="audio/mpeg">
-  Browser kamu tidak mendukung audio.
-</audio> -->
-
-<!-- Music Toggle -->
-<button
-    id="musicToggle"
-    type="button"
-    aria-label="Putar musik"
-    aria-pressed="false"
-    class="fixed bottom-6 right-6 z-50 flex items-center gap-3 rounded-full border border-white/30 bg-black/70 px-5 py-3 text-sm text-white shadow-xl backdrop-blur-md transition hover:bg-black/90"
->
-    <i id="musicIcon" class="ri-music-2-line text-lg"></i>
-    <span id="musicLabel">Music Off</span>
-</button>
-
 
 <!-- section 2 -->
 <section id="budayaScroll" class="relative bg-[#020611] font-jakarta text-white [--size:clamp(200px,26vw,290px)]" style="height:300vh">
@@ -259,12 +247,12 @@
                     <span class="inline-flex items-center gap-1.5 rounded-full border border-white/20 px-2.5 py-1 text-[0.5rem] uppercase tracking-[0.15em] text-white/60"><i class="inline-block h-1 w-1 rounded-full bg-white/60"></i>Gamelan</span>
                     <span class="inline-flex items-center gap-1.5 rounded-full border border-white/20 px-2.5 py-1 text-[0.5rem] uppercase tracking-[0.15em] text-white/60"><i class="inline-block h-1 w-1 rounded-full bg-white/60"></i>Tenun</span>
                 </div>
-                <img data-reveal src="assets/sejarah/1.jpg" alt="Warisan yang Diteruskan" class="mt-6 aspect-[5/2] w-full rounded-md bg-white/10 object-cover">
+                <img data-reveal src="assets/sejarah_nusantara_1.png" alt="Warisan yang Diteruskan" class="mt-6 aspect-[5/2] w-full rounded-md bg-white/10 object-cover">
             </div>
 
             <!-- content kanan 1 -->
             <div data-item class="md:-mt-4 md:pl-16">
-                <img data-reveal src="assets/sejarah/2.jpg" alt="Akar yang Tumbuh" class="aspect-[5/2] w-full rounded-md bg-white/10 object-cover">
+                <img data-reveal src="assets/sejarah_nusantara_3.png" alt="Akar yang Tumbuh" class="aspect-[5/2] w-full rounded-md bg-white/10 object-cover">
                 <h3 data-reveal class="m-0 mt-6 text-xl font-normal text-white/90 md:text-2xl">Akar yang Tumbuh</h3>
                 <p data-reveal class="mt-3 text-xs leading-relaxed text-white/45">Jauh sebelum Indonesia menjadi sebuah negara, Nusantara telah menjadi ruang pertemuan berbagai masyarakat dan kebudayaan. Jejaknya hadir dalam bahasa, kepercayaan, arsitektur, kerajinan, musik, hingga tradisi lisan yang berkembang di berbagai wilayah.</p>
                 <div data-reveal class="mt-3 flex flex-wrap gap-2">
@@ -293,12 +281,12 @@
                     <span class="inline-flex items-center gap-1.5 rounded-full border border-white/20 px-2.5 py-1 text-[0.5rem] uppercase tracking-[0.15em] text-white/60"><i class="inline-block h-1 w-1 rounded-full bg-white/60"></i>Gamelan</span>
                     <span class="inline-flex items-center gap-1.5 rounded-full border border-white/20 px-2.5 py-1 text-[0.5rem] uppercase tracking-[0.15em] text-white/60"><i class="inline-block h-1 w-1 rounded-full bg-white/60"></i>Tenun</span>
                 </div>
-                <img data-reveal src="assets/sejarah/3.jpg" alt="Pusaka yang Masih Hidup" class="mt-6 aspect-[5/2] w-full rounded-md bg-white/10 object-cover">
+                <img data-reveal src="assets/sejarah_nusantara_2.png" alt="Pusaka yang Masih Hidup" class="mt-6 aspect-[5/2] w-full rounded-md bg-white/10 object-cover">
             </div>
 
             <!-- content kanan 2 -->
             <div data-item class="md:-mt-4 md:pl-16">
-                <img data-reveal src="assets/sejarah/4.jpg" alt="Bertemu, Berubah, Tetap Berakar" class="aspect-[5/2] w-full rounded-md bg-white/10 object-cover">
+                <img data-reveal src="assets/sejarah_nusantara_4.png" alt="Bertemu, Berubah, Tetap Berakar" class="aspect-[5/2] w-full rounded-md bg-white/10 object-cover">
                 <h3 data-reveal class="m-0 mt-6 text-xl font-normal text-white/90 md:text-2xl">Bertemu, Berubah, Tetap Berakar</h3>
                 <p data-reveal class="mt-3 text-xs leading-relaxed text-white/45">Nusantara selalu menjadi ruang pertemuan pengaruh. Tradisi tidak berhenti pada bentuk lama: ia beradaptasi dengan zaman tanpa kehilangan akar dan maknanya. Dari proses inilah lahir keberagaman seni dan budaya yang menjadi ciri khas setiap daerah.</p>
                 <div data-reveal class="mt-3 flex flex-wrap gap-2">
