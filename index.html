@@ -20,7 +20,7 @@
     <div class="mx-auto flex h-[88px] max-w-7xl items-center justify-between px-6 md:px-8">
         <a href="#" class="w-40 md:w-44"><img src="assets/logo_citraKara_2.png" alt="CitraKara"></a>
 
-        <ul class="m-0 hidden list-none items-center gap-8 p-0 font-['Playfair_Display'] text-sm md:flex">
+        <ul class="m-0 hidden list-none items-center gap-8 p-0 font-family text-sm md:flex">
             <li><a href="index.html" class="font-bold text-white no-underline">Beranda</a></li>
             <li><a href="destinasi.html" class="text-white/80 no-underline transition hover:text-white">Destinasi</a></li>
             <li><a href="#" class="text-white/80 no-underline transition hover:text-white">Seni &amp; Budaya</a></li>
@@ -31,12 +31,23 @@
     </div>
 </nav>
 
+<!-- Background Music -->
+<audio id="bgMusic" loop preload="auto">
+    <source src="assets/sound_landing_page.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Music Toggle -->
+<button id="musicToggle" type="button" aria-label="Jeda musik" aria-pressed="true" class="fixed bottom-6 right-6 z-50 flex items-center gap-3 rounded-full border border-white/30 bg-black/70 px-5 py-3 text-sm text-white shadow-xl backdrop-blur-md transition hover:bg-black/90">
+    <i id="musicIcon" class="ri-music-2-line text-lg"></i>
+    <span id="musicLabel">Music Off</span>
+</button>
+
 <!-- hero -->
 <section id="hero" class="relative" style="height:300vh">
     <div class="sticky top-0 h-screen overflow-hidden">
 
-        <img src="assets/hero.png" alt="" class="absolute inset-0 z-0 h-full w-full object-cover">
-        <div id="darkOverlay" class="absolute inset-0 z-[1] bg-black" style="opacity:0.3"></div>
+        <img src="assets/hero_bg.png" alt="" class="absolute inset-0 z-0 h-full w-full object-cover">
+        <div id="darkOverlay" class="absolute inset-0 z-1 bg-black" style="opacity:0.3"></div>
 
         <div id="videoContainer" class="absolute inset-0 z-10"
             style="clip-path:circle(0px at 50% 50%);opacity:0;will-change:clip-path,opacity;">
@@ -44,29 +55,19 @@
                 <source src="assets/hero_video.mp4" type="video/mp4">
             </video>
             
-            <!-- Background Music -->
-            <audio id="bgMusic" loop preload="none">
-                <source src="assets/sound_landing_page.mp3" type="audio/mpeg">
-            </audio>
-
-            <!-- Music Toggle -->
-            <button id="musicToggle" type="button" aria-label="Putar musik" aria-pressed="false" class="fixed bottom-6 right-6 z-50 flex items-center gap-3 rounded-full border border-white/30 bg-black/70 px-5 py-3 text-sm text-white shadow-xl backdrop-blur-md transition hover:bg-black/90">
-                <i id="musicIcon" class="ri-music-2-line text-lg"></i>
-                <span id="musicLabel">Music Off</span>
-            </button>
-
             <div id="videoShade" class="absolute inset-0 bg-black" style="opacity:.5"></div>
         </div>
 
-        <h1 id="textTop" class="pointer-events-none absolute left-8 top-28 z-20 select-none font-jakarta font-bold capitalize text-white md:left-16 md:top-40" style="font-size:clamp(3rem,8vw,8rem);line-height:1;letter-spacing:-0.04em;will-change:transform,opacity;">keberagaman</h1>
-
-        <h1 id="textBottom" class="pointer-events-none absolute bottom-14 right-8 z-20 select-none font-jakarta font-bold capitalize text-white md:bottom-20 md:right-16" style="font-size:clamp(3rem,8vw,8rem);line-height:1;letter-spacing:-0.04em;will-change:transform,opacity;">nusantara</h1>
+        <div class="flex justify-center">
+          <h1 id="textTop" class="font-family uppercase pointer-events-none absolute text-center top-32 z-20 select-none font-normal tracking-tight text-white md:text-center md:top-58" style="font-size:clamp(2.5rem,6vw,6rem);line-height:1;letter-spacing:-0.04em;will-change:transform,opacity;">keberagaman</h1>
+          <h1 id="textBottom" class="font-family uppercase  pointer-events-none absolute bottom-20 text-center z-20 select-none font-normal tracking-tight text-white md:bottom-50 md:text-center" style="font-size:clamp(2.5rem,6vw,6rem);line-height:1;letter-spacing:-0.04em;will-change:transform,opacity;">nusantara</h1>
+        </div>
 
         <!-- text video -->
         <div id="heroFinal" class="pointer-events-none absolute inset-0 z-20 flex items-center justify-center px-6" style="opacity:0;will-change:opacity,transform;">
             <div class="w-full max-w-4xl">
                 <p class="m-0 font-jakarta text-xl font-light text-white md:text-3xl">Jelajahi Keindahan</p>
-                <h2 class="m-0 font-['Playfair_Display'] font-normal uppercase leading-none tracking-tight text-white"style="font-size:clamp(3.5rem,12vw,9.5rem);">Nusantara</h2>
+                <h2 class="m-0 font-family font-normal uppercase leading-none tracking-tight text-white"style="font-size:clamp(3.5rem,12vw,9.5rem);">Nusantara</h2>
                 <p class="m-0 mt-3 text-right font-jakarta text-[0.6rem] uppercase tracking-[0.25em] text-white/80 md:text-xs">Warisan budaya, seni, dan tradisi daerah</p>
             </div>
         </div>

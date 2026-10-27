@@ -74,36 +74,100 @@ function updateHero(p) {
     if (darkOverlay) darkOverlay.style.opacity = 0.3 + 0.45 * p;
 }
 
-// sound
+
+
 const music = document.getElementById("bgMusic");
 const musicToggle = document.getElementById("musicToggle");
 const musicIcon = document.getElementById("musicIcon");
 const musicLabel = document.getElementById("musicLabel");
 
+let autoPlayAttempted = false;
+let userPausedMusic = false;
+
+function updateMusicButton(isPlaying) {
+    musicLabel.textContent = isPlaying ? "Music On" : "Music Off";
+
+    musicIcon.className = isPlaying
+        ? "ri-volume-up-line text-lg"
+        : "ri-volume-mute-line text-lg";
+
+    musicToggle.setAttribute(
+        "aria-label",
+        isPlaying ? "Jeda musik" : "Putar musik"
+    );
+
+    musicToggle.setAttribute("aria-pressed", String(isPlaying));
+}
+
+async function playMusic() {
+    if (!music || document.hidden) return;
+
+    try {
+        await music.play();
+        updateMusicButton(true);
+    } catch (error) {
+        // Autoplay bersuara mungkin diblokir oleh browser.
+        updateMusicButton(false);
+        console.info("Autoplay diblokir. Menunggu interaksi pengguna.");
+    }
+}
+
+// Coba autoplay sekali ketika hero mulai muncul.
+// Fungsi ini dipanggil dari update progress animasi hero.
+function tryHeroMusic(progress) {
+    if (progress > 0.02 && !autoPlayAttempted) {
+        autoPlayAttempted = true;
+
+        if (!userPausedMusic) {
+            playMusic();
+        }
+    }
+}
+
+// Tombol tetap bisa dipakai di seluruh section.
 musicToggle.addEventListener("click", async () => {
     if (music.paused) {
-        try {
-            await music.play();
-
-            musicLabel.textContent = "Music On";
-            musicIcon.className = "ri-volume-up-line text-lg";
-            musicToggle.setAttribute("aria-label", "Matikan musik");
-            musicToggle.setAttribute("aria-pressed", "true");
-        } catch (error) {
-            console.error("Musik gagal diputar:", error);
-            musicLabel.textContent = "Try Again";
-        }
+        userPausedMusic = false;
+        await playMusic();
     } else {
+        userPausedMusic = true;
         music.pause();
-
-        musicLabel.textContent = "Music Off";
-        musicIcon.className = "ri-music-2-line text-lg";
-        musicToggle.setAttribute("aria-label", "Putar musik");
-        musicToggle.setAttribute("aria-pressed", "false");
+        updateMusicButton(false);
     }
 });
 
+// Sinkronisasi status tombol jika audio berubah.
+music.addEventListener("play", () => updateMusicButton(true));
+music.addEventListener("pause", () => updateMusicButton(false));
 
+// Hentikan musik saat tab disembunyikan,
+// misalnya saat pindah tab atau meminimalkan browser.
+
+document.addEventListener("visibilitychange", async () => {
+    if (document.hidden) {
+        // User pindah tab: hentikan musik.
+        music.pause();
+    } else {
+        // User kembali ke tab: coba nyalakan lagi,
+        // selama user tidak sengaja menekan Pause.
+        if (!userPausedMusic) {
+            await playMusic();
+        }
+    }
+});
+
+// Coba autoplay saat halaman pertama kali dibuka.
+window.addEventListener("load", () => {
+    if (!autoPlayAttempted) {
+        autoPlayAttempted = true;
+        playMusic();
+    }
+});
+
+// Hentikan musik saat halaman ditinggalkan atau ditutup.
+window.addEventListener("pagehide", () => {
+    music.pause();
+});
 
 // EVENTS  
 let current = getProgress();
@@ -130,157 +194,6 @@ window.addEventListener("resize", () => {
 
 updateHero(current);
 })();                                                            
-
-// section 2: scroll vertikal -> geser horizontal
-(function () {
-    const section = document.getElementById("budayaScroll");
-    const track   = document.getElementById("discTrack");
-    if (!section || !track) return;
-
-    const items = Array.from(track.querySelectorAll(".disc"));
-
-    // CONFIG
-    const START_INDEX = 2;     // piringan ke-3 (index 2) di tengah saat awal
-    const MIN_SCALE   = 0.66;  // ukuran piringan yang jauh dari tengah
-    const SCROLL_RATIO = 1;    // 1 = jarak scroll sama dengan jarak geser; makin besar makin pelan
-
-    const clamp = (v, min = 0, max = 1) => Math.min(max, Math.max(min, v));
-    const lerp  = (a, b, t) => a + (b - a) * t;
-
-    let centers = [];   // posisi tengah tiap piringan di dalam track
-    let size = 0;
-
-    function measure() {
-        centers = items.map(el => el.offsetLeft + el.offsetWidth / 2);
-        size = items[0].offsetWidth;
-
-        const dist = centers[centers.length - 1] - centers[START_INDEX];
-        section.style.height = `${window.innerHeight + dist * SCROLL_RATIO}px`;
-    }
-
-    function update() {
-        const total = section.offsetHeight - window.innerHeight;
-        if (total <= 0) return;
-
-        const p = clamp(-section.getBoundingClientRect().top / total);
-
-        const vwCenter = window.innerWidth / 2;
-        const from = centers[START_INDEX];
-        const to   = centers[centers.length - 1];
-
-        // geser track supaya titik "from -> to" selalu melewati tengah layar
-        const x = vwCenter - lerp(from, to, p);
-        track.style.transform = `translate3d(${x}px, 0, 0)`;
-
-        // piringan makin dekat tengah makin besar
-        items.forEach((el, i) => {
-            const d = Math.abs(centers[i] + x - vwCenter);
-            const t = clamp(d / (size * 0.95));
-            const s = lerp(1, MIN_SCALE, t);
-
-            el.style.transform = `scale(${s})`;
-            el.style.zIndex = Math.round(s * 100);
-        });
-    }
-
-    let ticking = false;
-    window.addEventListener("scroll", () => {
-        if (ticking) return;
-        ticking = true;
-        requestAnimationFrame(() => {
-            update();
-            ticking = false;
-        });
-    }, { passive: true });
-
-    window.addEventListener("resize", () => { measure(); update(); });
-    window.addEventListener("load", () => { measure(); update(); });
-
-    measure();
-    update();
-})();
-
-// section 3: piringan berputar tanpa putus
-(function () {
-    const section = document.getElementById("budayaScroll");
-    const stage   = document.getElementById("discTrack");
-    if (!section || !stage) return;
-
-    // buang salinan lama kalau masih ada
-    stage.querySelectorAll(".disc[data-clone]").forEach(el => el.remove());
-
-    const items = Array.from(stage.querySelectorAll(".disc"));
-    const N = items.length;
-
-    // CONFIG
-    const START_INDEX  = 2;     // piringan ke-3 di tengah saat awal
-    const MIN_SCALE    = 0.66;  // ukuran piringan yang jauh dari tengah
-    const GAP          = -48;   // jarak antar piringan (negatif = rapat)
-    const LOOPS        = 1;     // berapa putaran penuh sebelum lanjut scroll ke bawah
-    const SCROLL_RATIO = 1.2;   // makin besar = putaran makin pelan
-    const FADE_STEPS   = 1;     // lebar zona memudar di tepi (satuan: 1 piringan)
-
-    const clamp = (v, min = 0, max = 1) => Math.min(max, Math.max(min, v));
-    const lerp  = (a, b, t) => a + (b - a) * t;
-
-    let size = 0, step = 0, total = 0;
-
-    function build() {
-        size  = items[0].offsetWidth;
-        step  = size + GAP;
-        total = N * step;   // keliling lingkaran = 1 putaran penuh
-
-        section.style.height =
-            `${window.innerHeight + total * LOOPS * SCROLL_RATIO}px`;
-    }
-
-    function update() {
-        const range = section.offsetHeight - window.innerHeight;
-        if (range <= 0) return;
-
-        const p = clamp(-section.getBoundingClientRect().top / range);
-
-        // pusat LAYAR dalam koordinat #discTrack
-        const center = window.innerWidth / 2 - stage.getBoundingClientRect().left;
-
-        const shift = START_INDEX * step + p * total * LOOPS;
-        const half  = total / 2;
-
-        items.forEach((el, i) => {
-            // jarak dari tengah, dibungkus supaya melingkar
-            let rel = i * step - shift;
-            rel = ((rel + half) % total + total) % total - half;
-
-            // makin dekat tengah makin besar
-            const t = clamp(Math.abs(rel) / (size * 0.95));
-            const s = lerp(1, MIN_SCALE, t);
-
-            // memudar menjelang titik loncat (±half), jadi tidak ada piringan ganda
-            const o = clamp((half - Math.abs(rel)) / (FADE_STEPS * step));
-
-            el.style.transform =
-                `translate3d(${center + rel - size / 2}px, 0, 0) scale(${s})`;
-            el.style.opacity = o;
-            el.style.zIndex  = Math.round(s * 100);
-        });
-    }
-
-    let ticking = false;
-    window.addEventListener("scroll", () => {
-        if (ticking) return;
-        ticking = true;
-        requestAnimationFrame(() => {
-            update();
-            ticking = false;
-        });
-    }, { passive: true });
-
-    window.addEventListener("resize", () => { build(); update(); });
-    window.addEventListener("load",   () => { build(); update(); });
-
-    build();
-    update();
-})();
 
 // section 3 garis/bulatan berlawanan arah
 (function () {
