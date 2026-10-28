@@ -109,64 +109,135 @@ updateHero(current);
     if (!viewport || !track || !prev || !next) return;
 
     const cards = Array.from(track.querySelectorAll(".disc"));
-    if (!cards.length) return;
+    const n = cards.length;
+    if (!n) return;
 
-    const ACTIVE_SCALE = 1;
-    const SIDE_SCALE = 0.80;
-    let activeIndex = 2;
+    const START_INDEX = 2;   // CD yang di tengah saat halaman dibuka (0 = CD pertama)
+    const SIDE_SCALE = 0.8;  // ukuran CD samping
+    const GAP = 8;           // jarak antar CD (px), sama seperti gap-2
 
-    function getGap() {
-        return parseFloat(getComputedStyle(track).columnGap) || 0;
-    }
+    const half = Math.floor(n / 2);
+    const lastOffset = new Array(n).fill(null);
+    let active = START_INDEX;
+    let dragging = false;
 
-    function getStep() {
-        const card = cards[0];
-        return card.getBoundingClientRect().width + getGap();
-    }
+    const getStep = () => cards[0].offsetWidth + GAP;
 
-    function render() {
+    function render({ drag = 0, instant = false } = {}) {
         const step = getStep();
-        const viewportCenter = viewport.clientWidth / 2;
+        let hasWrap = false;
 
-        // memusatkan CD aktif di tengah viewport
-        const targetScroll =
-            cards[activeIndex].offsetLeft +
-            cards[activeIndex].offsetWidth / 2 -
-            viewportCenter;
+        cards.forEach((card, i) => {
+            // d: jarak card dari CD aktif, melingkar (-3 .. 2 untuk 6 CD)
+            const d = ((i - active + n + half) % n) - half;
+            const last = lastOffset[i];
+            const wrapped = last !== null && Math.abs(d - last) > half;
+            hasWrap = hasWrap || wrapped;
 
-        viewport.scrollTo({
-            left: Math.max(
-                0,
-                Math.min(
-                    targetScroll,
-                    viewport.scrollWidth - viewport.clientWidth
-                )
-            ),
-            behavior: "smooth"
+            // card yang "loncat" dari ujung ke ujung tidak dianimasikan
+            card.style.transition = instant || dragging || wrapped ? "none" : "";
+
+            // posisi pecahan saat di-drag, supaya ukuran berubah halus
+            const p = d + drag / step;
+            const scale = 1 - (1 - SIDE_SCALE) * Math.min(1, Math.abs(p));
+
+            card.style.transform = `translateX(${d * step + drag}px) translateX(-50%) scale(${scale})`;
+            card.style.zIndex = d === 0 ? "2" : "1";
+            card.style.opacity = Math.abs(d) > 2 ? "0.65" : "1";
+
+            lastOffset[i] = d;
         });
-        cards.forEach((card, index) => {
-            const distance = Math.abs(index - activeIndex);
-            const scale = distance === 0 ? ACTIVE_SCALE : SIDE_SCALE;
 
-            card.style.transform = `scale(${scale})`;
-            card.style.zIndex = distance === 0 ? "2" : "1";
-            card.style.opacity = distance > 2 ? "0.65" : "1";
-        });
+        if (hasWrap) {
+            void track.offsetWidth; // paksa reflow supaya loncatan tidak teranimasi
+            cards.forEach((card) => { if (!dragging && !instant) card.style.transition = ""; });
+        }
     }
 
-    next.addEventListener("click", () => {
-        activeIndex = Math.min(activeIndex + 1, cards.length - 1);
+    const go = (index) => {
+        active = ((index % n) + n) % n;
         render();
+    };
+
+    next.addEventListener("click", () => go(active + 1));
+    prev.addEventListener("click", () => go(active - 1));
+
+    /* ---------- drag mouse & swipe jari ---------- */
+    let startX = 0;
+    let dx = 0;
+    let moved = false;
+
+    viewport.addEventListener("dragstart", (e) => e.preventDefault());
+
+    viewport.addEventListener("pointerdown", (e) => {
+        if (e.pointerType === "mouse" && e.button !== 0) return;
+        dragging = true;
+        moved = false;
+        startX = e.clientX;
+        dx = 0;
+        window.addEventListener("pointermove", onMove);
+        window.addEventListener("pointerup", onUp);
+        window.addEventListener("pointercancel", onUp);
     });
 
-    prev.addEventListener("click", () => {
-        activeIndex = Math.max(activeIndex - 1, 0);
-        render();
+    function onMove(e) {
+        dx = e.clientX - startX;
+        if (Math.abs(dx) > 5) moved = true;
+        render({ drag: dx });
+    }
+
+    function onUp() {
+        window.removeEventListener("pointermove", onMove);
+        window.removeEventListener("pointerup", onUp);
+        window.removeEventListener("pointercancel", onUp);
+
+        dragging = false;
+        const step = getStep();
+        let steps = Math.round(-dx / step);
+        if (steps === 0 && Math.abs(dx) > step * 0.2) steps = dx < 0 ? 1 : -1; // flick kecil
+        steps = Math.max(-2, Math.min(2, steps));
+
+        go(active + steps);
+    }
+
+    // klik CD samping untuk memindahkannya ke tengah
+    cards.forEach((card, i) => {
+        card.addEventListener("click", () => {
+            if (!moved && i !== active) go(i);
+        });
     });
 
-    window.addEventListener("resize", render);
+    /* ---------- touchpad (geser dua jari ke samping) ---------- */
+    let wheelAcc = 0;
+    let wheelLock = false;
+    let wheelTimer;
 
-    render();
+    viewport.addEventListener(
+        "wheel",
+        (e) => {
+            if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return; // scroll vertikal biarkan lewat
+            e.preventDefault();
+
+            // buka kunci setelah gestur (termasuk inersia) benar-benar berhenti
+            clearTimeout(wheelTimer);
+            wheelTimer = setTimeout(() => {
+                wheelLock = false;
+                wheelAcc = 0;
+            }, 120);
+
+            if (wheelLock) return;
+            wheelAcc += e.deltaX;
+            if (Math.abs(wheelAcc) >= 50) {
+                go(active + Math.sign(wheelAcc));
+                wheelLock = true;
+                wheelAcc = 0;
+            }
+        },
+        { passive: false }
+    );
+
+    window.addEventListener("resize", () => render({ instant: true }));
+    render({ instant: true });
 })();
 
 // section 3 garis/bulatan berlawanan arah
