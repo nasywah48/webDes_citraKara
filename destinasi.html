@@ -14,6 +14,17 @@
     <title>CitraKara | Destinasi</title>
 </head>
 
+<!-- Background Music -->
+<audio id="bgMusic" loop preload="auto">
+    <source src="assets/sound_landing_page.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Music Toggle -->
+<button id="musicToggle" type="button" aria-label="Putar musik" aria-pressed="false" class="fixed bottom-6 right-6 z-50 flex items-center gap-3 rounded-full border border-white/30 bg-black/70 px-5 py-3 text-sm text-white shadow-xl backdrop-blur-md transition hover:bg-black/90">
+    <i id="musicIcon" class="ri-volume-mute-line text-lg"></i>
+    <span id="musicLabel">Music Off</span>
+</button>
+
 <body class="bg-background">
 
 <!-- navbar -->
@@ -31,17 +42,6 @@
         <a href="#" class="group inline-flex items-center gap-3 rounded-full border border-secondary/80 px-5 py-2 text-sm text-white no-underline transition hover:bg-secondary hover:text-black hover:font-medium">Jelajahi Pusaka <i class="ri-arrow-right-line text-secondary group-hover:text-black"></i></a>
     </div>
 </nav>
-
-<!-- Background Music -->
-<audio id="bgMusic" loop preload="auto">
-    <source src="assets/sound_landing_page.mp3" type="audio/mpeg">
-</audio>
-
-<!-- Music Toggle -->
-<button id="musicToggle" type="button" aria-label="Jeda musik" aria-pressed="true" class="fixed bottom-6 right-6 z-50 flex items-center gap-3 rounded-full border border-white/30 bg-black/70 px-5 py-3 text-sm text-white shadow-xl backdrop-blur-md transition hover:bg-black/90">
-    <i id="musicIcon" class="ri-music-2-line text-lg"></i>
-    <span id="musicLabel">Music Off</span>
-</button>
 
 <!-- hero -->
 <section class="relative h-screen">
@@ -68,27 +68,12 @@
         <p class="mx-auto mt-4 max-w-md text-xs leading-relaxed text-white/60 md:text-sm">Klik peta di bawah ini untuk mulai mengeksplor destinasi wisata terbaik dari setiap provinsi di Indonesia.</p>
 
         <div id="petaWrap" class="relative mt-14 w-full ">
-            <div id="petaMount"
-                class="min-h-40 text-sm text-white/60
-                        [&_svg]:block [&_svg]:h-auto [&_svg]:w-full
-                        [&_[data-region]]:cursor-pointer
-                        [&_[data-region]]:fill-[#7090c4]
-                        [&_[data-region]]:stroke-white
-                        [&_[data-region]]:[stroke-width:0.6]
-                        [&_[data-region]]:[vector-effect:non-scaling-stroke]
-                        [&_[data-region]]:outline-none
-                        [&_[data-region]]:transition-[fill,stroke]
-                        [&_[data-region]]:duration-300
-                        [&_[data-region][data-state=hover]]:fill-[#9fb8e3]
-                        [&_[data-region][data-state=hover]]:stroke-[#9fb8e3]
-                        [&_[data-region][data-state=active]]:fill-secondary
-                        [&_[data-region][data-state=active]]:stroke-secondary">
-            </div>
+            <div id="petaMount"></div>
 
             <!-- ... pill label pulau (Sumatera, Kalimantan, dst.) tetap di sini ... -->
 
             <div id="petaTooltip" data-visible="false"
-                class="pointer-events-none absolute z-30 hidden -translate-x-1/2 -translate-y-full whitespace-nowrap rounded-lg bg-[#1f2a3d] px-3 text-xs font-medium text-white shadow-lg data-[visible=true]:block"></div>
+                class="pointer-events-none absolute z-30 hidden -translate-x-1/2 -translate-y-full whitespace-nowrap rounded-lg bg-[#1f2a3d] px-4 py-2 text-xs font-medium text-white shadow-lg data-[visible=true]:block"></div>
         </div>
 
         <div id="petaInfo" inert data-visible="false" aria-live="polite"
@@ -161,10 +146,7 @@
 </section>
 
 <!-- section 4 -->
-<section id="topDest"
-    class="relative overflow-hidden bg-[#020611] pb-24 pt-8 font-jakarta text-white md:pb-32
-           [--w:220px] [--h:210px] [--aw:200px] [--ah:320px] [--gap:14px]
-           md:[--w:300px] md:[--h:280px] md:[--aw:270px] md:[--ah:420px] md:[--gap:20px]">
+<section id="topDest" class="relative overflow-hidden bg-[#020611] pb-24 pt-8 font-jakarta text-white md:pb-32 [--w:220px] [--h:210px] [--aw:200px] [--ah:320px] [--gap:14px] md:[--w:300px] md:[--h:280px] md:[--aw:270px] md:[--ah:420px] md:[--gap:20px]">
 
     <!-- header + tracking -->
     <div class="mx-auto flex max-w-6xl flex-col gap-6 px-6 md:flex-row md:items-end md:justify-between">
@@ -298,6 +280,7 @@
 </footer>
 
 <script src="script.js"></script>
+<script src="music.js"></script>
 <script src="provinsi.js"></script>
 <script type="module" src="peta.js"></script>
 </body>

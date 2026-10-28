@@ -14,6 +14,17 @@
     <title>CitraKara | Beranda</title>
 </head>
 
+<!-- background music -->
+<audio id="bgMusic" loop preload="auto">
+    <source src="assets/sound_landing_page.mp3" type="audio/mpeg">
+</audio>
+
+<!-- music toggle -->
+<button id="musicToggle" type="button" aria-label="Putar musik" aria-pressed="false" class="fixed bottom-6 right-6 z-50 flex items-center gap-3 rounded-full border border-white/30 bg-black/70 px-5 py-3 text-sm text-white shadow-xl backdrop-blur-md transition hover:bg-black/90">
+    <i id="musicIcon" class="ri-volume-mute-line text-lg"></i>
+    <span id="musicLabel">Music Off</span>
+</button>
+
 <body class="bg-background">
 
 <!-- navbar -->
@@ -32,17 +43,6 @@
     </div>
 </nav>
 
-<!-- Background Music -->
-<audio id="bgMusic" loop preload="auto">
-    <source src="assets/sound_landing_page.mp3" type="audio/mpeg">
-</audio>
-
-<!-- Music Toggle -->
-<button id="musicToggle" type="button" aria-label="Jeda musik" aria-pressed="true" class="fixed bottom-6 right-6 z-50 flex items-center gap-3 rounded-full border border-white/30 bg-black/70 px-5 py-3 text-sm text-white shadow-xl backdrop-blur-md transition hover:bg-black/90">
-    <i id="musicIcon" class="ri-music-2-line text-lg"></i>
-    <span id="musicLabel">Music Off</span>
-</button>
-
 <!-- hero -->
 <section id="hero" class="relative" style="height:300vh">
     <div class="sticky top-0 h-screen overflow-hidden">
@@ -50,8 +50,7 @@
         <img src="assets/hero_bg.png" alt="" class="absolute inset-0 z-0 h-full w-full object-cover">
         <div id="darkOverlay" class="absolute inset-0 z-1 bg-black" style="opacity:0.3"></div>
 
-        <div id="videoContainer" class="absolute inset-0 z-10"
-            style="clip-path:circle(0px at 50% 50%);opacity:0;will-change:clip-path,opacity;">
+        <div id="videoContainer" class="absolute inset-0 z-10" style="clip-path:circle(0px at 50% 50%);opacity:0;will-change:clip-path,opacity;">
             <video autoplay muted loop playsinline preload="metadata" class="h-full w-full object-cover">
                 <source src="assets/hero_video.mp4" type="video/mp4">
             </video>
@@ -591,5 +590,6 @@
 </footer>
 
 <script src="script.js"></script>
+<script src="music.js"></script>
 </body>
 </html>
