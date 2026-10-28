@@ -473,6 +473,36 @@
   .mb-3 {
     margin-bottom: calc(var(--spacing) * 3);
   }
+  .mb-10 {
+    margin-bottom: calc(var(--spacing) * 10);
+  }
+  .mb-20 {
+    margin-bottom: calc(var(--spacing) * 20);
+  }
+  .-ml-6 {
+    margin-left: calc(var(--spacing) * -6);
+  }
+  .-ml-8 {
+    margin-left: calc(var(--spacing) * -8);
+  }
+  .-ml-10 {
+    margin-left: calc(var(--spacing) * -10);
+  }
+  .-ml-14 {
+    margin-left: calc(var(--spacing) * -14);
+  }
+  .-ml-40 {
+    margin-left: calc(var(--spacing) * -40);
+  }
+  .-ml-42 {
+    margin-left: calc(var(--spacing) * -42);
+  }
+  .-ml-44 {
+    margin-left: calc(var(--spacing) * -44);
+  }
+  .ml-8 {
+    margin-left: calc(var(--spacing) * 8);
+  }
   .block {
     display: block;
   }
@@ -595,6 +625,9 @@
   }
   .w-12 {
     width: calc(var(--spacing) * 12);
+  }
+  .w-14 {
+    width: calc(var(--spacing) * 14);
   }
   .w-16 {
     width: calc(var(--spacing) * 16);
@@ -1128,6 +1161,9 @@
   .py-120 {
     padding-block: calc(var(--spacing) * 120);
   }
+  .pt-4 {
+    padding-top: calc(var(--spacing) * 4);
+  }
   .pt-6 {
     padding-top: calc(var(--spacing) * 6);
   }
@@ -1148,6 +1184,12 @@
   }
   .pt-28 {
     padding-top: calc(var(--spacing) * 28);
+  }
+  .pt-30 {
+    padding-top: calc(var(--spacing) * 30);
+  }
+  .pt-34 {
+    padding-top: calc(var(--spacing) * 34);
   }
   .pt-80 {
     padding-top: calc(var(--spacing) * 80);
@@ -1184,6 +1226,9 @@
   }
   .text-center {
     text-align: center;
+  }
+  .text-left {
+    text-align: left;
   }
   .text-right {
     text-align: right;
@@ -1662,11 +1707,17 @@
     content: var(--tw-content);
   }
   @media (hover: hover) {
+    .hover\:aspect-\[5\/2\]:hover {
+      aspect-ratio: 5/2;
+    }
     .hover\:scale-105:hover {
       --tw-scale-x: 105%;
       --tw-scale-y: 105%;
       --tw-scale-z: 105%;
       scale: var(--tw-scale-x) var(--tw-scale-y);
+    }
+    .hover\:rounded-md:hover {
+      border-radius: var(--radius-md);
     }
     .hover\:bg-black\/90:hover {
       background-color: color-mix(in srgb, #000 90%, transparent);
@@ -1697,6 +1748,10 @@
       .hover\:bg-white\/80:hover {
         background-color: color-mix(in oklab, var(--color-white) 80%, transparent);
       }
+    }
+    .hover\:font-medium:hover {
+      --tw-font-weight: var(--font-weight-medium);
+      font-weight: var(--font-weight-medium);
     }
     .hover\:text-black:hover {
       color: var(--color-black);
@@ -1735,6 +1790,9 @@
     }
   }
   @media (width >= 48rem) {
+    .md\:top-6 {
+      top: calc(var(--spacing) * 6);
+    }
     .md\:top-10 {
       top: calc(var(--spacing) * 10);
     }
@@ -1746,6 +1804,9 @@
     }
     .md\:top-58 {
       top: calc(var(--spacing) * 58);
+    }
+    .md\:top-62 {
+      top: calc(var(--spacing) * 62);
     }
     .md\:top-\[7rem\] {
       top: 7rem;
@@ -1785,6 +1846,9 @@
     }
     .md\:bottom-50 {
       bottom: calc(var(--spacing) * 50);
+    }
+    .md\:bottom-54 {
+      bottom: calc(var(--spacing) * 54);
     }
     .md\:-left-16 {
       left: calc(var(--spacing) * -16);

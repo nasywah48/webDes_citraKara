@@ -22,15 +22,26 @@
         <a href="#" class="w-40 md:w-44"><img src="assets/citraKara_logo.png" alt="CitraKara"></a>
 
         <ul class="m-0 hidden list-none items-center gap-8 p-0 font-['Playfair_Display'] text-sm md:flex">
-            <li><a href="index.html" class="font-bold text-white no-underline">Beranda</a></li>
-            <li><a href="destinasi.html" class="text-white/80 no-underline transition hover:text-white">Destinasi</a></li>
+            <li><a href="index.html" class="text-white/80 no-underline transition hover:text-white">Beranda</a></li>
+            <li><a href="destinasi.html" class="text-white/80 no-underline font-bold transition hover:text-white">Destinasi</a></li>
             <li><a href="#" class="text-white/80 no-underline transition hover:text-white">Seni &amp; Budaya</a></li>
             <li><a href="#" class="text-white/80 no-underline transition hover:text-white">Cerita</a></li>
         </ul>
 
-        <a href="#" class="inline-flex items-center gap-3 rounded-full border border-secondary/80 px-5 py-2 text-sm text-white no-underline transition hover:bg-secondary hover:text-black">Jelajahi Pusaka <i class="ri-arrow-right-line text-secondary"></i></a>
+        <a href="#" class="group inline-flex items-center gap-3 rounded-full border border-secondary/80 px-5 py-2 text-sm text-white no-underline transition hover:bg-secondary hover:text-black hover:font-medium">Jelajahi Pusaka <i class="ri-arrow-right-line text-secondary group-hover:text-black"></i></a>
     </div>
 </nav>
+
+<!-- Background Music -->
+<audio id="bgMusic" loop preload="auto">
+    <source src="assets/sound_landing_page.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Music Toggle -->
+<button id="musicToggle" type="button" aria-label="Jeda musik" aria-pressed="true" class="fixed bottom-6 right-6 z-50 flex items-center gap-3 rounded-full border border-white/30 bg-black/70 px-5 py-3 text-sm text-white shadow-xl backdrop-blur-md transition hover:bg-black/90">
+    <i id="musicIcon" class="ri-music-2-line text-lg"></i>
+    <span id="musicLabel">Music Off</span>
+</button>
 
 <!-- hero -->
 <section class="relative h-screen">
@@ -177,12 +188,12 @@
     </div>
 
     <!-- carousel -->
-    <div class="mx-auto mt-8 max-w-6xl overflow-hidden">
+    <div class="mx-auto mt-8  overflow-hidden">
         <div id="destStage" class="relative h-[var(--ah)] w-full touch-pan-y select-none">
 
             <!-- 1. Sulawesi Tenggara -->
             <article class="dest group absolute left-1/2 top-0 h-[var(--h)] w-[var(--w)] cursor-pointer overflow-hidden rounded-xl transition-[width,height,transform,opacity] duration-500 ease-out data-[active=true]:h-[var(--ah)] data-[active=true]:w-[var(--aw)]" data-active="false">
-                <img src="assets/destinasi_page/section_3/sulawesi.png" alt="Wakatobi" draggable="false" class="absolute inset-0 h-full w-full object-cover"> <!-- Sulawesi Tenggara -->
+                <img src="assets/destinasi_page/section_3/sulawesi.png" alt="Wakatobi" draggable="false" class="absolute inset-0 h-full w-full object-cover"> 
                 <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent group-data-[active=true]:from-black/85 group-data-[active=true]:via-black/10"></div>
                 <h3 class="absolute bottom-4 left-5 m-0 text-base font-medium tracking-[0.05em] text-white transition-opacity duration-300 group-data-[active=true]:opacity-0">Wakatobi</h3>
                 <div class="pointer-events-none absolute inset-x-0 bottom-0 flex translate-y-3 flex-col items-center gap-2 p-4 text-center opacity-0 transition duration-500 group-data-[active=true]:pointer-events-auto group-data-[active=true]:translate-y-0 group-data-[active=true]:opacity-100 group-data-[active=true]:delay-200">
@@ -197,37 +208,37 @@
             <article class="dest group absolute left-1/2 top-0 h-[var(--h)] w-[var(--w)] cursor-pointer overflow-hidden rounded-xl transition-[width,height,transform,opacity] duration-500 ease-out data-[active=true]:h-[var(--ah)] data-[active=true]:w-[var(--aw)]" data-active="false">
                 <img src="assets/destinasi_page/section_3/bali.png" alt="Bali" draggable="false" class="absolute inset-0 h-full w-full object-cover">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent group-data-[active=true]:from-black/85 group-data-[active=true]:via-black/10"></div>
-                <h3 class="absolute bottom-4 left-5 m-0 text-base font-medium tracking-[0.05em] text-white transition-opacity duration-300 group-data-[active=true]:opacity-0">Bali</h3>
+                <h3 class="absolute bottom-4 left-5 m-0 text-base font-medium tracking-[0.05em] text-white transition-opacity duration-300 group-data-[active=true]:opacity-0">Tanah Lot</h3>
                 <div class="pointer-events-none absolute inset-x-0 bottom-0 flex translate-y-3 flex-col items-center gap-2 p-4 text-center opacity-0 transition duration-500 group-data-[active=true]:pointer-events-auto group-data-[active=true]:translate-y-0 group-data-[active=true]:opacity-100 group-data-[active=true]:delay-200">
-                    <h3 class="m-0 text-xl font-medium tracking-[0.05em] text-white">Bali</h3>
-                    <p class="m-0 flex items-center gap-1 text-[0.6rem] text-white/70"><i class="ri-map-pin-line"></i> Bali</p>  <!-- Tanah Lot (Tabanan) -->
-                    <p class="m-0 text-[0.6rem] leading-relaxed text-white/70">Pulau dewata yang memadukan pura-pura megah, tradisi yang masih hidup, dan pantai yang memikat wisatawan dari seluruh dunia.</p>
+                    <h3 class="m-0 text-xl font-medium tracking-[0.05em] text-white">Tanah Lot</h3>
+                    <p class="m-0 flex items-center gap-1 text-[0.6rem] text-white/70"><i class="ri-map-pin-line"></i> Bali</p>  
+                    <p class="m-0 text-[0.6rem] leading-relaxed text-white/70">Tanah Lot adalah destinasi ikonik di Bali yang terkenal dengan pura di atas batu karang dan pemandangan matahari terbenam yang memukau.</p>
                     <a href="#" class="mt-1 inline-flex items-center gap-1 rounded-full border border-white/60 px-3 py-1 text-[0.55rem] text-white no-underline transition hover:bg-white hover:text-black">Pelajari Lebih Lanjut <i class="ri-arrow-right-line"></i></a>
                 </div>
             </article>
 
-            <!-- 3. Raja Ampat -->
+            <!-- 3. Jakarta -->
             <article class="dest group absolute left-1/2 top-0 h-[var(--h)] w-[var(--w)] cursor-pointer overflow-hidden rounded-xl transition-[width,height,transform,opacity] duration-500 ease-out data-[active=true]:h-[var(--ah)] data-[active=true]:w-[var(--aw)]" data-active="false">
-                <img src="assets/destinasi_page/section_3/" alt="Raja Ampat" draggable="false" class="absolute inset-0 h-full w-full object-cover">
+                <img src="assets/destinasi_page/section_3/jakarta.png" alt="Raja Ampat" draggable="false" class="absolute inset-0 h-full w-full object-cover">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent group-data-[active=true]:from-black/85 group-data-[active=true]:via-black/10"></div>
-                <h3 class="absolute bottom-4 left-5 m-0 text-base font-medium tracking-[0.05em] text-white transition-opacity duration-300 group-data-[active=true]:opacity-0">Raja Ampat</h3>
+                <h3 class="absolute bottom-4 left-5 m-0 text-base font-medium tracking-[0.05em] text-white transition-opacity duration-300 group-data-[active=true]:opacity-0">Monas</h3>
                 <div class="pointer-events-none absolute inset-x-0 bottom-0 flex translate-y-3 flex-col items-center gap-2 p-4 text-center opacity-0 transition duration-500 group-data-[active=true]:pointer-events-auto group-data-[active=true]:translate-y-0 group-data-[active=true]:opacity-100 group-data-[active=true]:delay-200">
-                    <h3 class="m-0 text-xl font-medium tracking-[0.05em] text-white">Raja Ampat</h3>
-                    <p class="m-0 flex items-center gap-1 text-[0.6rem] text-white/70"><i class="ri-map-pin-line"></i> Papua Barat Daya</p>
-                    <p class="m-0 text-[0.6rem] leading-relaxed text-white/70">Gugusan pulau karst dengan keanekaragaman hayati laut tertinggi di dunia, surga bagi penyelam dan pencinta alam.</p>
+                    <h3 class="m-0 text-xl font-medium tracking-[0.05em] text-white">Monumen Nasional</h3>
+                    <p class="m-0 flex items-center gap-1 text-[0.6rem] text-white/70"><i class="ri-map-pin-line"></i>Daerah Khusus Ibukota Jakarta</p>
+                    <p class="m-0 text-[0.6rem] leading-relaxed text-white/70">Monas adalah ikon Jakarta yang melambangkan perjuangan bangsa Indonesia, dengan puncak berlapis emas dan pemandangan kota dari ketinggian.</p>
                     <a href="#" class="mt-1 inline-flex items-center gap-1 rounded-full border border-white/60 px-3 py-1 text-[0.55rem] text-white no-underline transition hover:bg-white hover:text-black">Pelajari Lebih Lanjut <i class="ri-arrow-right-line"></i></a>
                 </div>
             </article>
 
-            <!-- 4. Labuan Bajo -->
+            <!-- 4. sumbar, padang -->
             <article class="dest group absolute left-1/2 top-0 h-[var(--h)] w-[var(--w)] cursor-pointer overflow-hidden rounded-xl transition-[width,height,transform,opacity] duration-500 ease-out data-[active=true]:h-[var(--ah)] data-[active=true]:w-[var(--aw)]" data-active="false">
-                <img src="assets/destinasi_page/section_3/" alt="Labuan Bajo" draggable="false" class="absolute inset-0 h-full w-full object-cover">
+                <img src="assets/destinasi_page/section_3/padang.png" alt="Labuan Bajo" draggable="false" class="absolute inset-0 h-full w-full object-cover">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent group-data-[active=true]:from-black/85 group-data-[active=true]:via-black/10"></div>
-                <h3 class="absolute bottom-4 left-5 m-0 text-base font-medium tracking-[0.05em] text-white transition-opacity duration-300 group-data-[active=true]:opacity-0">Labuan Bajo</h3>
+                <h3 class="absolute bottom-4 left-5 m-0 text-base font-medium tracking-[0.05em] text-white transition-opacity duration-300 group-data-[active=true]:opacity-0">Jam Gadang</h3>
                 <div class="pointer-events-none absolute inset-x-0 bottom-0 flex translate-y-3 flex-col items-center gap-2 p-4 text-center opacity-0 transition duration-500 group-data-[active=true]:pointer-events-auto group-data-[active=true]:translate-y-0 group-data-[active=true]:opacity-100 group-data-[active=true]:delay-200">
-                    <h3 class="m-0 text-xl font-medium tracking-[0.05em] text-white">Labuan Bajo</h3>
-                    <p class="m-0 flex items-center gap-1 text-[0.6rem] text-white/70"><i class="ri-map-pin-line"></i> Nusa Tenggara Timur</p>
-                    <p class="m-0 text-[0.6rem] leading-relaxed text-white/70">Gerbang menuju Taman Nasional Komodo dengan perbukitan savana, pantai berpasir pink, dan pemandangan laut yang menawan.</p>
+                    <h3 class="m-0 text-xl font-medium tracking-[0.05em] text-white">Jam Gadang</h3>
+                    <p class="m-0 flex items-center gap-1 text-[0.6rem] text-white/70"><i class="ri-map-pin-line"></i>Sumatera Barat</p>
+                    <p class="m-0 text-[0.6rem] leading-relaxed text-white/70">Jam Gadang adalah ikon Bukittinggi yang terkenal dengan menara jam bersejarah dan arsitektur khas Minangkabau yang memukau.</p>
                     <a href="#" class="mt-1 inline-flex items-center gap-1 rounded-full border border-white/60 px-3 py-1 text-[0.55rem] text-white no-underline transition hover:bg-white hover:text-black">Pelajari Lebih Lanjut <i class="ri-arrow-right-line"></i></a>
                 </div>
             </article>
@@ -236,11 +247,11 @@
             <article class="dest group absolute left-1/2 top-0 h-[var(--h)] w-[var(--w)] cursor-pointer overflow-hidden rounded-xl transition-[width,height,transform,opacity] duration-500 ease-out data-[active=true]:h-[var(--ah)] data-[active=true]:w-[var(--aw)]" data-active="false">
                 <img src="assets/destinasi_page/section_3/kepulauan_riau.png" alt="Kepulauan Riau" draggable="false" class="absolute inset-0 h-full w-full object-cover"> <!-- Ranoh Island (Batam -->
                 <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent group-data-[active=true]:from-black/85 group-data-[active=true]:via-black/10"></div>
-                <h3 class="absolute bottom-4 left-5 m-0 text-base font-medium tracking-[0.05em] text-white transition-opacity duration-300 group-data-[active=true]:opacity-0">Kepulauan Riau</h3>
+                <h3 class="absolute bottom-4 left-5 m-0 text-base font-medium tracking-[0.05em] text-white transition-opacity duration-300 group-data-[active=true]:opacity-0">Ranoh Island</h3>
                 <div class="pointer-events-none absolute inset-x-0 bottom-0 flex translate-y-3 flex-col items-center gap-2 p-4 text-center opacity-0 transition duration-500 group-data-[active=true]:pointer-events-auto group-data-[active=true]:translate-y-0 group-data-[active=true]:opacity-100 group-data-[active=true]:delay-200">
-                    <h3 class="m-0 text-xl font-medium tracking-[0.05em] text-white">Kepulauan Riau</h3>
-                    <p class="m-0 flex items-center gap-1 text-[0.6rem] text-white/70"><i class="ri-map-pin-line"></i> Kepulauan Riau</p>
-                    <p class="m-0 text-[0.6rem] leading-relaxed text-white/70">Deretan pulau di perbatasan dengan ikon jembatan Barelang, pantai tenang, dan warisan budaya Melayu yang kental.</p>
+                    <h3 class="m-0 text-xl font-medium tracking-[0.05em] text-white">Ranoh Island</h3>
+                    <p class="m-0 flex items-center gap-1 text-[0.6rem] text-white/70"><i class="ri-map-pin-line"></i>Batam</p>
+                    <p class="m-0 text-[0.6rem] leading-relaxed text-white/70">Ranoh Island adalah destinasi wisata bahari di Batam yang terkenal dengan pantai berpasir putih, air laut jernih, dan beragam aktivitas seru bersama keluarga.</p>
                     <a href="#" class="mt-1 inline-flex items-center gap-1 rounded-full border border-white/60 px-3 py-1 text-[0.55rem] text-white no-underline transition hover:bg-white hover:text-black">Pelajari Lebih Lanjut <i class="ri-arrow-right-line"></i></a>
                 </div>
             </article>

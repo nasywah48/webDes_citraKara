@@ -16,19 +16,19 @@
 
 <body class="bg-background">
 
-<!-- nav -->
+<!-- navbar -->
 <nav class="fixed inset-x-0 top-0 z-50 bg-black/40 backdrop-blur-md">
     <div class="mx-auto flex h-[88px] max-w-7xl items-center justify-between px-6 md:px-8">
         <a href="#" class="w-40 md:w-44"><img src="assets/citraKara_logo.png" alt="CitraKara"></a>
 
-        <ul class="m-0 hidden list-none items-center gap-8 p-0 font-family text-sm md:flex">
-            <li><a href="index.html" class="font-bold text-white no-underline">Beranda</a></li>
+        <ul class="m-0 hidden list-none items-center gap-8 p-0 font-['Playfair_Display'] text-sm md:flex">
+            <li><a href="index.html" class="text-white/80 font-bold no-underline transition hover:text-white">Beranda</a></li>
             <li><a href="destinasi.html" class="text-white/80 no-underline transition hover:text-white">Destinasi</a></li>
             <li><a href="#" class="text-white/80 no-underline transition hover:text-white">Seni &amp; Budaya</a></li>
             <li><a href="#" class="text-white/80 no-underline transition hover:text-white">Cerita</a></li>
         </ul>
 
-        <a href="#" class="inline-flex items-center gap-3 rounded-full border border-secondary/80 px-5 py-2 text-sm text-white no-underline transition hover:bg-secondary hover:text-black">Jelajahi Pusaka <i class="ri-arrow-right-line text-secondary"></i></a>
+        <a href="#" class="group inline-flex items-center gap-3 rounded-full border border-secondary/80 px-5 py-2 text-sm text-white no-underline transition hover:bg-secondary hover:text-black hover:font-medium">Jelajahi Pusaka <i class="ri-arrow-right-line text-secondary group-hover:text-black"></i></a>
     </div>
 </nav>
 
@@ -60,8 +60,8 @@
         </div>
 
         <div class="flex justify-center">
-          <h1 id="textTop" class="font-family uppercase pointer-events-none absolute text-center top-32 z-20 select-none font-normal tracking-tight text-white md:text-center md:top-58" style="font-size:clamp(2.5rem,6vw,6rem);line-height:1;letter-spacing:-0.04em;will-change:transform,opacity;">keberagaman</h1>
-          <h1 id="textBottom" class="font-family uppercase  pointer-events-none absolute bottom-20 text-center z-20 select-none font-normal tracking-tight text-white md:bottom-50 md:text-center" style="font-size:clamp(2.5rem,6vw,6rem);line-height:1;letter-spacing:-0.04em;will-change:transform,opacity;">nusantara</h1>
+          <h1 id="textTop" class="font-family uppercase pointer-events-none absolute text-center top-32 z-20 select-none font-normal tracking-tight text-white md:text-center md:top-62" style="font-size:clamp(2.5rem,6vw,6rem);line-height:1;letter-spacing:-0.04em;will-change:transform,opacity;">keberagaman</h1>
+          <h1 id="textBottom" class="font-family uppercase  pointer-events-none absolute bottom-20 text-center z-20 select-none font-normal tracking-tight text-white md:bottom-54 md:text-center" style="font-size:clamp(2.5rem,6vw,6rem);line-height:1;letter-spacing:-0.04em;will-change:transform,opacity;">nusantara</h1>
         </div>
 
         <!-- text video -->
@@ -82,7 +82,7 @@
         <img src="assets/megamendung_component.png" class="pointer-events-none absolute bottom-12 -right-16 z-0 w-68 select-none opacity-70 md:-right-10 md:w-[26rem]" alt="">
 
         <!-- pill atas -->
-        <div class="absolute right-6 top-6 z-20 inline-flex items-center gap-3 rounded-full bg-white/10 px-5 py-2 text-[0.7rem] uppercase tracking-[0.15em] text-white/80 md:right-12 md:top-10">Kekayaan Nusantara<i class="inline-block h-1 w-1 rounded-full bg-white/80"></i>
+        <div class="absolute right-6 top-6 z-20 inline-flex items-center gap-3 rounded-full bg-white/10 px-5 mt-4 py-2 text-[0.7rem] uppercase tracking-[0.15em] text-white/80 md:right-12 md:top-10">Kekayaan Nusantara<i class="inline-block h-1 w-1 rounded-full bg-white/80"></i>
         </div>
 
         <h2 class="absolute pb-6 left-6 top-[5.5rem] z-20 m-0 max-w-xl text-[clamp(1.9rem,3.6vw,3.2rem)] font-extralight leading-[1.25] text-white/80 md:left-12 md:top-[7rem]">Jelajahi Ragam Budaya <em class="font-bold italic text-secondary">Nusantara</em> Yang Penuh Makna dan Pesona.</h2>
@@ -218,11 +218,6 @@
             <small class="mt-4 italic block text-[0.55rem] uppercase tracking-[0.2em] text-secondary">— Satu Nusantara · Jutaan Cerita</small>
         </div>
 
-        <!-- Peta Nusantara -->
-        <a href="#" class="absolute left-6 z-20 inline-flex items-center gap-3 rounded-full bg-white/10 px-5 py-2 text-[0.7rem] uppercase tracking-[0.15em] text-white/80 no-underline md:bottom-10 md:left-12">
-            <i class="inline-block h-3 w-3 rounded-full bg-white/80"></i> Sejarah Nusantara
-        </a>
-
     </div>
 </section>
 
@@ -232,8 +227,13 @@
     <img src="assets/megamendung_component.png" alt="" aria-hidden="true"class="pointer-events-none absolute -left-24 top-[22rem] -z-10 w-72 select-none opacity-60 md:-left-16 md:top-[26rem] md:w-[24rem]">
     <img src="assets/megamendung_component.png" alt="" aria-hidden="true"class="pointer-events-none absolute bottom-10 -right-20 -z-10 w-72 select-none opacity-60 md:w-[26rem]">
 
+    <!-- Peta Nusantara -->
+    <a href="#" class="absolute left-6 z-20 inline-flex mb-20 items-center gap-3 rounded-full bg-white/10 px-5 py-2 text-[0.7rem] uppercase tracking-[0.15em] text-white/80 no-underline md:top-10 md:left-12">
+        <i class="inline-block h-3 w-3 rounded-full bg-white/80"></i> Sejarah Nusantara
+    </a>
+
     <!-- header -->
-    <div class="mx-auto max-w-6xl px-6 pt-24">
+    <div class="mx-auto max-w-6xl px-6 pt-34">
         <h2 data-reveal class="m-0 text-4xl font-extralight text-white/85 md:text-5xl">Sejarah <em class="font-bold italic text-secondary">Nusantara</em></h2>
         <p data-reveal class="mt-5 max-w-sm text-sm leading-relaxed text-white/60">Dari Sabang hingga Merauke, setiap daerah menyimpan cerita, tradisi, dan seni yang membentuk identitas Indonesia. Temukan warisan tersebut tumbuh, diwariskan, dan terus hidup hingga hari ini.</p>
     </div>
@@ -325,11 +325,11 @@
     <a href="#" class="absolute right-6 top-6 z-20 inline-flex items-center gap-3 rounded-full bg-white/10 px-5 py-2 text-[0.7rem] uppercase tracking-[0.15em] text-white/80 no-underline md:right-12 md:top-10"><i class="inline-block h-2 w-2 rounded-full bg-white/80"></i> Alam Nusantara</a>
 
     <!-- judul - short des -->
-    <div class="mx-auto max-w-3xl px-6 text-center">
-        <h2 data-reveal class="m-0 text-3xl font-extralight leading-tight text-white/90 md:text-5xl">Keindahan alam yang
+    <div class="mx-auto max-w-3xl text-left">
+        <h2 data-reveal class="-ml-42 text-3xl font-extralight leading-tight text-white/90 md:text-5xl">Keindahan alam yang
             <span class="mt-1 block font-bold italic text-secondary">Tak Ternilai</span>
         </h2>
-        <p data-reveal class="mx-auto mt-6 max-w-xl text-sm leading-relaxed text-white/60">Dari pegunungan yang menjulang, lautan yang membentang, hingga hutan yang rimbun, alam Nusantara menyimpan keindahan dan kehidupan yang menjadi bagian penting dari warisan kita bersama.</p>
+        <p data-reveal class="-ml-42 mt-6 max-w-xl text-sm leading-relaxed text-white/60">Dari pegunungan yang menjulang, lautan yang membentang, hingga hutan yang rimbun, alam Nusantara menyimpan keindahan dan kehidupan yang menjadi bagian penting dari warisan kita bersama.</p>
     </div>
 
     <!-- galeri - img -->
@@ -337,13 +337,12 @@
 
         <!-- baris 1 -->
         <div data-reveal class="group relative col-span-7 overflow-hidden bg-black">
-            <img src="assets/destinasi/destinasi_1.png" alt="Teluk dan perbukitan saat senja" class="h-full w-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-50">
+            <img src="assets/destinasi/destinasi_1.png" alt="Teluk dan perbukitan saat senja" class="h-full w-full rounded-md object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-50">
 
             <div class="absolute inset-0 flex flex-col items-center justify-center bg-black/10 px-4 text-white transition-colors duration-500 group-hover:bg-black/20">
                 <div class="mb-3 flex translate-y-4 items-center gap-3 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
                     <span class="h-px w-8 bg-white"></span><span class="text-[10px] uppercase tracking-[0.3em] md:text-xs">Taman Nasional Komodo</span><span class="h-px w-8 bg-white"></span>
                 </div>
-
                 <h3 class="translate-y-5 text-center text-2xl font-black uppercase tracking-[0.15em] opacity-0 transition-all duration-700 group-hover:translate-y-0 group-hover:opacity-100 md:text-4xl">Pulau Padar</h3>
 
                 <div class="mt-4 flex translate-y-5 items-center gap-3 opacity-0 transition-all delay-100 duration-500 group-hover:translate-y-0 group-hover:opacity-100">
@@ -353,13 +352,12 @@
         </div>
         <!-- 2 -->
         <div data-reveal class="group relative col-span-5 overflow-hidden bg-black">
-            <img src="assets/destinasi/destinasi_2.png" alt="Teluk dan perbukitan saat senja" class="h-full w-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-50">
+            <img src="assets/destinasi/destinasi_2.png" alt="Teluk dan perbukitan saat senja" class="h-full w-full rounded-md object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-50">
 
             <div class="absolute inset-0 flex flex-col items-center justify-center bg-black/10 px-4 text-white transition-colors duration-500 group-hover:bg-black/20">
                 <div class="mb-3 flex translate-y-4 items-center gap-3 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
                     <span class="h-px w-8 bg-white"></span><span class="text-[10px] uppercase tracking-[0.3em] md:text-xs">Bulukumba</span><span class="h-px w-8 bg-white"></span>
                 </div>
-
                 <h3 class="translate-y-5 text-center text-2xl font-black uppercase tracking-[0.15em] opacity-0 transition-all duration-700 group-hover:translate-y-0 group-hover:opacity-100 md:text-4xl">Tanjung bira</h3>
 
                 <div class="mt-4 flex translate-y-5 items-center gap-3 opacity-0 transition-all delay-100 duration-500 group-hover:translate-y-0 group-hover:opacity-100">
@@ -370,13 +368,12 @@
 
         <!-- baris 2 -->
         <div data-reveal class="group relative col-span-4 overflow-hidden bg-black">
-            <img src="assets/destinasi/destinasi_3.png" alt="Teluk dan perbukitan saat senja" class="h-full w-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-50">
+            <img src="assets/destinasi/destinasi_3.png" alt="Teluk dan perbukitan saat senja" class="h-full w-full rounded-md object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-50">
 
             <div class="absolute inset-0 flex flex-col items-center justify-center bg-black/10 px-4 text-white transition-colors duration-500 group-hover:bg-black/20">
                 <div class="mb-3 flex translate-y-4 items-center gap-3 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
                     <span class="h-px w-8 bg-white"></span><span class="text-[10px] uppercase tracking-[0.3em] md:text-xs">Bandung</span><span class="h-px w-8 bg-white"></span>
                 </div>
-
                 <h3 class="translate-y-5 text-center text-2xl font-black uppercase tracking-[0.15em] opacity-0 transition-all duration-700 group-hover:translate-y-0 group-hover:opacity-100 md:text-4xl">Tangkuban Perahu</h3>
 
                 <div class="mt-4 flex translate-y-5 items-center gap-3 opacity-0 transition-all delay-100 duration-500 group-hover:translate-y-0 group-hover:opacity-100">
@@ -387,13 +384,12 @@
 
         <!-- 2 -->
         <div data-reveal class="group relative col-span-4 overflow-hidden bg-black">
-            <img src="assets/destinasi/destinasi_4.png" alt="Teluk dan perbukitan saat senja" class="h-full w-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-50">
+            <img src="assets/destinasi/destinasi_4.png" alt="Teluk dan perbukitan saat senja" class="h-full w-full rounded-md object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-50">
 
             <div class="absolute inset-0 flex flex-col items-center justify-center bg-black/10 px-4 text-white transition-colors duration-500 group-hover:bg-black/20">
                 <div class="mb-3 flex translate-y-4 items-center gap-3 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
                     <span class="h-px w-8 bg-white"></span><span class="text-[10px] uppercase tracking-[0.3em] md:text-xs">Banggai</span><span class="h-px w-8 bg-white"></span>
                 </div>
-
                 <h3 class="translate-y-5 text-center text-2xl font-black uppercase tracking-[0.15em] opacity-0 transition-all duration-700 group-hover:translate-y-0 group-hover:opacity-100 md:text-4xl">Air Terjun Laumarang</h3>
 
                 <div class="mt-4 flex translate-y-5 items-center gap-3 opacity-0 transition-all delay-100 duration-500 group-hover:translate-y-0 group-hover:opacity-100">
@@ -404,13 +400,12 @@
 
         <!-- 3 -->
         <div data-reveal class="group relative col-span-4 overflow-hidden bg-black">
-            <img src="assets/destinasi/destinasi_5.png" alt="Teluk dan perbukitan saat senja" class="h-full w-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-50">
+            <img src="assets/destinasi/destinasi_5.png" alt="Teluk dan perbukitan saat senja" class="h-full w-full rounded-md object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-50">
 
             <div class="absolute inset-0 flex flex-col items-center justify-center bg-black/10 px-4 text-white transition-colors duration-500 group-hover:bg-black/20">
                 <div class="mb-3 flex translate-y-4 items-center gap-3 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
                     <span class="h-px w-8 bg-white"></span><span class="text-[10px] uppercase tracking-[0.3em] md:text-xs">Sorong</span><span class="h-px w-8 bg-white"></span>
                 </div>
-
                 <h3 class="translate-y-5 text-center text-2xl font-black uppercase tracking-[0.15em] opacity-0 transition-all duration-700 group-hover:translate-y-0 group-hover:opacity-100 md:text-4xl">Raja Ampat</h3>
 
                 <div class="mt-4 flex translate-y-5 items-center gap-3 opacity-0 transition-all delay-100 duration-500 group-hover:translate-y-0 group-hover:opacity-100">
@@ -421,13 +416,12 @@
 
         <!-- baris 3 -->
         <div data-reveal class="group relative col-span-5 overflow-hidden bg-black">
-            <img src="assets/destinasi/destinasi_6.png" alt="Teluk dan perbukitan saat senja" class="h-full w-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-50">
+            <img src="assets/destinasi/destinasi_6.png" alt="Teluk dan perbukitan saat senja" class="h-full w-full rounded-md object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-50">
 
             <div class="absolute inset-0 flex flex-col items-center justify-center bg-black/10 px-4 text-white transition-colors duration-500 group-hover:bg-black/20">
                 <div class="mb-3 flex translate-y-4 items-center gap-3 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
                     <span class="h-px w-8 bg-white"></span><span class="text-[10px] uppercase tracking-[0.3em] md:text-xs">Probolinggo</span><span class="h-px w-8 bg-white"></span>
                 </div>
-
                 <h3 class="translate-y-5 text-center text-2xl font-black uppercase tracking-[0.15em] opacity-0 transition-all duration-700 group-hover:translate-y-0 group-hover:opacity-100 md:text-4xl">Gunung Bromo</h3>
 
                 <div class="mt-4 flex translate-y-5 items-center gap-3 opacity-0 transition-all delay-100 duration-500 group-hover:translate-y-0 group-hover:opacity-100">
@@ -438,13 +432,12 @@
 
         <!-- 2 -->
         <div data-reveal class="group relative col-span-7 overflow-hidden bg-black">
-            <img src="assets/destinasi/destinasi_7.png" alt="Teluk dan perbukitan saat senja" class="h-full w-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-50">
+            <img src="assets/destinasi/destinasi_7.png" alt="Teluk dan perbukitan saat senja" class="h-full w-full rounded-md object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-50">
 
             <div class="absolute inset-0 flex flex-col items-center justify-center bg-black/10 px-4 text-white transition-colors duration-500 group-hover:bg-black/20">
                 <div class="mb-3 flex translate-y-4 items-center gap-3 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
                     <span class="h-px w-8 bg-white"></span><span class="text-[10px] uppercase tracking-[0.3em] md:text-xs">Pulau Komodo</span><span class="h-px w-8 bg-white"></span>
                 </div>
-
                 <h3 class="translate-y-5 text-center text-2xl font-black uppercase tracking-[0.15em] opacity-0 transition-all duration-700 group-hover:translate-y-0 group-hover:opacity-100 md:text-4xl">Pantai Merah</h3>
 
                 <div class="mt-4 flex translate-y-5 items-center gap-3 opacity-0 transition-all delay-100 duration-500 group-hover:translate-y-0 group-hover:opacity-100">
@@ -462,16 +455,16 @@
     <!-- judul -->
     <div class="mx-auto max-w-6xl px-6 pt-16">
         <div data-reveal class="flex items-center gap-4 text-secondary">
-            <span class="h-px w-16 bg-secondary/80"></span>
-            <span class="text-sm font-medium uppercase tracking-[0.2em]">Festival &amp; Tradisi</span>
+            <span class="-ml-8 h-px w-14 bg-secondary/80"></span>
+            <span class="-ml-8 text-sm font-medium uppercase tracking-[0.2em]">Festival &amp; Tradisi</span>
         </div>
-        <h2 data-reveal class="m-0 mt-6 whitespace-nowrap text-[1.9rem] font-extralight text-white/85 sm:text-4xl md:text-5xl">Festival dan Tradisi<br><em class="font-bold italic text-secondary">Nusantara</em></h2>
-        <p data-reveal class="mt-6 max-w-xl text-sm leading-relaxed text-white/60">Dari Sabang sampai Merauke, setiap daerah di Indonesia memiliki festival dan tradisi unik yang penuh makna. Jelajahi berbagai perayaan budaya yang menjadi bagian dari identitas bangsa.</p>
+        <h2 data-reveal class="-ml-8 mt-6 whitespace-nowrap text-[1.9rem] font-extralight text-white/85 sm:text-4xl md:text-5xl">Festival dan Tradisi<br><em class="font-bold italic text-secondary">Nusantara</em></h2>
+        <p data-reveal class="-ml-8 mt-6 max-w-xl text-sm leading-relaxed text-white/60">Dari Sabang sampai Merauke, setiap daerah di Indonesia memiliki festival dan tradisi unik yang penuh makna. Jelajahi berbagai perayaan budaya yang menjadi bagian dari identitas bangsa.</p>
     </div>
 
         <!-- card full_1 -->
-        <article data-reveal class="relative flex flex-col overflow-hidden rounded-3xl bg-[#151a24] md:col-span-2 md:flex-row">
-            <div class="relative aspect-[11/5] overflow-hidden rounded-3xl bg-white/10 md:aspect-auto md:min-h-[13rem] md:w-[49%] md:shrink-0">
+        <article data-reveal class="relative flex flex-col overflow-hidden rounded-md bg-[#151a24] md:col-span-2 md:flex-row">
+            <div class="relative aspect-[11/5] overflow-hidden rounded-md bg-white/10 md:aspect-auto md:min-h-[13rem] md:w-[49%] md:shrink-0">
                 <img src="assets/tradisi/galungan _dan_kuningan.png" alt="Galungan & Kuningan" class="absolute inset-0 h-full w-full object-cover">
             </div>
             <div class="relative z-10 flex flex-1 flex-col p-5 md:p-8">
@@ -488,8 +481,8 @@
         </article>
 
         <!-- card-2 -->
-        <article data-reveal class="relative flex flex-col overflow-hidden rounded-3xl bg-[#151a24]">
-            <div class="relative aspect-[11/5] overflow-hidden rounded-3xl bg-white/10">
+        <article data-reveal class="relative flex flex-col overflow-hidden rounded-md bg-[#151a24]">
+            <div class="relative aspect-[11/5] overflow-hidden rounded-md bg-white/10">
                 <img src="assets/tradisi/pacu_jalur.png" alt="Pacu Jalur" class="absolute inset-0 h-full w-full object-cover">
             </div>
             <div class="relative z-10 flex flex-1 flex-col p-5 md:p-6">
@@ -506,8 +499,8 @@
         </article>
 
         <!-- card-3 -->
-        <article data-reveal class="relative flex flex-col overflow-hidden rounded-3xl bg-[#151a24]">
-            <div class="relative aspect-[11/5] overflow-hidden rounded-3xl bg-white/10">
+        <article data-reveal class="relative flex flex-col overflow-hidden rounded-md bg-[#151a24]">
+            <div class="relative aspect-[11/5] overflow-hidden rounded-md bg-white/10">
                 <img src="assets/tradisi/jember_festifal.png" alt="Jember Fashion Carnival" class="absolute inset-0 h-full w-full object-cover">
             </div>
             <div class="relative z-10 flex flex-1 flex-col p-5 md:p-6">
@@ -524,8 +517,8 @@
         </article>
 
         <!-- card-4 -->
-        <article data-reveal class="relative flex flex-col overflow-hidden rounded-3xl bg-[#151a24]">
-            <div class="relative aspect-[11/5] overflow-hidden rounded-3xl bg-white/10">
+        <article data-reveal class="relative flex flex-col overflow-hidden rounded-md bg-[#151a24]">
+            <div class="relative aspect-[11/5] overflow-hidden rounded-md bg-white/10">
                 <img src="assets/tradisi/pasola.png" alt="Jember Fashion Carnival" class="absolute inset-0 h-full w-full object-cover">
             </div>
             <div class="relative z-10 flex flex-1 flex-col p-5 md:p-6">
@@ -542,8 +535,8 @@
         </article>
 
         <!-- card-5 -->
-        <article data-reveal class="relative flex flex-col overflow-hidden rounded-3xl bg-[#151a24]">
-            <div class="relative aspect-[11/5] overflow-hidden rounded-3xl bg-white/10">
+        <article data-reveal class="relative flex flex-col overflow-hidden rounded-md bg-[#151a24]">
+            <div class="relative aspect-[11/5] overflow-hidden rounded-md bg-white/10">
                 <img src="assets/tradisi/pesta_bali.png" alt="Jember Fashion Carnival" class="absolute inset-0 h-full w-full object-cover">
             </div>
             <div class="relative z-10 flex flex-1 flex-col p-5 md:p-6">
