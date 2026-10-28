@@ -16,7 +16,7 @@
 
 <body class="bg-background">
 
-<!-- NAVBAR -->
+<!-- navbar -->
 <nav class="fixed inset-x-0 top-0 z-50 bg-black/40 backdrop-blur-md">
     <div class="mx-auto flex h-[88px] max-w-7xl items-center justify-between px-6 md:px-8">
         <a href="#" class="w-40 md:w-44"><img src="assets/citraKara_logo.png" alt="CitraKara"></a>
@@ -32,7 +32,7 @@
     </div>
 </nav>
 
-<!-- HERO -->
+<!-- hero -->
 <section class="relative h-screen">
     <div class="relative h-full overflow-hidden">
 
@@ -49,14 +49,14 @@
     </div>
 </section>
 
-<!-- peta petaan -->
-<section id="peta" class="relative overflow-hidden bg-[#020611] pb-24 pt-24 font-jakarta text-white">
-    <div class="mx-auto max-w-6xl px-6 text-center">
+<!-- section 2 peta petaan -->
+<section id="peta" class="relative overflow-hidden bg-[#020611] -pb-14 pt-24 font-jakarta text-white">
+    <div class="mx-auto max-w-6xl px-4 text-center">
         <p class="m-0 text-xs font-semibold uppercase tracking-[0.2em] text-secondary md:text-sm">Temukan Destinasi Terbaik</p>
         <h2 class="m-0 mt-4 font-['Playfair_Display'] text-2xl font-medium tracking-[0.12em] text-white md:text-4xl">Peta Interaktif Provinsi Indonesia</h2>
         <p class="mx-auto mt-4 max-w-md text-xs leading-relaxed text-white/60 md:text-sm">Klik peta di bawah ini untuk mulai mengeksplor destinasi wisata terbaik dari setiap provinsi di Indonesia.</p>
 
-        <div id="petaWrap" class="relative mx-auto mt-14 w-full max-w-5xl">
+        <div id="petaWrap" class="relative mt-14 w-full ">
             <div id="petaMount"
                 class="min-h-40 text-sm text-white/60
                         [&_svg]:block [&_svg]:h-auto [&_svg]:w-full
@@ -77,7 +77,7 @@
             <!-- ... pill label pulau (Sumatera, Kalimantan, dst.) tetap di sini ... -->
 
             <div id="petaTooltip" data-visible="false"
-                class="pointer-events-none absolute z-30 hidden -translate-x-1/2 -translate-y-full whitespace-nowrap rounded-lg bg-[#1f2a3d] px-3 py-1.5 text-xs font-medium text-white shadow-lg data-[visible=true]:block"></div>
+                class="pointer-events-none absolute z-30 hidden -translate-x-1/2 -translate-y-full whitespace-nowrap rounded-lg bg-[#1f2a3d] px-3 text-xs font-medium text-white shadow-lg data-[visible=true]:block"></div>
         </div>
 
         <div id="petaInfo" inert data-visible="false" aria-live="polite"
@@ -85,13 +85,71 @@
             <h3 id="petaNama" class="m-0 font-['Playfair_Display'] text-xl font-medium text-white md:text-2xl">&nbsp;</h3>
             <a id="petaLink" href="#" class="inline-flex items-center gap-2 rounded-full border border-secondary/70 px-5 py-2 text-xs text-secondary no-underline transition hover:bg-secondary hover:text-black">Pelajari Lebih Lanjut <i class="ri-arrow-right-line"></i></a>
         </div>
-        
-        <div id="petaInfo" class="mx-auto mt-8 flex max-w-sm translate-y-3 flex-col items-center gap-3 opacity-0 transition duration-300">
-            <h3 id="petaNama" class="m-0 font-['Playfair_Display'] text-xl font-medium text-white md:text-2xl">&nbsp;</h3>
-            <a id="petaLink" href="#" class="inline-flex items-center gap-2 rounded-full border border-secondary/70 px-5 py-2 text-xs text-secondary no-underline transition hover:bg-secondary hover:text-black">Pelajari Lebih Lanjut <i class="ri-arrow-right-line"></i></a>
+    </div>
+</section>
+
+<!-- section 3 -->
+<section id="wilayah" class="relative overflow-hidden bg-[#020611] pb-24 pt-8 font-jakarta text-white md:pb-32">
+    <div class="mx-auto max-w-6xl px-6">
+
+        <div class="text-center">
+            <p class="m-0 text-xs font-semibold uppercase tracking-[0.2em] text-secondary md:text-base">Jelajahi Nusantara</p>
+            <h2 class="m-0 mt-4 flex items-center justify-center gap-3 font-['Playfair_Display'] text-lg font-normal tracking-[0.12em] text-white sm:text-2xl md:gap-5 md:text-4xl">
+                <span class="hidden h-px w-5 bg-secondary sm:block md:w-7"></span>
+                <span>Temukan Keajaiban Wilayah-Wilayah Indonesia</span>
+                <span class="hidden h-px w-5 bg-secondary sm:block md:w-7"></span>
+            </h2>
+        </div>
+
+        <div class="mt-10 grid grid-cols-2 gap-4 md:mt-14 md:grid-cols-3 md:gap-9">
+
+            <!-- Jawa -->
+            <a href="#" class="group relative block aspect-[1.08/1] overflow-hidden rounded-lg no-underline">
+                <img src="assets/destinasi_page/section_2/jawa.png" alt="Jawa" class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                <span class="absolute bottom-3 left-4 text-sm font-medium font-jakarta tracking-[0.08em] text-white md:bottom-4 md:left-5 md:text-base">Jawa<br><span class="italic capitalize font-light text-xs">- candi borobudur -</span></span>
+            </a>
+
+            <!-- Sumatera -->
+            <a href="#" class="group relative block aspect-[1.08/1] overflow-hidden rounded-lg no-underline">
+                <img src="assets/destinasi_page/section_2/sumatra.png" alt="Pulau Sumatera" class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                <span class="absolute bottom-3 left-4 text-sm font-medium font-jakarta tracking-[0.08em] text-white md:bottom-4 md:left-5 md:text-base">Pulau Sumatera<br><span class="italic capitalize font-light text-xs">- tabiang takuruang -</span></span>
+            </a>
+
+            <!-- Sulawesi -->
+            <a href="#" class="group relative block aspect-[1.08/1] overflow-hidden rounded-lg no-underline">
+                <img src="assets/destinasi_page/section_2/sulawesi.png" alt="Sulawesi" class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                <span class="absolute bottom-3 left-4 text-sm font-medium font-jakarta tracking-[0.08em] text-white md:bottom-4 md:left-5 md:text-base">Sulawesi<br><span class="italic capitalize font-light text-xs">- taman nasional bunaken -</span></span>
+            </a>
+
+            <!-- Kalimantan -->
+            <a href="#" class="group relative block aspect-[1.08/1] overflow-hidden rounded-lg no-underline">
+                <img src="assets/destinasi_page/section_2/kalimantan.png" alt="Kalimantan" class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                <span class="absolute bottom-3 left-4 text-sm font-medium font-jakarta tracking-[0.08em] text-white md:bottom-4 md:left-5 md:text-base">Kalimantan<br><span class="italic capitalize font-light text-xs">- kepulauan derawan -</span></span>
+            </a>
+
+            <!-- Maluku & Papua -->
+            <a href="#" class="group relative block aspect-[1.08/1] overflow-hidden rounded-lg no-underline">
+                <img src="assets/destinasi_page/section_2/papua_dan_maluku.png" alt="Maluku dan Papua" class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                <span class="absolute bottom-3 left-4 text-sm font-medium font-jakarta tracking-[0.08em] text-white md:bottom-4 md:left-5 md:text-base">Maluku &amp; Papua<br><span class="italic capitalize font-light text-xs">- raja ampat -</span></span>
+            </a>
+
+            <!-- Bali & Nusa Tenggara -->
+            <a href="#" class="group relative block aspect-[1.08/1] overflow-hidden rounded-lg no-underline">
+                <img src="assets/destinasi_page/section_2/bali.png" alt="Bali dan Nusa Tenggara" class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                <span class="absolute bottom-3 left-4 text-sm font-medium font-jakarta tracking-[0.08em] text-white md:bottom-4 md:left-5 md:text-base">Bali &amp; Nusa Tenggara<br><span class="italic capitalize font-light text-xs">- Tegallalang -</span></span>
+            </a>
+
         </div>
     </div>
 </section>
+
+<!-- section 4 -->
 
 <!-- footer -->
 <footer class="relative overflow-hidden bg-[#151b27] font-jakarta text-white">

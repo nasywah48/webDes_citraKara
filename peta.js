@@ -12,7 +12,7 @@
 import { ISO_PROVINCE_NAMES } from "./provinsi.js";
 
 const CONFIG = Object.freeze({
-    svgUrl: "assets/destinasi/peta-provinsi-berlabel.svg",
+    svgUrl: "assets/destinasi_page/Indonesian_provinsi_map.svg",
     detailPage: "destinasi.html",
     tooltipOffsetY: 14,
 });
@@ -200,7 +200,7 @@ async function init() {
 
         const regions = collectRegions(svg);
         if (regions.size === 0) {
-            console.warn("[peta] SVG belum punya path bernama; peta tampil tanpa interaksi. Beri nama lewat tools/label-peta.html.");
+            console.warn("[peta] SVG belum punya path bernama; peta tampil tanpa interaksi. Beri nama lewat tools/label_peta.html.");
             return;
         }
         makeAccessible(regions);
