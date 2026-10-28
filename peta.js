@@ -1,7 +1,6 @@
 import { ISO_PROVINCE_NAMES } from "./provinsi.js";
 
 const SVG_URL = "assets/destinasi_page/Indonesian_provinsi_map.svg";
-const DETAIL_PAGE = "destinasi.html";
 
 export const toSlug = (t) => t.toLowerCase().trim().replace(/\s+/g, "-");
 
@@ -48,9 +47,8 @@ async function init() {
             first.setAttribute("aria-label", name);
         }
 
-        const wrap = $("petaWrap"), tip = $("petaTooltip");
-        const panel = $("petaInfo"), title = $("petaNama"), link = $("petaLink");
-        let hovered = null, active = null;
+        // sebelum
+        const wrap = $("petaWrap"), tip = $("petaTooltip");        let hovered = null, active = null;
 
         const nameOf = (t) => t.closest?.("[data-region]")?.dataset.region ?? null;
 
@@ -69,12 +67,6 @@ async function init() {
         const toggle = (name) => {
             active = name === active ? null : name;
             paint();
-            panel.dataset.visible = String(!!active);
-            panel.inert = !active;
-            if (active) {
-                title.textContent = active;
-                link.href = `${DETAIL_PAGE}?provinsi=${toSlug(active)}`;
-            }
         };
 
         const place = (e) => {
