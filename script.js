@@ -1,7 +1,7 @@
-(function () {                                                   // ← BARIS BARU (1)
+(function () {                                                   
 
 const videoContainer = document.getElementById("videoContainer");
-if (!videoContainer) return;                                     // ← BARIS BARU (2)
+if (!videoContainer) return;                                     
 
 const videoShade     = document.getElementById("videoShade");
 const darkOverlay    = document.getElementById("darkOverlay");
@@ -10,7 +10,6 @@ const textBottom     = document.getElementById("textBottom");
 const heroFinal      = document.getElementById("heroFinal");
 
 const hero = videoContainer.closest("section");
-
 
 // CONFIG 
 const START_RADIUS = 250;
@@ -32,7 +31,7 @@ function getProgress() {
     return clamp(-hero.getBoundingClientRect().top / distance);
 }
 
-// ANIMATION 
+// animasi 
 function updateHero(p) {
     // video muncul
     const a = smoothstep(clamp(p / APPEAR_END));
@@ -74,8 +73,6 @@ function updateHero(p) {
     if (darkOverlay) darkOverlay.style.opacity = 0.3 + 0.45 * p;
 }
 
-
-
 const music = document.getElementById("bgMusic");
 const musicToggle = document.getElementById("musicToggle");
 const musicIcon = document.getElementById("musicIcon");
@@ -106,14 +103,14 @@ async function playMusic() {
         await music.play();
         updateMusicButton(true);
     } catch (error) {
-        // Autoplay bersuara mungkin diblokir oleh browser.
+        // autoplay bersuara mungkin diblokir oleh browser.
         updateMusicButton(false);
         console.info("Autoplay diblokir. Menunggu interaksi pengguna.");
     }
 }
 
-// Coba autoplay sekali ketika hero mulai muncul.
-// Fungsi ini dipanggil dari update progress animasi hero.
+// coba autoplay sekali ketika hero mulai muncul.
+// fungsi ini dipanggil dari update progress animasi hero.
 function tryHeroMusic(progress) {
     if (progress > 0.02 && !autoPlayAttempted) {
         autoPlayAttempted = true;
@@ -124,7 +121,7 @@ function tryHeroMusic(progress) {
     }
 }
 
-// Tombol tetap bisa dipakai di seluruh section.
+// tombol tetap bisa dipakai di semua section.
 musicToggle.addEventListener("click", async () => {
     if (music.paused) {
         userPausedMusic = false;
@@ -136,19 +133,19 @@ musicToggle.addEventListener("click", async () => {
     }
 });
 
-// Sinkronisasi status tombol jika audio berubah.
+// sinkronisasi status tombol jika audio berubah.
 music.addEventListener("play", () => updateMusicButton(true));
 music.addEventListener("pause", () => updateMusicButton(false));
 
-// Hentikan musik saat tab disembunyikan,
+// hentikan musik saat tab disembunyikan,
 // misalnya saat pindah tab atau meminimalkan browser.
 
 document.addEventListener("visibilitychange", async () => {
     if (document.hidden) {
-        // User pindah tab: hentikan musik.
+        // user pindah tab: hentikan musik.
         music.pause();
     } else {
-        // User kembali ke tab: coba nyalakan lagi,
+        // user balik ke tab: coba nyalakan lagi,
         // selama user tidak sengaja menekan Pause.
         if (!userPausedMusic) {
             await playMusic();
@@ -156,7 +153,7 @@ document.addEventListener("visibilitychange", async () => {
     }
 });
 
-// Coba autoplay saat halaman pertama kali dibuka.
+// coba autoplay saat halaman pertama kali dibuka.
 window.addEventListener("load", () => {
     if (!autoPlayAttempted) {
         autoPlayAttempted = true;
@@ -164,12 +161,12 @@ window.addEventListener("load", () => {
     }
 });
 
-// Hentikan musik saat halaman ditinggalkan atau ditutup.
+// berentiin musik pas halaman ditinggal atau ditutup.
 window.addEventListener("pagehide", () => {
     music.pause();
 });
 
-// EVENTS  
+// events  
 let current = getProgress();
 let target  = current;
 let raf     = null;
@@ -195,7 +192,7 @@ window.addEventListener("resize", () => {
 updateHero(current);
 })();                                                            
 
- // SECTION 2: Navigasi CD dengan tombol arrow
+ // section 2: Navigasi CD dengan tombol arrow
 (function () {
     const viewport = document.getElementById("discViewport");
     const track = document.getElementById("discTrack");
@@ -224,7 +221,7 @@ updateHero(current);
         const step = getStep();
         const viewportCenter = viewport.clientWidth / 2;
 
-        // Pusatkan CD aktif di tengah viewport
+        // memusatkan CD aktif di tengah viewport
         const targetScroll =
             cards[activeIndex].offsetLeft +
             cards[activeIndex].offsetWidth / 2 -
@@ -275,14 +272,14 @@ updateHero(current);
     const dots = Array.from(timeline.querySelectorAll("[data-dot]"));
     const reveals = Array.from(document.querySelectorAll("[data-reveal]"));
 
-    // ---------- CONFIG ----------
+    // config
     const DIST      = 280;   // jarak geser garis/bulatan (px). Harus lebih kecil dari 160 (-inset-y-40)
     const DOT_BOOST = 0.5;   // bulatan di tengah layar membesar sampai 1 + 0.9 = 1.9x
 
     const clamp = (v, min = 0, max = 1) => Math.min(max, Math.max(min, v));
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    // REVEAL SOFT 
+    // reveal soft 
     if (!reduceMotion) {
         reveals.forEach(el => {
             const group = el.closest("[data-item]") || el.parentElement;
@@ -313,7 +310,7 @@ updateHero(current);
         reveals.forEach(el => io.observe(el));
     }
 
-    // GARIS & BULATAN BERLAWANAN ARAH
+    // garis dan bulet di tengah
     function update() {
         if (reduceMotion) return;
 
@@ -351,4 +348,102 @@ updateHero(current);
     update();
 })();
 
+// section 4 page destinasi
+(function () {
+    const section = document.getElementById("topDest");
+    const stage = document.getElementById("destStage");
+    const prev = document.getElementById("destPrev");
+    const next = document.getElementById("destNext");
+    const fill = document.getElementById("destFill");
+    const current = document.getElementById("destCurrent");
+    const total = document.getElementById("destTotal");
+
+    if (!section || !stage || !prev || !next) return;
+
+    const cards = Array.from(stage.querySelectorAll(".dest"));
+    const n = cards.length;
+    if (!n) return;
+
+    const half = Math.floor(n / 2);
+    const lastOffset = new Array(n).fill(null);
+    let active = 0;
+
+    const cssVar = (name) =>
+        parseFloat(getComputedStyle(section).getPropertyValue(name)) || 0;
+
+    const pad = (v) => String(v).padStart(2, "0");
+
+    // titik tengah card berdasarkan jaraknya (d) dari card aktif
+    function centerFor(d, w, aw, gap) {
+        if (d === 0) return 0;
+        const sign = Math.sign(d);
+        const dist = Math.abs(d);
+        return sign * (aw / 2 + gap + (dist - 1) * (w + gap) + w / 2);
+    }
+
+    function render() {
+        const w = cssVar("--w");
+        const aw = cssVar("--aw");
+        const gap = cssVar("--gap");
+
+        cards.forEach((card, i) => {
+            // d: -2 .. 2 (melingkar)
+            const d = ((i - active + n + half) % n) - half;
+            const last = lastOffset[i];
+            const wrapped = last !== null && Math.abs(d - last) > half;
+
+            // card yang "loncat" dari ujung ke ujung tidak dianimasikan
+            if (wrapped) card.style.transition = "none";
+
+            card.dataset.active = d === 0 ? "true" : "false";
+            card.style.transform = `translateX(${centerFor(d, w, aw, gap)}px) translateX(-50%)`;
+            card.style.zIndex = d === 0 ? "2" : "1";
+
+            const hidden = Math.abs(d) > 2;
+            card.style.opacity = hidden ? "0" : "1";
+            card.style.pointerEvents = hidden ? "none" : "";
+
+            if (wrapped) {
+                void card.offsetWidth; // paksa reflow
+                card.style.transition = "";
+            }
+
+            lastOffset[i] = d;
+        });
+
+        // tracking
+        fill.style.width = `${((active + 1) / n) * 100}%`;
+        current.textContent = pad(active + 1);
+        total.textContent = pad(n);
+    }
+
+    const go = (index) => {
+        active = (index + n) % n;
+        render();
+    };
+
+    next.addEventListener("click", () => go(active + 1));
+    prev.addEventListener("click", () => go(active - 1));
+
+    // klik card samping untuk memindahkan ke card itu
+    cards.forEach((card, i) => {
+        card.addEventListener("click", (e) => {
+            if (e.target.closest("a")) return;
+            if (i !== active) go(i);
+        });
+    });
+
+    // swipe untuk mobile
+    let startX = null;
+    stage.addEventListener("pointerdown", (e) => (startX = e.clientX));
+    stage.addEventListener("pointerup", (e) => {
+        if (startX === null) return;
+        const delta = e.clientX - startX;
+        if (Math.abs(delta) > 50) go(active + (delta < 0 ? 1 : -1));
+        startX = null;
+    });
+
+    window.addEventListener("resize", render);
+    render();
+})();
 

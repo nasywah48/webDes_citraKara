@@ -150,6 +150,104 @@
 </section>
 
 <!-- section 4 -->
+<section id="topDest"
+    class="relative overflow-hidden bg-[#020611] pb-24 pt-8 font-jakarta text-white md:pb-32
+           [--w:220px] [--h:210px] [--aw:200px] [--ah:320px] [--gap:14px]
+           md:[--w:300px] md:[--h:280px] md:[--aw:270px] md:[--ah:420px] md:[--gap:20px]">
+
+    <!-- header + tracking -->
+    <div class="mx-auto flex max-w-6xl flex-col gap-6 px-6 md:flex-row md:items-end md:justify-between">
+        <div>
+            <p class="m-0 text-xs font-semibold uppercase tracking-[0.2em] text-secondary md:text-sm">Tempat Menarik</p>
+            <h2 class="m-0 mt-2 font-['Playfair_Display'] text-2xl font-normal tracking-[0.12em] text-white md:text-4xl">05 Destinasi Teratas</h2>
+        </div>
+
+        <div class="w-full md:w-72">
+            <div class="h-[2px] w-full bg-white/30">
+                <div id="destFill" class="h-full w-1/5 bg-secondary transition-[width] duration-500"></div>
+            </div>
+            <div class="mt-2 flex items-center justify-between text-white">
+                <p class="m-0 text-xs"><span id="destCurrent">01</span><span class="text-[0.6rem] text-white/60">/<span id="destTotal">05</span></span></p>
+                <div class="flex items-center gap-2 text-white/70">
+                    <button id="destPrev" type="button" aria-label="Destinasi sebelumnya" class="transition hover:text-white"><i class="ri-arrow-left-s-line"></i></button>
+                    <button id="destNext" type="button" aria-label="Destinasi berikutnya" class="transition hover:text-white"><i class="ri-arrow-right-s-line"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- carousel -->
+    <div class="mx-auto mt-8 max-w-6xl overflow-hidden">
+        <div id="destStage" class="relative h-[var(--ah)] w-full touch-pan-y select-none">
+
+            <!-- 1. Sulawesi Tenggara -->
+            <article class="dest group absolute left-1/2 top-0 h-[var(--h)] w-[var(--w)] cursor-pointer overflow-hidden rounded-xl transition-[width,height,transform,opacity] duration-500 ease-out data-[active=true]:h-[var(--ah)] data-[active=true]:w-[var(--aw)]" data-active="false">
+                <img src="assets/destinasi_page/section_3/sulawesi.png" alt="Wakatobi" draggable="false" class="absolute inset-0 h-full w-full object-cover"> <!-- Sulawesi Tenggara -->
+                <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent group-data-[active=true]:from-black/85 group-data-[active=true]:via-black/10"></div>
+                <h3 class="absolute bottom-4 left-5 m-0 text-base font-medium tracking-[0.05em] text-white transition-opacity duration-300 group-data-[active=true]:opacity-0">Wakatobi</h3>
+                <div class="pointer-events-none absolute inset-x-0 bottom-0 flex translate-y-3 flex-col items-center gap-2 p-4 text-center opacity-0 transition duration-500 group-data-[active=true]:pointer-events-auto group-data-[active=true]:translate-y-0 group-data-[active=true]:opacity-100 group-data-[active=true]:delay-200">
+                    <h3 class="m-0 text-xl font-medium tracking-[0.05em] text-white">Wakatobi</h3>
+                    <p class="m-0 flex items-center gap-1 text-[0.6rem] text-white/70"><i class="ri-map-pin-line"></i> Sulawesi Tenggara</p>
+                    <p class="m-0 text-[0.6rem] leading-relaxed text-white/70">Wakatobi merupakan salah satu surga diving atau selam terbaik di dunia dengan terumbu karang yang masih alami dan keindahan bawah laut yang memukau.</p>
+                    <a href="#" class="mt-1 inline-flex items-center gap-1 rounded-full border border-white/60 px-3 py-1 text-[0.55rem] text-white no-underline transition hover:bg-white hover:text-black">Pelajari Lebih Lanjut <i class="ri-arrow-right-line"></i></a>
+                </div>
+            </article>
+
+            <!-- 2. Bali -->
+            <article class="dest group absolute left-1/2 top-0 h-[var(--h)] w-[var(--w)] cursor-pointer overflow-hidden rounded-xl transition-[width,height,transform,opacity] duration-500 ease-out data-[active=true]:h-[var(--ah)] data-[active=true]:w-[var(--aw)]" data-active="false">
+                <img src="assets/destinasi_page/section_3/bali.png" alt="Bali" draggable="false" class="absolute inset-0 h-full w-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent group-data-[active=true]:from-black/85 group-data-[active=true]:via-black/10"></div>
+                <h3 class="absolute bottom-4 left-5 m-0 text-base font-medium tracking-[0.05em] text-white transition-opacity duration-300 group-data-[active=true]:opacity-0">Bali</h3>
+                <div class="pointer-events-none absolute inset-x-0 bottom-0 flex translate-y-3 flex-col items-center gap-2 p-4 text-center opacity-0 transition duration-500 group-data-[active=true]:pointer-events-auto group-data-[active=true]:translate-y-0 group-data-[active=true]:opacity-100 group-data-[active=true]:delay-200">
+                    <h3 class="m-0 text-xl font-medium tracking-[0.05em] text-white">Bali</h3>
+                    <p class="m-0 flex items-center gap-1 text-[0.6rem] text-white/70"><i class="ri-map-pin-line"></i> Bali</p>  <!-- Tanah Lot (Tabanan) -->
+                    <p class="m-0 text-[0.6rem] leading-relaxed text-white/70">Pulau dewata yang memadukan pura-pura megah, tradisi yang masih hidup, dan pantai yang memikat wisatawan dari seluruh dunia.</p>
+                    <a href="#" class="mt-1 inline-flex items-center gap-1 rounded-full border border-white/60 px-3 py-1 text-[0.55rem] text-white no-underline transition hover:bg-white hover:text-black">Pelajari Lebih Lanjut <i class="ri-arrow-right-line"></i></a>
+                </div>
+            </article>
+
+            <!-- 3. Raja Ampat -->
+            <article class="dest group absolute left-1/2 top-0 h-[var(--h)] w-[var(--w)] cursor-pointer overflow-hidden rounded-xl transition-[width,height,transform,opacity] duration-500 ease-out data-[active=true]:h-[var(--ah)] data-[active=true]:w-[var(--aw)]" data-active="false">
+                <img src="assets/destinasi_page/section_3/" alt="Raja Ampat" draggable="false" class="absolute inset-0 h-full w-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent group-data-[active=true]:from-black/85 group-data-[active=true]:via-black/10"></div>
+                <h3 class="absolute bottom-4 left-5 m-0 text-base font-medium tracking-[0.05em] text-white transition-opacity duration-300 group-data-[active=true]:opacity-0">Raja Ampat</h3>
+                <div class="pointer-events-none absolute inset-x-0 bottom-0 flex translate-y-3 flex-col items-center gap-2 p-4 text-center opacity-0 transition duration-500 group-data-[active=true]:pointer-events-auto group-data-[active=true]:translate-y-0 group-data-[active=true]:opacity-100 group-data-[active=true]:delay-200">
+                    <h3 class="m-0 text-xl font-medium tracking-[0.05em] text-white">Raja Ampat</h3>
+                    <p class="m-0 flex items-center gap-1 text-[0.6rem] text-white/70"><i class="ri-map-pin-line"></i> Papua Barat Daya</p>
+                    <p class="m-0 text-[0.6rem] leading-relaxed text-white/70">Gugusan pulau karst dengan keanekaragaman hayati laut tertinggi di dunia, surga bagi penyelam dan pencinta alam.</p>
+                    <a href="#" class="mt-1 inline-flex items-center gap-1 rounded-full border border-white/60 px-3 py-1 text-[0.55rem] text-white no-underline transition hover:bg-white hover:text-black">Pelajari Lebih Lanjut <i class="ri-arrow-right-line"></i></a>
+                </div>
+            </article>
+
+            <!-- 4. Labuan Bajo -->
+            <article class="dest group absolute left-1/2 top-0 h-[var(--h)] w-[var(--w)] cursor-pointer overflow-hidden rounded-xl transition-[width,height,transform,opacity] duration-500 ease-out data-[active=true]:h-[var(--ah)] data-[active=true]:w-[var(--aw)]" data-active="false">
+                <img src="assets/destinasi_page/section_3/" alt="Labuan Bajo" draggable="false" class="absolute inset-0 h-full w-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent group-data-[active=true]:from-black/85 group-data-[active=true]:via-black/10"></div>
+                <h3 class="absolute bottom-4 left-5 m-0 text-base font-medium tracking-[0.05em] text-white transition-opacity duration-300 group-data-[active=true]:opacity-0">Labuan Bajo</h3>
+                <div class="pointer-events-none absolute inset-x-0 bottom-0 flex translate-y-3 flex-col items-center gap-2 p-4 text-center opacity-0 transition duration-500 group-data-[active=true]:pointer-events-auto group-data-[active=true]:translate-y-0 group-data-[active=true]:opacity-100 group-data-[active=true]:delay-200">
+                    <h3 class="m-0 text-xl font-medium tracking-[0.05em] text-white">Labuan Bajo</h3>
+                    <p class="m-0 flex items-center gap-1 text-[0.6rem] text-white/70"><i class="ri-map-pin-line"></i> Nusa Tenggara Timur</p>
+                    <p class="m-0 text-[0.6rem] leading-relaxed text-white/70">Gerbang menuju Taman Nasional Komodo dengan perbukitan savana, pantai berpasir pink, dan pemandangan laut yang menawan.</p>
+                    <a href="#" class="mt-1 inline-flex items-center gap-1 rounded-full border border-white/60 px-3 py-1 text-[0.55rem] text-white no-underline transition hover:bg-white hover:text-black">Pelajari Lebih Lanjut <i class="ri-arrow-right-line"></i></a>
+                </div>
+            </article>
+
+            <!-- 5. Kepulauan Riau -->
+            <article class="dest group absolute left-1/2 top-0 h-[var(--h)] w-[var(--w)] cursor-pointer overflow-hidden rounded-xl transition-[width,height,transform,opacity] duration-500 ease-out data-[active=true]:h-[var(--ah)] data-[active=true]:w-[var(--aw)]" data-active="false">
+                <img src="assets/destinasi_page/section_3/kepulauan_riau.png" alt="Kepulauan Riau" draggable="false" class="absolute inset-0 h-full w-full object-cover"> <!-- Ranoh Island (Batam -->
+                <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent group-data-[active=true]:from-black/85 group-data-[active=true]:via-black/10"></div>
+                <h3 class="absolute bottom-4 left-5 m-0 text-base font-medium tracking-[0.05em] text-white transition-opacity duration-300 group-data-[active=true]:opacity-0">Kepulauan Riau</h3>
+                <div class="pointer-events-none absolute inset-x-0 bottom-0 flex translate-y-3 flex-col items-center gap-2 p-4 text-center opacity-0 transition duration-500 group-data-[active=true]:pointer-events-auto group-data-[active=true]:translate-y-0 group-data-[active=true]:opacity-100 group-data-[active=true]:delay-200">
+                    <h3 class="m-0 text-xl font-medium tracking-[0.05em] text-white">Kepulauan Riau</h3>
+                    <p class="m-0 flex items-center gap-1 text-[0.6rem] text-white/70"><i class="ri-map-pin-line"></i> Kepulauan Riau</p>
+                    <p class="m-0 text-[0.6rem] leading-relaxed text-white/70">Deretan pulau di perbatasan dengan ikon jembatan Barelang, pantai tenang, dan warisan budaya Melayu yang kental.</p>
+                    <a href="#" class="mt-1 inline-flex items-center gap-1 rounded-full border border-white/60 px-3 py-1 text-[0.55rem] text-white no-underline transition hover:bg-white hover:text-black">Pelajari Lebih Lanjut <i class="ri-arrow-right-line"></i></a>
+                </div>
+            </article>
+
+        </div>
+    </div>
+</section>
 
 <!-- footer -->
 <footer class="relative overflow-hidden bg-[#151b27] font-jakarta text-white">
@@ -189,6 +287,7 @@
 </footer>
 
 <script src="script.js"></script>
+<script src="provinsi.js"></script>
 <script type="module" src="peta.js"></script>
 </body>
 </html>
