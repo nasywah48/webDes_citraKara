@@ -9,7 +9,7 @@
     --color-secondary: #FF9B54;
 }
 
-// biar CDnya muter
+/* biar CDnya muter */
 #budayaScroll {
     --size: clamp(200px, 26vw, 290px);
     position: relative;
