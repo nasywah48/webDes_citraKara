@@ -28,7 +28,7 @@
 <body class="bg-background">
 
 <!-- navbar -->
-<nav class="fixed inset-x-0 top-0 z-50 bg-black/40 backdrop-blur-md">
+<nav id="navbar" class="fixed inset-x-0 top-0 z-50 bg-black/40 backdrop-blur-md">
     <div class="mx-auto flex h-[88px] max-w-7xl items-center justify-between px-6 md:px-8">
         <a href="#" class="w-40 md:w-44"><img src="assets/citraKara_logo.png" alt="CitraKara"></a>
 
@@ -39,7 +39,28 @@
             <li><a href="#" class="text-white/80 no-underline transition hover:text-white">Cerita</a></li>
         </ul>
 
-        <a href="#" class="group inline-flex items-center gap-3 rounded-full border border-secondary/80 px-5 py-2 text-sm text-white no-underline transition hover:bg-secondary hover:text-black hover:font-medium">Jelajahi Pusaka <i class="ri-arrow-right-line text-secondary group-hover:text-black"></i></a>
+        <!-- tombol desktop -->
+        <a href="#" class="group hidden items-center gap-3 rounded-full border border-secondary/80 px-5 py-2 text-sm text-white no-underline transition hover:bg-secondary hover:text-black hover:font-medium md:inline-flex">Jelajahi Pusaka <i class="ri-arrow-right-line text-secondary group-hover:text-black"></i></a>
+
+        <!-- hamburger (mobile) -->
+        <button id="navToggle" type="button" aria-label="Buka menu" aria-expanded="false" aria-controls="navMenu" class="inline-flex h-10 w-10 items-center justify-center rounded-full text-white transition hover:bg-white/10 md:hidden">
+            <i id="navIcon" class="ri-menu-line text-2xl"></i>
+        </button>
+    </div>
+
+    <!-- humberger mobile -->
+    <div id="navMenu" inert data-open="false" class="grid grid-rows-[0fr] bg-black/70 transition-[grid-template-rows,border-color] duration-300 data-[open=true]:grid-rows-[1fr] data-[open=true]:border-white/10 md:hidden">
+        <div class="overflow-hidden">
+            <ul class="m-0 flex list-none flex-col gap-1 p-0 px-6 pb-6 pt-4 font-['Playfair_Display'] text-base">
+                <li><a href="index.html" class="block rounded-lg px-3 py-3 text-white no-underline transition hover:bg-white/10">Beranda</a></li>
+                <li><a href="destinasi.html" class="block rounded-lg px-3 py-3 text-white/80 no-underline transition hover:bg-white/10 hover:text-white">Destinasi</a></li>
+                <li><a href="#" class="block rounded-lg px-3 py-3 text-white/80 no-underline transition hover:bg-white/10 hover:text-white">Seni &amp; Budaya</a></li>
+                <li><a href="#" class="block rounded-lg px-3 py-3 text-white/80 no-underline transition hover:bg-white/10 hover:text-white">Cerita</a></li>
+                <li class="mt-3 font-jakarta">
+                    <a href="#" class="group flex items-center justify-center gap-3 rounded-full border border-secondary/80 px-5 py-3 text-sm text-white no-underline transition hover:bg-secondary hover:text-black">Jelajahi Pusaka <i class="ri-arrow-right-line text-secondary group-hover:text-black"></i></a>
+                </li>
+            </ul>
+        </div>
     </div>
 </nav>
 
@@ -76,7 +97,7 @@
 </section>
 
 <!-- section 2, CD -->
-<section id="budayaScroll" class="relative overflow-hidden bg-[#020611] font-jakarta touch-pan-y select-none text-white ">
+<section id="budayaScroll" class="relative overflow-hidden bg-[#020611] font-jakarta touch-pan-y select-none text-white [--size:clamp(200px,26vw,290px)]">
     <div class="relative overflow-hidden py-120">        
         <img src="assets/megamendung_component.png" class="pointer-events-none absolute bottom-12 -right-16 z-0 w-68 select-none opacity-70 md:-right-10 md:w-[26rem]" alt="">
 
@@ -87,9 +108,9 @@
         <h2 class="absolute left-6 top-30 z-20 max-w-xl text-[clamp(1.9rem,3.6vw,3.2rem)] font-extralight leading-[1.25] text-white/80 md:left-12 md:top-[7rem]">Jelajahi Ragam Budaya <em class="font-bold italic text-secondary"><br>Nusantara</em> Yang Penuh<br>Makna dan Pesona.</h2>
 
         <!-- Tombol navigasi CD -->
-        <div class="absolute inset-x-0 top-[48%] md:top-[56%] z-10 -translate-y-1/2">
+        <div class="relative z-10 -mx-6 md:absolute md:inset-x-0 md:top-[56%] md:mx-0 md:-translate-y-1/2">
 
-            <div class="relative mx-auto w-full">
+            <div class="relative flex flex-col gap-10 overflow-hidden px-6 py-24 md:block md:gap-0 md:p-0 md:py-120">
 
                 <button id="discPrev" type="button" aria-label="CD sebelumnya" class="absolute left-2 top-1/2 z-30 -translate-y-1/2 rounded-full bg-white/10 p-3 text-white transition hover:bg-white/20">
                     <i class="ri-arrow-left-line text-xl"></i>
@@ -98,7 +119,7 @@
                 <div id="discViewport" class="w-full overflow-hidden">
                     <div id="discTrack" class="relative h-[var(--size)] w-full">
                             <!-- tari -->
-                            <article class="disc absolute left-1/2 top-0 h-[var(--size)] w-[var(--size)] cursor-grab transition-transform duration-300">
+                            <article class="disc absolute left-1/2 top-0 h-[var(--size)] w-[var(--size)] cursor-grab will-change-transform">
                                 <div class="h-full w-full rounded-full p-1 bg-[linear-gradient(145deg,#f1f1f5,#6b6f7a_40%,#d9dbe2_70%,#555a66)]">
                                     <div class="relative h-full w-full overflow-hidden rounded-full bg-[#0b1220]">
                                         <img src="assets/kategori/tari_daerah.png" alt="Tari Tradisional" class="absolute inset-0 h-full w-full object-cover">
@@ -115,7 +136,7 @@
                             </article>
 
                             <!-- alat musik -->
-                            <article class="disc absolute left-1/2 top-0 h-[var(--size)] w-[var(--size)] cursor-grab transition-transform duration-300">
+                            <article class="disc absolute left-1/2 top-0 h-[var(--size)] w-[var(--size)] cursor-grab will-change-transform">
                                 <div class="h-full w-full rounded-full p-1 bg-[linear-gradient(145deg,#f1f1f5,#6b6f7a_40%,#d9dbe2_70%,#555a66)]">
                                     <div class="relative h-full w-full overflow-hidden rounded-full bg-[#0b1220]">
                                         <img src="assets/kategori/alat_musik.png" alt="Musik Tradisional" class="absolute inset-0 h-full w-full object-cover">
@@ -132,7 +153,7 @@
                             </article>
 
                             <!-- kerajinan -->
-                            <article class="disc absolute left-1/2 top-0 h-[var(--size)] w-[var(--size)] cursor-grab transition-transform duration-300">
+                            <article class="disc absolute left-1/2 top-0 h-[var(--size)] w-[var(--size)] cursor-grab will-change-transform">
                                 <div class="h-full w-full rounded-full p-1 bg-[linear-gradient(145deg,#f1f1f5,#6b6f7a_40%,#d9dbe2_70%,#555a66)]">
                                     <div class="relative h-full w-full overflow-hidden rounded-full bg-[#0b1220]">
                                         <img src="assets/kategori/kerajinan.png" alt="Kerajinan" class="absolute inset-0 h-full w-full object-cover">
@@ -149,7 +170,7 @@
                             </article>
 
                             <!-- rumah adat -->
-                            <article class="disc absolute left-1/2 top-0 h-[var(--size)] w-[var(--size)] cursor-grab transition-transform duration-300">
+                            <article class="disc absolute left-1/2 top-0 h-[var(--size)] w-[var(--size)] cursor-grab will-change-transform">
                                 <div class="h-full w-full rounded-full p-1 bg-[linear-gradient(145deg,#f1f1f5,#6b6f7a_40%,#d9dbe2_70%,#555a66)]">
                                     <div class="relative h-full w-full overflow-hidden rounded-full bg-[#0b1220]">
                                         <img src="assets/kategori/rumah_adat.png" alt="Rumah Adat" class="absolute inset-0 h-full w-full object-cover">
@@ -166,7 +187,7 @@
                             </article>
 
                             <!-- makanan -->
-                            <article class="disc absolute left-1/2 top-0 h-[var(--size)] w-[var(--size)] cursor-grab transition-transform duration-300">
+                            <article class="disc absolute left-1/2 top-0 h-[var(--size)] w-[var(--size)] cursor-grab will-change-transform">
                                 <div class="h-full w-full rounded-full p-1 bg-[linear-gradient(145deg,#f1f1f5,#6b6f7a_40%,#d9dbe2_70%,#555a66)]">
                                     <div class="relative h-full w-full overflow-hidden rounded-full bg-[#0b1220]">
                                         <img src="assets/kategori/makanan_daerah.png" alt="Kuliner" class="absolute inset-0 h-full w-full object-cover">
@@ -183,7 +204,7 @@
                             </article>
 
                             <!-- seni rupa -->
-                            <article class="disc absolute left-1/2 top-0 h-[var(--size)] w-[var(--size)] cursor-grab transition-transform duration-300">
+                            <article class="disc absolute left-1/2 top-0 h-[var(--size)] w-[var(--size)] cursor-grab will-change-transform">
                                 <div class="h-full w-full rounded-full p-1 bg-[linear-gradient(145deg,#f1f1f5,#6b6f7a_40%,#d9dbe2_70%,#555a66)]">
                                     <div class="relative h-full w-full overflow-hidden rounded-full bg-[#0b1220]">
                                         <img src="assets/kategori/seni_rupa.png" alt="Pakaian Adat" class="absolute inset-0 h-full w-full object-cover">
@@ -462,7 +483,7 @@
                 <h3 class="m-0 mt-3 text-xl font-light text-white/90 md:text-2xl">Galungan &amp; Kuningan</h3>
                 <p class="m-0 mt-2 flex items-center gap-1.5 text-[0.7rem] text-white/60"><i class="ri-map-pin-line text-secondary"></i>Bali</p>
                 <p class="m-0 mt-4 max-w-sm text-xs leading-relaxed text-white/45">Perayaan kemenangan dharma melawan adharma yang dirayakan setiap 210 hari sekali.</p>
-                <a href="galungan.html" class="mt-auto inline-flex w-fit items-center gap-2 rounded-full border border-secondary/70 px-4 py-1.5 text-[0.65rem] text-secondary no-underline transition hover:bg-secondary hover:text-black md:mt-6">Selengkapnya <i class="ri-arrow-right-line"></i></a>
+                <a href="galungan.html" class="mt-4 inline-flex w-fit items-center gap-2 rounded-full border border-secondary/70 px-4 py-1.5 text-[0.65rem] text-secondary no-underline transition hover:bg-secondary hover:text-black md:mt-6">Selengkapnya <i class="ri-arrow-right-line"></i></a>
             </div>
             <img src="assets/megamendung_component.png" alt="" aria-hidden="true" class="pointer-events-none absolute -bottom-2 -right-2 z-0 w-32 select-none opacity-60 md:w-40">
         </article>

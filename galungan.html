@@ -28,18 +28,39 @@
 <body class="bg-background">
 
     <!-- navbar -->
-    <nav class="fixed inset-x-0 top-0 z-50 bg-black/40 backdrop-blur-md">
+    <nav id="navbar" class="fixed inset-x-0 top-0 z-50 bg-black/40 backdrop-blur-md">
         <div class="mx-auto flex h-[88px] max-w-7xl items-center justify-between px-6 md:px-8">
             <a href="#" class="w-40 md:w-44"><img src="assets/citraKara_logo.png" alt="CitraKara"></a>
 
             <ul class="m-0 hidden list-none items-center gap-8 p-0 font-['Playfair_Display'] text-sm md:flex">
-                <li><a href="index.html" class="text-white/80 font-bold no-underline transition hover:text-white">Beranda</a></li>
+                <li><a href="index.html" class="text-white/80 no-underline transition hover:text-white">Beranda</a></li>
                 <li><a href="destinasi.html" class="text-white/80 no-underline transition hover:text-white">Destinasi</a></li>
                 <li><a href="#" class="text-white/80 no-underline transition hover:text-white">Seni &amp; Budaya</a></li>
                 <li><a href="#" class="text-white/80 no-underline transition hover:text-white">Cerita</a></li>
             </ul>
 
-            <a href="#" class="group inline-flex items-center gap-3 rounded-full border border-secondary/80 px-5 py-2 text-sm text-white no-underline transition hover:bg-secondary hover:text-black hover:font-medium">Jelajahi Pusaka <i class="ri-arrow-right-line text-secondary group-hover:text-black"></i></a>
+            <!-- tombol desktop -->
+            <a href="#" class="group hidden items-center gap-3 rounded-full border border-secondary/80 px-5 py-2 text-sm text-white no-underline transition hover:bg-secondary hover:text-black hover:font-medium md:inline-flex">Jelajahi Pusaka <i class="ri-arrow-right-line text-secondary group-hover:text-black"></i></a>
+
+            <!-- hamburger (mobile) -->
+            <button id="navToggle" type="button" aria-label="Buka menu" aria-expanded="false" aria-controls="navMenu" class="inline-flex h-10 w-10 items-center justify-center rounded-full text-white transition hover:bg-white/10 md:hidden">
+                <i id="navIcon" class="ri-menu-line text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- humberger mobile -->
+        <div id="navMenu" inert data-open="false" class="grid grid-rows-[0fr] bg-black/70 transition-[grid-template-rows,border-color] duration-300 data-[open=true]:grid-rows-[1fr] data-[open=true]:border-white/10 md:hidden">
+            <div class="overflow-hidden">
+                <ul class="m-0 flex list-none flex-col gap-1 p-0 px-6 pb-6 pt-4 font-['Playfair_Display'] text-base">
+                    <li><a href="index.html" class="block rounded-lg px-3 py-3 text-white no-underline transition hover:bg-white/10">Beranda</a></li>
+                    <li><a href="destinasi.html" class="block rounded-lg px-3 py-3 text-white/80 no-underline transition hover:bg-white/10 hover:text-white">Destinasi</a></li>
+                    <li><a href="#" class="block rounded-lg px-3 py-3 text-white/80 no-underline transition hover:bg-white/10 hover:text-white">Seni &amp; Budaya</a></li>
+                    <li><a href="#" class="block rounded-lg px-3 py-3 text-white/80 no-underline transition hover:bg-white/10 hover:text-white">Cerita</a></li>
+                    <li class="mt-3 font-jakarta">
+                        <a href="#" class="group flex items-center justify-center gap-3 rounded-full border border-secondary/80 px-5 py-3 text-sm text-white no-underline transition hover:bg-secondary hover:text-black">Jelajahi Pusaka <i class="ri-arrow-right-line text-secondary group-hover:text-black"></i></a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
 

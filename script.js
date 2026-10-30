@@ -1,3 +1,42 @@
+// navbar: hamburger mobile
+(function () {
+    const nav = document.getElementById("navbar");
+    const toggle = document.getElementById("navToggle");
+    const menu = document.getElementById("navMenu");
+    const icon = document.getElementById("navIcon");
+
+    if (!nav || !toggle || !menu || !icon) return;
+
+    function setOpen(open) {
+        menu.dataset.open = String(open);
+        menu.inert = !open;
+        toggle.setAttribute("aria-expanded", String(open));
+        toggle.setAttribute("aria-label", open ? "Tutup menu" : "Buka menu");
+        icon.className = `${open ? "ri-close-line" : "ri-menu-line"} text-2xl`;
+    }
+
+    toggle.addEventListener("click", () => setOpen(menu.dataset.open !== "true"));
+
+    // tutup saat salah satu link diklik
+    menu.addEventListener("click", (e) => {
+        if (e.target.closest("a")) setOpen(false);
+    });
+
+    // tutup saat klik di luar navbar atau tekan Esc
+    document.addEventListener("click", (e) => {
+        if (!nav.contains(e.target)) setOpen(false);
+    });
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") setOpen(false);
+    });
+
+    // tutup otomatis kalau layar dilebarkan ke ukuran desktop
+    window.matchMedia("(min-width: 768px)").addEventListener("change", (e) => {
+        if (e.matches) setOpen(false);
+    });
+})();
+
+/* hero section, video */
 (function () {                                                   
 
 const videoContainer = document.getElementById("videoContainer");
@@ -114,56 +153,61 @@ updateHero(current);
 
     const START_INDEX = 2;   // CD yang di tengah saat halaman dibuka (0 = CD pertama)
     const SIDE_SCALE = 0.8;  // ukuran CD samping
-    const GAP = 8;           // jarak antar CD (px), sama seperti gap-2
+    const GAP = 8;           // jarak antar CD (px)
+    const DURATION = 500;    // lama geser (ms), makin besar makin pelan
 
-    const half = Math.floor(n / 2);
-    const lastOffset = new Array(n).fill(null);
-    let active = START_INDEX;
-    let dragging = false;
+    const half = n / 2;
+    const mod = (x, m) => ((x % m) + m) % m;
+    const ease = (t) => 1 - Math.pow(1 - t, 3); // easeOutCubic
+
+    let pos = START_INDEX;    // posisi saat ini (pecahan, terus bergerak)
+    let target = START_INDEX; // posisi tujuan
+    let raf = 0;
 
     const getStep = () => cards[0].offsetWidth + GAP;
 
-    function render({ drag = 0, instant = false } = {}) {
+    function render() {
         const step = getStep();
-        let hasWrap = false;
 
         cards.forEach((card, i) => {
-            // d: jarak card dari CD aktif, melingkar (-3 .. 2 untuk 6 CD)
-            const d = ((i - active + n + half) % n) - half;
-            const last = lastOffset[i];
-            const wrapped = last !== null && Math.abs(d - last) > half;
-            hasWrap = hasWrap || wrapped;
+            // rel: jarak card dari tengah, melingkar (-half .. half)
+            const rel = mod(i - pos + half, n) - half;
+            const abs = Math.abs(rel);
 
-            // card yang "loncat" dari ujung ke ujung tidak dianimasikan
-            card.style.transition = instant || dragging || wrapped ? "none" : "";
+            const scale = 1 - (1 - SIDE_SCALE) * Math.min(1, abs);
+            // card di ujung memudar sebelum pindah sisi, jadi loncatannya tidak terlihat
+            const opacity = Math.max(0, Math.min(1, half - abs));
 
-            // posisi pecahan saat di-drag, supaya ukuran berubah halus
-            const p = d + drag / step;
-            const scale = 1 - (1 - SIDE_SCALE) * Math.min(1, Math.abs(p));
-
-            card.style.transform = `translateX(${d * step + drag}px) translateX(-50%) scale(${scale})`;
-            card.style.zIndex = d === 0 ? "2" : "1";
-            card.style.opacity = Math.abs(d) > 2 ? "0.65" : "1";
-
-            lastOffset[i] = d;
+            card.style.transform = `translateX(${rel * step}px) translateX(-50%) scale(${scale})`;
+            card.style.opacity = String(opacity);
+            card.style.zIndex = String(Math.round(10 - abs));
+            card.style.pointerEvents = opacity === 0 ? "none" : "";
         });
-
-        if (hasWrap) {
-            void track.offsetWidth; // paksa reflow supaya loncatan tidak teranimasi
-            cards.forEach((card) => { if (!dragging && !instant) card.style.transition = ""; });
-        }
     }
 
-    const go = (index) => {
-        active = ((index % n) + n) % n;
-        render();
-    };
+    function animateTo(to, duration = DURATION) {
+        cancelAnimationFrame(raf);
+        const from = pos;
+        const start = performance.now();
+        target = to;
 
-    next.addEventListener("click", () => go(active + 1));
-    prev.addEventListener("click", () => go(active - 1));
+        const tick = (now) => {
+            const t = Math.min(1, (now - start) / duration);
+            pos = from + (to - from) * ease(t);
+            render();
+            if (t < 1) raf = requestAnimationFrame(tick);
+        };
+        raf = requestAnimationFrame(tick);
+    }
+
+    const go = (delta) => animateTo(Math.round(target) + delta);
+
+    next.addEventListener("click", () => go(1));
+    prev.addEventListener("click", () => go(-1));
 
     /* ---------- drag mouse & swipe jari ---------- */
     let startX = 0;
+    let startPos = 0;
     let dx = 0;
     let moved = false;
 
@@ -171,9 +215,10 @@ updateHero(current);
 
     viewport.addEventListener("pointerdown", (e) => {
         if (e.pointerType === "mouse" && e.button !== 0) return;
-        dragging = true;
+        cancelAnimationFrame(raf);
         moved = false;
         startX = e.clientX;
+        startPos = pos;
         dx = 0;
         window.addEventListener("pointermove", onMove);
         window.addEventListener("pointerup", onUp);
@@ -183,7 +228,8 @@ updateHero(current);
     function onMove(e) {
         dx = e.clientX - startX;
         if (Math.abs(dx) > 5) moved = true;
-        render({ drag: dx });
+        pos = startPos - dx / getStep(); // CD mengikuti jari/kursor
+        render();
     }
 
     function onUp() {
@@ -191,19 +237,21 @@ updateHero(current);
         window.removeEventListener("pointerup", onUp);
         window.removeEventListener("pointercancel", onUp);
 
-        dragging = false;
         const step = getStep();
-        let steps = Math.round(-dx / step);
-        if (steps === 0 && Math.abs(dx) > step * 0.2) steps = dx < 0 ? 1 : -1; // flick kecil
-        steps = Math.max(-2, Math.min(2, steps));
+        const base = Math.round(startPos);
+        let t = Math.round(pos);
+        if (t === base && Math.abs(dx) > step * 0.2) t = base + (dx < 0 ? 1 : -1); // flick kecil
+        t = Math.max(base - 2, Math.min(base + 2, t));
 
-        go(active + steps);
+        animateTo(t, 400);
     }
 
     // klik CD samping untuk memindahkannya ke tengah
     cards.forEach((card, i) => {
         card.addEventListener("click", () => {
-            if (!moved && i !== active) go(i);
+            if (moved) return;
+            const rel = Math.round(mod(i - target + half, n) - half);
+            if (rel) go(rel);
         });
     });
 
@@ -218,7 +266,6 @@ updateHero(current);
             if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return; // scroll vertikal biarkan lewat
             e.preventDefault();
 
-            // buka kunci setelah gestur (termasuk inersia) benar-benar berhenti
             clearTimeout(wheelTimer);
             wheelTimer = setTimeout(() => {
                 wheelLock = false;
@@ -228,7 +275,7 @@ updateHero(current);
             if (wheelLock) return;
             wheelAcc += e.deltaX;
             if (Math.abs(wheelAcc) >= 50) {
-                go(active + Math.sign(wheelAcc));
+                go(Math.sign(wheelAcc));
                 wheelLock = true;
                 wheelAcc = 0;
             }
@@ -236,8 +283,8 @@ updateHero(current);
         { passive: false }
     );
 
-    window.addEventListener("resize", () => render({ instant: true }));
-    render({ instant: true });
+    window.addEventListener("resize", render);
+    render();
 })();
 
 // section 3 garis/bulatan berlawanan arah
