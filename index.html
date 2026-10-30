@@ -598,6 +598,48 @@
     </div>
 </footer>
 
+<!-- popup destinasi -->
+<div id="alamModal" inert data-visible="false" role="dialog" aria-modal="true" aria-labelledby="alamModalTitle" class="group pointer-events-none fixed inset-0 z-[60] flex items-center justify-center p-4 font-jakarta data-[visible=true]:pointer-events-auto">
+
+    <!-- overlay -->
+    <div id="alamOverlay" class="absolute inset-0 bg-black/75 opacity-0 backdrop-blur-sm transition-opacity duration-300 group-data-[visible=true]:opacity-100"></div>
+
+    <!-- panel -->
+    <div class="relative flex h-[34rem] max-h-[88vh] w-full max-w-3xl translate-y-6 scale-95 flex-col justify-end overflow-hidden rounded-xl bg-[#020611] opacity-0 shadow-2xl transition duration-300 ease-out group-data-[visible=true]:translate-y-0 group-data-[visible=true]:scale-100 group-data-[visible=true]:opacity-100">
+
+        <img id="alamModalImg" src="" alt="" class="absolute inset-0 h-full w-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-[#020611] via-[#020611]/80 to-black/20"></div>
+
+        <!-- counter -->
+        <p class="absolute left-5 top-5 z-10 m-0 rounded-full bg-black/40 px-3 py-1 text-[0.65rem] tracking-[0.15em] text-white/80 backdrop-blur-sm">
+            <span id="alamModalNow">01</span> / <span id="alamModalTotal">07</span>
+        </p>
+
+        <!-- tutup -->
+        <button id="alamModalClose" type="button" aria-label="Tutup" class="absolute right-5 top-5 z-10 inline-flex h-9 w-9 items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-sm transition hover:bg-black/70">
+            <i class="ri-close-line text-xl"></i>
+        </button>
+
+        <!-- prev arrow -->
+        <button id="alamModalPrev" type="button" aria-label="Destinasi sebelumnya" class="absolute left-3 top-1/2 z-20 inline-flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-sm transition hover:bg-black/70 md:left-4 md:h-11 md:w-11">
+            <i class="ri-arrow-left-line text-lg"></i>
+        </button>
+
+        <!-- next arrow -->
+        <button id="alamModalNext" type="button" aria-label="Destinasi berikutnya" class="absolute right-3 top-1/2 z-20 inline-flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-sm transition hover:bg-black/70 md:right-4 md:h-11 md:w-11">
+            <i class="ri-arrow-right-line text-lg"></i>
+        </button>
+
+        <!-- isi -->
+        <div id="alamModalBody" class="relative z-10 max-h-full overflow-y-auto px-16 pb-8 pt-24 text-center transition-opacity duration-200 md:px-20 md:pb-10">
+            <h3 id="alamModalTitle" class="m-0 font-['Playfair_Display'] text-3xl font-bold text-white md:text-5xl">&nbsp;</h3>
+            <p class="m-0 mt-3 flex items-center justify-center gap-1.5 text-[0.65rem] uppercase tracking-[0.2em] text-secondary md:text-xs"><i class="ri-map-pin-line"></i><span id="alamModalLokasi"></span></p>
+            <span class="mx-auto mt-5 block h-px w-12 bg-secondary/70"></span>
+            <div id="alamModalDesc" class="mt-5 space-y-3 text-xs leading-relaxed text-white/80 md:text-sm"></div>
+        </div>
+    </div>
+</div>
+
 <script src="script.js"></script>
 <script src="music.js"></script>
 </body>

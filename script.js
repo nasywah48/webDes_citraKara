@@ -373,6 +373,168 @@ updateHero(current);
     update();
 })();
 
+// section 4 popup
+(function () {
+    const section = document.getElementById("alam");
+    const modal = document.getElementById("alamModal");
+    if (!section || !modal) return;
+
+    const $ = (id) => document.getElementById(id);
+    const overlay = $("alamOverlay"), closeBtn = $("alamModalClose");
+    const img = $("alamModalImg"), title = $("alamModalTitle"), lokasi = $("alamModalLokasi");
+    const desc = $("alamModalDesc"), body = $("alamModalBody");
+    const now = $("alamModalNow"), total = $("alamModalTotal");
+    const prev = $("alamModalPrev"), next = $("alamModalNext");
+
+    // Kunci = isi atribut alt gambar di kartu galeri. Ganti teksnya dengan naskahmu sendiri.
+    const INFO = {
+        "Pulau Padar": {
+            lokasi: "Taman Nasional Komodo, Nusa Tenggara Timur",
+            desc: [
+                "Pulau Padar merupakan salah satu destinasi paling ikonik di Taman Nasional Komodo. Pulau ini terkenal dengan panorama perbukitan savana yang membentang di antara teluk-teluk berair biru jernih.",
+                "Dari puncaknya, pengunjung dapat menikmati pemandangan beberapa teluk sekaligus, menjadikannya salah satu tempat terbaik untuk menyaksikan matahari terbit dan mengabadikan keindahan alam Indonesia.",
+            ],
+        },
+        "Tanjung Bira": {
+            lokasi: "Bulukumba, Sulawesi Selatan",
+            desc: [
+                "Tanjung Bira dikenal dengan hamparan pasir putih halus dan air laut yang jernih, cocok untuk berenang, snorkeling, dan menikmati senja di tepi pantai.",
+                "Kawasan ini juga lekat dengan tradisi pembuatan kapal pinisi, warisan maritim masyarakat Bulukumba yang telah diakui dunia.",
+            ],
+        },
+        "Tangkuban Perahu": {
+            lokasi: "Bandung, Jawa Barat",
+            desc: [
+                "Tangkuban Perahu adalah gunung berapi aktif di utara Kota Bandung dengan kawah-kawah yang bisa dilihat langsung dari bibir kawah, seperti Kawah Ratu.",
+                "Namanya berasal dari legenda Sangkuriang, kisah rakyat Sunda tentang perahu yang ditendang hingga terbalik dan menjadi gunung.",
+            ],
+        },
+        "Air Terjun Laumarang": {
+            lokasi: "Banggai, Sulawesi Tengah",
+            desc: [
+                "Air Terjun Laumarang tersembunyi di tengah hutan tropis Kabupaten Banggai. Aliran airnya jatuh di antara tebing hijau yang rimbun dan menciptakan suasana yang sejuk dan tenang.",
+                "Tempat ini cocok bagi pencinta alam yang ingin menikmati keindahan Sulawesi Tengah jauh dari keramaian.",
+            ],
+        },
+        "Raja Ampat": {
+            lokasi: "Sorong, Papua Barat Daya",
+            desc: [
+                "Raja Ampat adalah gugusan pulau karst dengan laut yang menyimpan keanekaragaman hayati bawah laut salah satu yang terkaya di dunia.",
+                "Terumbu karang yang masih terjaga, laguna berwarna tosca, dan panorama pulau-pulau kecilnya menjadikan Raja Ampat surga bagi penyelam dan pencinta alam.",
+            ],
+        },
+        "Gunung Bromo": {
+            lokasi: "Probolinggo, Jawa Timur",
+            desc: [
+                "Gunung Bromo terkenal dengan lautan pasir dan kawahnya yang masih aktif. Pemandangan matahari terbit dari Penanjakan adalah salah satu yang paling dicari di Indonesia.",
+                "Kawasan ini juga menjadi tempat tinggal masyarakat Tengger, yang setiap tahun menggelar upacara Yadnya Kasada di kawah Bromo.",
+            ],
+        },
+        "Pantai Merah": {
+            lokasi: "Pulau Komodo, Nusa Tenggara Timur",
+            desc: [
+                "Pantai Merah, atau Pink Beach, memiliki pasir berwarna merah muda yang berasal dari serpihan karang merah yang bercampur dengan pasir putih.",
+                "Airnya yang jernih dan terumbu karangnya yang indah menjadikan pantai ini tempat yang sempurna untuk snorkeling di kawasan Taman Nasional Komodo.",
+            ],
+        },
+    };
+
+    const cards = Array.from(section.querySelectorAll(".group"));
+    const pad = (v) => String(v).padStart(2, "0");
+    const visibleCards = () => cards.filter((c) => c.offsetParent !== null); // di mobile satu kartu disembunyikan
+
+    let list = [];
+    let index = 0;
+    let lastFocus = null;
+    let swapTimer;
+
+    function fill(card) {
+        const photo = card.querySelector("img");
+        const name = photo?.alt ?? "";
+        const info = INFO[name] ?? {
+            lokasi: "Indonesia",
+            desc: [`Jelajahi ${name}, sebuah destinasi dengan keindahan alam yang menunggu untuk ditemukan.`],
+        };
+
+        img.src = photo?.currentSrc || photo?.src || "";
+        img.alt = name;
+        title.textContent = name;
+        lokasi.textContent = info.lokasi;
+
+        desc.replaceChildren(
+            ...info.desc.map((text) => {
+                const p = document.createElement("p");
+                p.className = "m-0";
+                p.textContent = text;
+                return p;
+            })
+        );
+
+        now.textContent = pad(index + 1);
+        total.textContent = pad(list.length);
+        body.scrollTop = 0;
+    }
+
+    function show(i, animate = true) {
+        index = (i + list.length) % list.length;
+        clearTimeout(swapTimer);
+
+        if (!animate) return fill(list[index]);
+
+        // fade singkat saat pindah antar destinasi
+        body.style.opacity = "0";
+        swapTimer = setTimeout(() => {
+            fill(list[index]);
+            body.style.opacity = "1";
+        }, 180);
+    }
+
+    function open(card) {
+        list = visibleCards();
+        index = Math.max(0, list.indexOf(card));
+        lastFocus = document.activeElement;
+        show(index, false);
+
+        body.style.opacity = "1";
+        modal.inert = false;
+        modal.dataset.visible = "true";
+        document.body.style.overflow = "hidden";
+        closeBtn.focus({ preventScroll: true });
+    }
+
+    function close() {
+        modal.dataset.visible = "false";
+        modal.inert = true;
+        document.body.style.overflow = "";
+        lastFocus?.focus?.({ preventScroll: true });
+    }
+
+    cards.forEach((card) => {
+        card.classList.add("cursor-pointer");
+        card.setAttribute("role", "button");
+        card.tabIndex = 0;
+        card.addEventListener("click", () => open(card));
+        card.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                open(card);
+            }
+        });
+    });
+
+    closeBtn.addEventListener("click", close);
+    overlay.addEventListener("click", close);
+    prev.addEventListener("click", () => show(index - 1));
+    next.addEventListener("click", () => show(index + 1));
+
+    document.addEventListener("keydown", (e) => {
+        if (modal.dataset.visible !== "true") return;
+        if (e.key === "Escape") close();
+        if (e.key === "ArrowLeft") show(index - 1);
+        if (e.key === "ArrowRight") show(index + 1);
+    });
+})();
+
 // section 4 page destinasi
 (function () {
     const section = document.getElementById("topDest");
