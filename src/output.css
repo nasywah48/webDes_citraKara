@@ -247,6 +247,9 @@
   .inset-y-0 {
     inset-block: 0px;
   }
+  .-top-20 {
+    top: calc(var(--spacing) * -20);
+  }
   .-top-40 {
     top: calc(var(--spacing) * -40);
   }
@@ -379,6 +382,9 @@
   .-bottom-4 {
     bottom: calc(var(--spacing) * -4);
   }
+  .-bottom-6 {
+    bottom: calc(var(--spacing) * -6);
+  }
   .-bottom-10 {
     bottom: calc(var(--spacing) * -10);
   }
@@ -418,6 +424,9 @@
   .bottom-16 {
     bottom: calc(var(--spacing) * 16);
   }
+  .bottom-20 {
+    bottom: calc(var(--spacing) * 20);
+  }
   .bottom-24 {
     bottom: calc(var(--spacing) * 24);
   }
@@ -429,6 +438,15 @@
   }
   .bottom-\[4\.5rem\] {
     bottom: 4.5rem;
+  }
+  .bottom-\[20\] {
+    bottom: 20;
+  }
+  .bottom-\[20rem\] {
+    bottom: 20rem;
+  }
+  .bottom-\[r\] {
+    bottom: r;
   }
   .-left-24 {
     left: calc(var(--spacing) * -24);
@@ -610,6 +628,9 @@
   .ml-6 {
     margin-left: calc(var(--spacing) * 6);
   }
+  .ml-auto {
+    margin-left: auto;
+  }
   .block {
     display: block;
   }
@@ -684,6 +705,9 @@
   }
   .h-24 {
     height: calc(var(--spacing) * 24);
+  }
+  .h-30 {
+    height: calc(var(--spacing) * 30);
   }
   .h-48 {
     height: calc(var(--spacing) * 48);
@@ -948,6 +972,9 @@
   .snap-start {
     scroll-snap-align: start;
   }
+  .scroll-py-6 {
+    scroll-padding-block: calc(var(--spacing) * 6);
+  }
   .scroll-pl-6 {
     scroll-padding-left: calc(var(--spacing) * 6);
   }
@@ -1053,6 +1080,12 @@
   }
   .gap-y-16 {
     row-gap: calc(var(--spacing) * 16);
+  }
+  .self-center {
+    align-self: center;
+  }
+  .self-end {
+    align-self: flex-end;
   }
   .overflow-hidden {
     overflow: hidden;
@@ -1337,6 +1370,10 @@
     --tw-gradient-via-stops: var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position);
     --tw-gradient-stops: var(--tw-gradient-via-stops);
   }
+  .to-black {
+    --tw-gradient-to: var(--color-black);
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
   .to-black\/20 {
     --tw-gradient-to: color-mix(in srgb, #000 20%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
@@ -1408,11 +1445,17 @@
   .py-3 {
     padding-block: calc(var(--spacing) * 3);
   }
+  .py-6 {
+    padding-block: calc(var(--spacing) * 6);
+  }
   .py-16 {
     padding-block: calc(var(--spacing) * 16);
   }
   .py-24 {
     padding-block: calc(var(--spacing) * 24);
+  }
+  .py-30 {
+    padding-block: calc(var(--spacing) * 30);
   }
   .py-120 {
     padding-block: calc(var(--spacing) * 120);
@@ -2269,6 +2312,9 @@
     .md\:-ml-42 {
       margin-left: calc(var(--spacing) * -42);
     }
+    .md\:ml-0 {
+      margin-left: 0px;
+    }
     .md\:ml-auto {
       margin-left: auto;
     }
@@ -2361,6 +2407,10 @@
     }
     .md\:shrink-0 {
       flex-shrink: 0;
+    }
+    .md\:-translate-x-1\/2 {
+      --tw-translate-x: calc(calc(1 / 2 * 100%) * -1);
+      translate: var(--tw-translate-x) var(--tw-translate-y);
     }
     .md\:-translate-y-1\/2 {
       --tw-translate-y: calc(calc(1 / 2 * 100%) * -1);
@@ -2463,8 +2513,17 @@
     .md\:px-20 {
       padding-inline: calc(var(--spacing) * 20);
     }
+    .md\:py-20 {
+      padding-block: calc(var(--spacing) * 20);
+    }
+    .md\:py-100 {
+      padding-block: calc(var(--spacing) * 100);
+    }
     .md\:py-120 {
       padding-block: calc(var(--spacing) * 120);
+    }
+    .md\:py-220 {
+      padding-block: calc(var(--spacing) * 220);
     }
     .md\:pt-10 {
       padding-top: calc(var(--spacing) * 10);

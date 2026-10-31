@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="src/output.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="icon" type="image/png" href="assets/logo.png">
+    <title>CitraKara | jember Carnival</title>
+</head>
+
+<!-- background music -->
+<audio id="bgMusic" loop preload="auto">
+    <source src="assets/sound_landing_page.mp3" type="audio/mpeg">
+</audio>
+
+<!-- music toggle -->
+<button id="musicToggle" type="button" aria-label="Putar musik" aria-pressed="false" class="fixed bottom-6 right-6 z-50 flex items-center gap-3 rounded-full border border-white/30 bg-black/70 px-5 py-3 text-sm text-white shadow-xl backdrop-blur-md transition hover:bg-black/90">
+    <i id="musicIcon" class="ri-volume-mute-line text-lg"></i>
+    <span id="musicLabel">Music Off</span>
+</button>
+
+<body class="bg-background">
+
+    <!-- navbar -->
+    <nav id="navbar" class="fixed inset-x-0 top-0 z-50 bg-black/40 backdrop-blur-md">
+        <div class="mx-auto flex h-[88px] max-w-7xl items-center justify-between px-6 md:px-8">
+            <a href="#" class="w-40 md:w-44"><img src="assets/citraKara_logo.png" alt="CitraKara"></a>
+
+            <ul class="m-0 hidden list-none items-center gap-8 p-0 font-['Playfair_Display'] text-sm md:flex">
+                <li><a href="index.html" class="text-white/80 no-underline transition hover:text-white">Beranda</a></li>
+                <li><a href="destinasi.html" class="text-white/80 no-underline transition hover:text-white">Destinasi</a></li>
+                <li><a href="#" class="text-white/80 no-underline transition hover:text-white">Seni &amp; Budaya</a></li>
+                <li><a href="#" class="text-white/80 no-underline transition hover:text-white">Cerita</a></li>
+            </ul>
+
+            <!-- tombol desktop -->
+            <a href="#" class="group hidden items-center gap-3 rounded-full border border-secondary/80 px-5 py-2 text-sm text-white no-underline transition hover:bg-secondary hover:text-black hover:font-medium md:inline-flex">Jelajahi Pusaka <i class="ri-arrow-right-line text-secondary group-hover:text-black"></i></a>
+
+            <!-- hamburger (mobile) -->
+            <button id="navToggle" type="button" aria-label="Buka menu" aria-expanded="false" aria-controls="navMenu" class="inline-flex h-10 w-10 items-center justify-center rounded-full text-white transition hover:bg-white/10 md:hidden">
+                <i id="navIcon" class="ri-menu-line text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- humberger mobile -->
+        <div id="navMenu" inert data-open="false" class="grid grid-rows-[0fr] bg-black/70 transition-[grid-template-rows,border-color] duration-300 data-[open=true]:grid-rows-[1fr] data-[open=true]:border-white/10 md:hidden">
+            <div class="overflow-hidden">
+                <ul class="m-0 flex list-none flex-col gap-1 p-0 px-6 pb-6 pt-4 font-['Playfair_Display'] text-base">
+                    <li><a href="index.html" class="block rounded-lg px-3 py-3 text-white/80 no-underline transition hover:bg-white/10 hover:text-white">Beranda</a></li>
+                    <li><a href="destinasi.html" class="block rounded-lg px-3 py-3 text-white/80 no-underline transition hover:bg-white/10 hover:text-white">Destinasi</a></li>
+                    <li><a href="#" class="block rounded-lg px-3 py-3 text-white/80 no-underline transition hover:bg-white/10 hover:text-white">Seni &amp; Budaya</a></li>
+                    <li><a href="#" class="block rounded-lg px-3 py-3 text-white/80 no-underline transition hover:bg-white/10 hover:text-white">Cerita</a></li>
+                    <li class="mt-3 font-jakarta">
+                        <a href="#" class="group flex items-center justify-center gap-3 rounded-full border border-secondary/80 px-5 py-3 text-sm text-white no-underline transition hover:bg-secondary hover:text-black">Jelajahi Pusaka <i class="ri-arrow-right-line text-secondary group-hover:text-black"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- hero -->
+    <section class="relative h-[100vh] min-h-[420px] overflow-hidden font-jakarta">
+        <img src="assets/galungan_page/hero_galungan.png" alt="Galungan" class="absolute inset-0 z-0 h-screen w-full object-cover">
+        <div class="absolute inset-0 z-[1] bg-black/45"></div>
+
+        <div class="relative z-10 flex h-full flex-col items-center justify-center px-6 pt-[88px] text-center text-white">
+            <p class="m-0 text-[0.65rem] font-light uppercase tracking-[0.25em] text-white/80 md:text-xs">Festival &amp; Tradisi</p>
+            <h1 class="m-0 mt-3 font-light leading-tight tracking-tight text-white" style="font-size:clamp(2.2rem,6vw,4.5rem);">Galungan &amp; Kuningan</h1>
+        </div>
+    </section>
+
+    <!-- section 2 -->
+    <section id="makna" class="relative overflow-hidden bg-[#020611] pb-24 pt-16 font-jakarta text-white md:pb-32 md:pt-24">
+
+        <!-- megamendung -->
+        <img src="assets/megamendung_component.png" alt="" class="pointer-events-none absolute -left-24 top-10 z-0 w-56 select-none opacity-50 md:-left-16 md:top-12 md:w-80">
+
+        <div class="relative z-10 mx-auto grid max-w-6xl items-center gap-12 px-6 md:grid-cols-[1.15fr_0.85fr] md:gap-16 md:px-8">
+            <!-- teks -->
+            <div>
+                <p data-reveal class="m-0 text-xs font-light uppercase tracking-[0.2em] text-white/80 md:text-sm">Makna Galungan &amp; Kuningan</p>
+                <h2 data-reveal class="m-0 mt-5 font-['Playfair_Display'] text-3xl font-bold leading-[1.3] tracking-[0.06em] text-white/90 md:text-4xl">Lebih dari Sekadar Perayaan, Ini adalah Rasa Syukur.</h2>
+
+                <div data-reveal class="mt-8 space-y-5 text-sm leading-[1.8] text-white/75 md:max-w-lg">
+                    <p class="m-0">Galungan adalah hari raya umat Hindu di Bali yang memperingati kemenangan dharma atas adharma. Dirayakan setiap 210 hari berdasarkan kalender Pawukon, hari ini dipercaya sebagai saat para leluhur turun mengunjungi keluarga mereka di rumah.</p>
+                    <p class="m-0">Sepuluh hari kemudian, perayaan ditutup dengan Kuningan. Penjor bambu menjulang di tepi jalan, sesajen dipersembahkan di pura dan rumah, dan keluarga berkumpul untuk bersembahyang bersama. Semuanya menjadi wujud syukur, kebersamaan, dan penghormatan pada leluhur yang terus dijaga turun-temurun.</p>
+                </div>
+            </div>
+
+            <!-- img -->
+            <div data-reveal class="relative mx-auto w-full max-w-[18rem] md:ml-auto md:mr-0 md:max-w-sm">
+                <!-- megamendung -->
+                <img src="assets/megamendung_component.png" alt="" class="pointer-events-none absolute -bottom-10 -right-20 z-0 w-64 select-none opacity-60 md:-bottom-14 md:-right-32 md:w-[22rem]">
+                <img src="assets/galungan_page/makna_galungan.png" alt="Warga membawa sesajen dalam prosesi Galungan" class="relative z-10 aspect-[3/4] w-full object-cover">
+            </div>
+        </div>
+
+        <img src="assets/ornamen.png" alt="" class="pointer-events-none mx-auto mt-16 block w-20 select-none md:mt-24 md:w-24">
+    </section>
+
+    <!-- section 3 -->
+    <section id="keunikan" class="relative overflow-hidden bg-[#020611] pb-16 pt-10 font-jakarta text-white md:pb-24 md:pt-10">
+
+        <!-- megamendung -->
+        <img src="assets/megamendung_component.png" alt="" class="pointer-events-none absolute -left-24 top-16 z-0 w-48 select-none opacity-40 md:-left-20 md:top-20 md:w-72">
+
+        <div class="relative z-10 mx-auto max-w-6xl px-6 md:px-4">
+
+            <p data-reveal class="m-0 text-[0.65rem] font-medium uppercase tracking-[0.2em] text-secondary md:text-xs">Keunikan Tradisi</p>
+            <h2 data-reveal class="m-0 mt-3 font-['Playfair_Display'] text-2xl font-bold tracking-[0.08em] text-white/90 md:text-4xl">Simbol dan Tradisi yang Sarat Makna</h2>
+            <p data-reveal class="m-0 mt-4 max-w-lg text-sm leading-relaxed text-white/80 md:text-base">Kenali berbagai simbol dan tradisi dalam perayaan Galungan dan Kuningan yang mencerminkan rasa syukur, penghormatan, serta keharmonisan hidup masyarakat Bali.</p>
+
+            <!-- card -->
+            <div class="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 md:mt-14 md:grid-cols-3 md:gap-6">
+
+                <!-- Penjor -->
+                <article data-reveal class="group flex flex-col overflow-hidden rounded-xl border border-white/20 bg-[#0b1220] transition duration-300 hover:-translate-y-1 hover:border-secondary/60">
+                    <div class="aspect-[4/3] overflow-hidden bg-white/5">
+                        <img src="assets/galungan_page/penjor.png" alt="Penjor" class="h-full w-full object-cover transition duration-700 group-hover:scale-105">
+                    </div>
+                    <div class="flex flex-1 flex-col p-5">
+                        <div class="flex items-start justify-between gap-3">
+                            <div>
+                                <h3 class="m-0 font-['Playfair_Display'] text-base font-bold tracking-[0.08em] text-white/90">Penjor</h3>
+                                <p class="m-0 mt-1 text-[0.55rem] uppercase tracking-[0.12em] text-white/50">Simbol Rasa Syukur</p>
+                            </div>
+                            <a href="#" aria-label="Pelajari Penjor" class="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-secondary/70 text-secondary no-underline transition hover:bg-secondary hover:text-black"><i class="ri-arrow-right-line text-sm"></i></a>
+                        </div>
+                        <p class="m-0 mt-4 text-xs leading-relaxed text-white/70">Penjor merupakan bambu melengkung yang dihiasi janur dan berbagai hasil bumi. Hiasan ini melambangkan rasa syukur atas anugerah Tuhan serta kemakmuran dan kesejahteraan.</p>
+                    </div>
+                </article>
+
+                <!-- Persembahyangan -->
+                <article data-reveal class="group flex flex-col overflow-hidden rounded-xl border border-white/20 bg-[#0b1220] transition duration-300 hover:-translate-y-1 hover:border-secondary/60">
+                    <div class="aspect-[4/3] overflow-hidden bg-white/5">
+                        <img src="assets/galungan_page/persembahan.png" alt="Persembahyangan" class="h-full w-full object-cover transition duration-700 group-hover:scale-105">
+                    </div>
+                    <div class="flex flex-1 flex-col p-5">
+                        <div class="flex items-start justify-between gap-3">
+                            <div>
+                                <h3 class="m-0 font-['Playfair_Display'] text-base font-bold tracking-[0.08em] text-white/90">Persembahyangan</h3>
+                                <p class="m-0 mt-1 text-[0.55rem] uppercase tracking-[0.12em] text-white/50">Doa dan Penghormatan</p>
+                            </div>
+                            <a href="#" aria-label="Pelajari Persembahyangan" class="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-secondary/70 text-secondary no-underline transition hover:bg-secondary hover:text-black"><i class="ri-arrow-right-line text-sm"></i></a>
+                        </div>
+                        <p class="m-0 mt-4 text-xs leading-relaxed text-white/70">Umat Hindu di Bali melaksanakan persembahyangan sebagai ungkapan rasa syukur kepada Ida Sang Hyang Widhi Wasa, sekaligus memohon keselamatan dan menghormati leluhur.</p>
+                    </div>
+                </article>
+
+                <!-- Makna Spiritual -->
+                <article data-reveal class="group flex flex-col overflow-hidden rounded-xl border border-white/20 bg-[#0b1220] transition duration-300 hover:-translate-y-1 hover:border-secondary/60 sm:col-span-2 md:col-span-1">
+                    <div class="aspect-[4/3] overflow-hidden bg-white/5 sm:aspect-[16/7] md:aspect-[4/3]">
+                        <img src="assets/galungan_page/makna.png" alt="Makna Spiritual" class="h-full w-full object-cover transition duration-700 group-hover:scale-105">
+                    </div>
+                    <div class="flex flex-1 flex-col p-5">
+                        <div class="flex items-start justify-between gap-3">
+                            <div>
+                                <h3 class="m-0 font-['Playfair_Display'] text-base font-bold tracking-[0.08em] text-white/90">Makna Spiritual</h3>
+                                <p class="m-0 mt-1 text-[0.55rem] uppercase tracking-[0.12em] text-white/50">Merayakan Kebaikan dan Keharmonisan</p>
+                            </div>
+                            <a href="#" aria-label="Pelajari Makna Spiritual" class="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-secondary/70 text-secondary no-underline transition hover:bg-secondary hover:text-black"><i class="ri-arrow-right-line text-sm"></i></a>
+                        </div>
+                        <p class="m-0 mt-4 text-xs leading-relaxed text-white/70">Galungan melambangkan kemenangan Dharma (kebaikan) atas Adharma (kejahatan), sedangkan Kuningan menjadi momen untuk memperkuat nilai spiritual, rasa syukur, dan keharmonisan hidup.</p>
+                    </div>
+                </article>
+
+            </div>
+
+            <!-- ornamen -->
+            <img src="assets/ornamen.png" alt="" class="pointer-events-none mx-auto mt-14 block w-20 select-none md:mt-20 md:w-24">
+        </div>
+    </section>
+
+    <!-- section 4 -->
+    <section id="galeri" class="relative overflow-hidden bg-[#020611] pb-20 pt-4 font-jakarta text-white md:pb-32">
+        <div class="mx-auto max-w-6xl px-6 md:px-8">
+
+            <p data-reveal class="m-0 text-[0.65rem] font-medium uppercase tracking-[0.2em] text-secondary md:text-xs">Galeri</p>
+            <h2 data-reveal class="m-0 mt-3 font-['Playfair_Display'] text-2xl font-bold tracking-[0.08em] text-white/90 md:text-4xl">Pesona Galungan &amp; Kuningan</h2>
+
+            <div class="mt-10 grid grid-cols-3 grid-rows-[repeat(2,9rem)] gap-2 sm:grid-rows-[repeat(2,13rem)] md:mt-14 md:grid-rows-[repeat(2,16rem)] md:gap-4">
+
+                <!-- foto tinggi (kiri) -->
+                <div data-reveal class="group relative row-span-2 overflow-hidden rounded-md bg-white/5">
+                    <img src="assets/galungan_page/galeri_1.png" alt="Galeri Galungan 1" class="h-full w-full object-cover transition duration-700 group-hover:scale-110">
+                </div>
+
+                <!-- kanan atas -->
+                <div data-reveal class="group relative col-span-1 overflow-hidden rounded-md bg-white/5">
+                    <img src="assets/galungan_page/galeri_2.png" alt="Galeri Galungan 2" class="h-full w-full object-cover transition duration-700 group-hover:scale-110">
+                </div>
+                <div data-reveal class="group relative col-span-1 overflow-hidden rounded-md bg-white/5">
+                    <img src="assets/galungan_page/galeri_3.png" alt="Galeri Galungan 3" class="h-full w-full object-cover transition duration-700 group-hover:scale-110">
+                </div>
+
+                <!-- kanan bawah -->
+                <div data-reveal class="group relative col-span-1 overflow-hidden rounded-md bg-white/5">
+                    <img src="assets/galungan_page/galeri_4.png" alt="Galeri Galungan 4" class="h-full w-full object-cover transition duration-700 group-hover:scale-110">
+                </div>
+                <div data-reveal class="group relative col-span-1 overflow-hidden rounded-md bg-white/5">
+                    <img src="assets/galungan_page/galeri_5.png" alt="Galeri Galungan 5" class="h-full w-full object-cover transition duration-700 group-hover:scale-110">
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- footer -->
+    <footer class="relative overflow-hidden bg-[#151b27] font-jakarta text-white">
+        <img src="assets/footer_bg.png" alt="" class="pointer-events-none absolute inset-0 h-full w-full object-cover">
+
+        <div class="relative mx-auto max-w-6xl px-5 pb-8 pt-14 md:px-6 md:pt-20">
+            <div class="grid grid-cols-[1.3fr_1fr_1fr] gap-4 md:gap-10 [&_h4]:text-xs [&_h4]:font-medium [&_h4]:text-white/90 md:[&_h4]:text-sm [&_ul]:mt-3 [&_ul]:space-y-1.5 [&_ul]:text-[0.6rem] [&_ul]:text-white/60 md:[&_ul]:mt-4 md:[&_ul]:space-y-2 md:[&_ul]:text-xs [&_a]:transition [&_a:hover]:text-white">
+
+                <div>
+                    <a href="#" class="block w-24 md:w-40"><img src="assets/citraKara_logo.png" alt="CitraKara"></a>
+                    <p class="mt-4 text-[0.6rem] leading-relaxed text-white/60 md:max-w-[12rem] md:text-xs">Dari pegunungan yang menjulang, lautan yang membentang, hingga hutan yang rimbun, alam Nusantara menyimpan keindahan dan kehidupan yang menjadi bagian penting dari warisan kita bersama.</p>
+                </div>
+
+                <div>
+                    <h4>Beranda</h4>
+                    <ul>
+                        <li><a href="#budayaScroll">Kekayaan Nusantara</a></li>
+                        <li><a href="#">Peta Nusantara</a></li>
+                        <li><a href="#alam">Alam Nusantara</a></li>
+                        <li><a href="#event">Festival &amp; Tradisi Nusantara</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4>Tentang Kami</h4>
+                    <ul>
+                        <li><a href="#">Bantuan</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <p class="mt-12 flex items-center right-20 justify-center gap-1.5 text-[0.6rem] text-white/50 md:mt-20 md:text-[0.7rem]"><i class="ri-copyright-line"></i> 2026 CitraKara. All rights reserved.</p>
+        </div>
+    </footer>
+
+<script src="script.js"></script>
+<script src="music.js"></script>
+</body>
+</html>

@@ -52,7 +52,7 @@
     <div id="navMenu" inert data-open="false" class="grid grid-rows-[0fr] bg-black/70 transition-[grid-template-rows,border-color] duration-300 data-[open=true]:grid-rows-[1fr] data-[open=true]:border-white/10 md:hidden">
         <div class="overflow-hidden">
             <ul class="m-0 flex list-none flex-col gap-1 p-0 px-6 pb-6 pt-4 font-['Playfair_Display'] text-base">
-                <li><a href="index.html" class="block rounded-lg px-3 py-3 text-white no-underline transition hover:bg-white/10">Beranda</a></li>
+                <li><a href="index.html" class="block rounded-lg px-3 py-3 text-white/80 no-underline font-bold transition hover:bg-white/10 hover:text-white">Beranda</a></li>
                 <li><a href="destinasi.html" class="block rounded-lg px-3 py-3 text-white/80 no-underline transition hover:bg-white/10 hover:text-white">Destinasi</a></li>
                 <li><a href="#" class="block rounded-lg px-3 py-3 text-white/80 no-underline transition hover:bg-white/10 hover:text-white">Seni &amp; Budaya</a></li>
                 <li><a href="#" class="block rounded-lg px-3 py-3 text-white/80 no-underline transition hover:bg-white/10 hover:text-white">Cerita</a></li>
@@ -98,19 +98,17 @@
 
 <!-- section 2, CD -->
 <section id="budayaScroll" class="relative overflow-hidden bg-[#020611] font-jakarta touch-pan-y select-none text-white [--size:clamp(200px,26vw,290px)]">
-    <div class="relative overflow-hidden py-120">        
+    <div class="relative flex flex-col gap-6 overflow-hidden px-6 pb-16 pt-6 pt-28 md:block md:gap-0 md:p-0 md:py-120">
+
         <img src="assets/megamendung_component.png" class="pointer-events-none absolute bottom-12 -right-16 z-0 w-68 select-none opacity-70 md:-right-10 md:w-[26rem]" alt="">
 
-        <!-- pill atas -->
-        <div class="absolute right-6 top-6 z-20 inline-flex items-center gap-3 rounded-full bg-white/10 px-5 mt-4 py-2 text-[0.7rem] uppercase tracking-[0.15em] text-white/80 md:right-12 md:top-10">Kekayaan Nusantara<i class="inline-block h-1 w-1 rounded-full bg-white/80"></i>
-        </div>
+        <div class="relative z-20 inline-flex items-center gap-3 self-end rounded-full bg-white/10 px-5 py-2 text-[0.7rem] uppercase tracking-[0.15em] text-white/80 md:absolute md:right-12 md:top-10 md:mt-4">Kekayaan Nusantara<i class="inline-block h-1 w-1 rounded-full bg-white/80"></i></div>
 
-        <h2 class="absolute left-6 top-30 z-20 max-w-xl text-[clamp(1.9rem,3.6vw,3.2rem)] font-extralight leading-[1.25] text-white/80 md:left-12 md:top-[7rem]">Jelajahi Ragam Budaya <em class="font-bold italic text-secondary"><br>Nusantara</em> Yang Penuh<br>Makna dan Pesona.</h2>
+        <h2 class="relative z-20 m-0 max-w-xl text-[clamp(1.9rem,3.6vw,3.2rem)] font-extralight leading-[1.25] text-white/80 md:absolute md:left-12 md:top-[7rem]">Jelajahi Ragam Budaya <em class="font-bold italic text-secondary"><br>Nusantara</em> Yang Penuh<br>Makna dan Pesona.</h2>
 
-        <!-- Tombol navigasi CD -->
+        <!-- carousel CD -->
         <div class="relative z-10 -mx-6 md:absolute md:inset-x-0 md:top-[56%] md:mx-0 md:-translate-y-1/2">
-
-            <div class="relative flex flex-col gap-10 overflow-hidden px-6 py-24 md:block md:gap-0 md:p-0 md:py-120">
+            <div class="relative">
 
                 <button id="discPrev" type="button" aria-label="CD sebelumnya" class="absolute left-2 top-1/2 z-30 -translate-y-1/2 rounded-full bg-white/10 p-3 text-white transition hover:bg-white/20">
                     <i class="ri-arrow-left-line text-xl"></i>
@@ -118,7 +116,9 @@
 
                 <div id="discViewport" class="w-full overflow-hidden">
                     <div id="discTrack" class="relative h-[var(--size)] w-full">
-                            <!-- tari -->
+
+                        <!-- tari -->
+                        <a href="tari.html">
                             <article class="disc absolute left-1/2 top-0 h-[var(--size)] w-[var(--size)] cursor-grab will-change-transform">
                                 <div class="h-full w-full rounded-full p-1 bg-[linear-gradient(145deg,#f1f1f5,#6b6f7a_40%,#d9dbe2_70%,#555a66)]">
                                     <div class="relative h-full w-full overflow-hidden rounded-full bg-[#0b1220]">
@@ -134,6 +134,7 @@
                                     </div>
                                 </div>
                             </article>
+                        </a>
 
                             <!-- alat musik -->
                             <article class="disc absolute left-1/2 top-0 h-[var(--size)] w-[var(--size)] cursor-grab will-change-transform">
@@ -219,6 +220,7 @@
                                     </div>
                                 </div>
                             </article>
+
                     </div>
                 </div>
 
@@ -230,12 +232,12 @@
         </div>
 
         <!-- button lebih banyak -->
-        <a href="#" class="absolute left-1/2 top-[62%] z-20 -translate-x-1/2 text-[0.6rem] uppercase tracking-[0.2em] text-white/60 no-underline hover:text-white md:top-[82%]">Lebih banyak <i class="ri-arrow-right-up-long-line"></i></a>
+        <a href="#" class="relative z-20 self-center text-[0.6rem] uppercase tracking-[0.2em] text-white/60 no-underline hover:text-white md:absolute md:left-1/2 md:top-[82%] md:-translate-x-1/2">Lebih banyak <i class="ri-arrow-right-up-long-line"></i></a>
 
         <!-- text -->
-        <div class="absolute bottom-24 right-6 z-20 max-w-[16rem] text-right md:bottom-16 md:right-12 md:max-w-[24rem]">
-            <p class="m-0 text-sm leading-[1.7] text-white/60">Dari Sabang hingga Merauke, Setiap daerah  di indonesia memiliki cerita, tradisi, dan seni yang unik. Temukan keindahan budaya Nusantara dalam berbagai bentuk warisan yang terus hidup menginspirasi.</p>
-            <small class="mt-4 italic block text-[0.55rem] uppercase tracking-[0.2em] text-secondary">— Satu Nusantara · Jutaan Cerita</small>
+        <div class="relative z-20 ml-auto max-w-[16rem] text-right md:absolute md:bottom-16 md:right-12 md:ml-0 md:max-w-[24rem]">
+            <p class="m-0 text-sm leading-[1.7] text-white/60">Dari Sabang hingga Merauke, Setiap daerah di indonesia memiliki cerita, tradisi, dan seni yang unik. Temukan keindahan budaya Nusantara dalam berbagai bentuk warisan yang terus hidup menginspirasi.</p>
+            <small class="mt-4 block text-[0.55rem] italic uppercase tracking-[0.2em] text-secondary">— Satu Nusantara · Jutan Cerita</small>
         </div>
 
     </div>
@@ -519,7 +521,7 @@
                 <h3 class="m-0 mt-3 text-xl font-light text-white/90 md:text-2xl capitalize">jember fashion carnival</h3>
                 <p class="m-0 mt-2 flex items-center gap-1.5 text-[0.7rem] text-white/60"><i class="ri-map-pin-line text-secondary"></i>Jember, Jawa Timur</p>
                 <p class="m-0 mt-4 max-w-sm text-xs leading-relaxed text-white/45">Perpaduan seni, budaya, dan kreativitas dalam bentuk karnaval busana yang mendunia.</p>
-                <a href="#" class="mt-6 inline-flex w-fit items-center gap-2 rounded-full border border-secondary/70 px-4 py-1.5 text-[0.65rem] text-secondary no-underline transition hover:bg-secondary hover:text-black">Selengkapnya <i class="ri-arrow-right-line"></i></a>
+                <a href="jember_carnival.html" class="mt-6 inline-flex w-fit items-center gap-2 rounded-full border border-secondary/70 px-4 py-1.5 text-[0.65rem] text-secondary no-underline transition hover:bg-secondary hover:text-black">Selengkapnya <i class="ri-arrow-right-line"></i></a>
             </div>
             <img src="assets/megamendung_component.png" alt="" aria-hidden="true" class="pointer-events-none absolute -bottom-2 -right-2 z-0 w-32 select-none opacity-60">
         </article>
@@ -531,7 +533,7 @@
             </div>
             <div class="relative z-10 flex flex-1 flex-col p-5 md:p-6">
                 <div class="flex items-center gap-4 text-secondary">
-                    <span class="text-xl font-light">03</span>
+                    <span class="text-xl font-light">04</span>
                     <span class="h-px w-12 bg-secondary/70"></span>
                 </div>
                 <h3 class="m-0 mt-3 text-xl font-light text-white/90 md:text-2xl capitalize">pasola</h3>
@@ -549,7 +551,7 @@
             </div>
             <div class="relative z-10 flex flex-1 flex-col p-5 md:p-6">
                 <div class="flex items-center gap-4 text-secondary">
-                    <span class="text-xl font-light">03</span>
+                    <span class="text-xl font-light">05</span>
                     <span class="h-px w-12 bg-secondary/70"></span>
                 </div>
                 <h3 class="m-0 mt-3 text-xl font-light text-white/90 md:text-2xl capitalize">pesta kesenian bali</h3>
@@ -644,3 +646,4 @@
 <script src="music.js"></script>
 </body>
 </html>
+
