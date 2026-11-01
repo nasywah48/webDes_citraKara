@@ -520,6 +520,12 @@
   .z-\[60\] {
     z-index: 60;
   }
+  .order-1 {
+    order: 1;
+  }
+  .order-2 {
+    order: 2;
+  }
   .col-2 {
     grid-column: 2;
   }
@@ -570,6 +576,9 @@
   }
   .mx-auto {
     margin-inline: auto;
+  }
+  .mt-0\.5 {
+    margin-top: calc(var(--spacing) * 0.5);
   }
   .mt-1 {
     margin-top: var(--spacing);
@@ -693,6 +702,9 @@
   }
   .aspect-\[16\/9\] {
     aspect-ratio: 16/9;
+  }
+  .aspect-\[16\/10\] {
+    aspect-ratio: 16/10;
   }
   .aspect-square {
     aspect-ratio: 1 / 1;
@@ -2343,6 +2355,12 @@
     .md\:left-16 {
       left: calc(var(--spacing) * 16);
     }
+    .md\:order-1 {
+      order: 1;
+    }
+    .md\:order-2 {
+      order: 2;
+    }
     .md\:col-span-1 {
       grid-column: span 1 / span 1;
     }
@@ -2421,8 +2439,14 @@
     .md\:aspect-\[9\/10\] {
       aspect-ratio: 9/10;
     }
+    .md\:aspect-\[11\/10\] {
+      aspect-ratio: 11/10;
+    }
     .md\:aspect-auto {
       aspect-ratio: auto;
+    }
+    .md\:aspect-square {
+      aspect-ratio: 1 / 1;
     }
     .md\:h-11 {
       height: calc(var(--spacing) * 11);
@@ -2530,6 +2554,9 @@
     .md\:grid-cols-\[0\.85fr_1\.15fr\] {
       grid-template-columns: 0.85fr 1.15fr;
     }
+    .md\:grid-cols-\[1\.2fr_0\.8fr\] {
+      grid-template-columns: 1.2fr 0.8fr;
+    }
     .md\:grid-cols-\[1\.15fr_0\.85fr\] {
       grid-template-columns: 1.15fr 0.85fr;
     }
@@ -2565,6 +2592,9 @@
     }
     .md\:gap-6 {
       gap: calc(var(--spacing) * 6);
+    }
+    .md\:gap-8 {
+      gap: calc(var(--spacing) * 8);
     }
     .md\:gap-9 {
       gap: calc(var(--spacing) * 9);
@@ -2649,6 +2679,9 @@
     .md\:pb-10 {
       padding-bottom: calc(var(--spacing) * 10);
     }
+    .md\:pb-20 {
+      padding-bottom: calc(var(--spacing) * 20);
+    }
     .md\:pb-24 {
       padding-bottom: calc(var(--spacing) * 24);
     }
@@ -2706,6 +2739,9 @@
     }
     .md\:text-\[0\.7rem\] {
       font-size: 0.7rem;
+    }
+    .md\:text-\[0\.65rem\] {
+      font-size: 0.65rem;
     }
     .md\:tracking-\[0\.3em\] {
       --tw-tracking: 0.3em;
