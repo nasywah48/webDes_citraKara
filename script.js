@@ -1,4 +1,4 @@
-// navbar: hamburger mobile
+// hamburger nav
 (function () {
     const nav = document.getElementById("navbar");
     const toggle = document.getElementById("navToggle");
@@ -205,7 +205,7 @@ updateHero(current);
     next.addEventListener("click", () => go(1));
     prev.addEventListener("click", () => go(-1));
 
-    /* ---------- drag mouse & swipe jari ---------- */
+    /* drag mouse & swipe jari */
     let startX = 0;
     let startPos = 0;
     let dx = 0;
@@ -255,7 +255,7 @@ updateHero(current);
         });
     });
 
-    /* ---------- touchpad (geser dua jari ke samping) ---------- */
+    /* touchpad (geser dua jari ke samping) */
     let wheelAcc = 0;
     let wheelLock = false;
     let wheelTimer;

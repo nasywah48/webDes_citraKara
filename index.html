@@ -32,11 +32,11 @@
     <div class="mx-auto flex h-[88px] max-w-7xl items-center justify-between px-6 md:px-8">
         <a href="#" class="w-40 md:w-44"><img src="assets/citraKara_logo.png" alt="CitraKara"></a>
 
-        <ul class="m-0 hidden list-none items-center gap-8 p-0 font-['Playfair_Display'] text-sm md:flex">
+        <ul class="m-0 hidden list-none items-center gap-8 p-0 font-family text-sm md:flex">
             <li><a href="index.html" class="text-white/80 font-bold no-underline transition hover:text-white">Beranda</a></li>
             <li><a href="destinasi.html" class="text-white/80 no-underline transition hover:text-white">Destinasi</a></li>
-            <li><a href="#" class="text-white/80 no-underline transition hover:text-white">Seni &amp; Budaya</a></li>
-            <li><a href="#" class="text-white/80 no-underline transition hover:text-white">Cerita</a></li>
+            <li><a href="seni_dan_budaya.html" class="text-white/80 no-underline transition hover:text-white">Seni &amp; Budaya</a></li>
+            <li><a href="cerita.html" class="text-white/80 no-underline transition hover:text-white">Cerita</a></li>
         </ul>
 
         <!-- tombol desktop -->
@@ -51,11 +51,11 @@
     <!-- humberger mobile -->
     <div id="navMenu" inert data-open="false" class="grid grid-rows-[0fr] bg-black/70 transition-[grid-template-rows,border-color] duration-300 data-[open=true]:grid-rows-[1fr] data-[open=true]:border-white/10 md:hidden">
         <div class="overflow-hidden">
-            <ul class="m-0 flex list-none flex-col gap-1 p-0 px-6 pb-6 pt-4 font-['Playfair_Display'] text-base">
+            <ul class="m-0 flex list-none flex-col gap-1 p-0 px-6 pb-6 pt-4 font-family text-base">
                 <li><a href="index.html" class="block rounded-lg px-3 py-3 text-white/80 no-underline font-bold transition hover:bg-white/10 hover:text-white">Beranda</a></li>
                 <li><a href="destinasi.html" class="block rounded-lg px-3 py-3 text-white/80 no-underline transition hover:bg-white/10 hover:text-white">Destinasi</a></li>
-                <li><a href="#" class="block rounded-lg px-3 py-3 text-white/80 no-underline transition hover:bg-white/10 hover:text-white">Seni &amp; Budaya</a></li>
-                <li><a href="#" class="block rounded-lg px-3 py-3 text-white/80 no-underline transition hover:bg-white/10 hover:text-white">Cerita</a></li>
+                <li><a href="seni_dan_budaya.html" class="block rounded-lg px-3 py-3 text-white/80 no-underline transition hover:bg-white/10 hover:text-white">Seni &amp; Budaya</a></li>
+                <li><a href="cerita.html" class="block rounded-lg px-3 py-3 text-white/80 no-underline transition hover:bg-white/10 hover:text-white">Cerita</a></li>
                 <li class="mt-3 font-jakarta">
                     <a href="#" class="group flex items-center justify-center gap-3 rounded-full border border-secondary/80 px-5 py-3 text-sm text-white no-underline transition hover:bg-secondary hover:text-black">Jelajahi Pusaka <i class="ri-arrow-right-line text-secondary group-hover:text-black"></i></a>
                 </li>
@@ -136,7 +136,8 @@
                             </article>
                         </a>
 
-                            <!-- alat musik -->
+                        <!-- alat musik -->
+                        <a href="">
                             <article class="disc absolute left-1/2 top-0 h-[var(--size)] w-[var(--size)] cursor-grab will-change-transform">
                                 <div class="h-full w-full rounded-full p-1 bg-[linear-gradient(145deg,#f1f1f5,#6b6f7a_40%,#d9dbe2_70%,#555a66)]">
                                     <div class="relative h-full w-full overflow-hidden rounded-full bg-[#0b1220]">
@@ -152,8 +153,10 @@
                                     </div>
                                 </div>
                             </article>
+                         </a>
 
-                            <!-- kerajinan -->
+                        <!-- kerajinan -->
+                        <a href="kerajinan.html">
                             <article class="disc absolute left-1/2 top-0 h-[var(--size)] w-[var(--size)] cursor-grab will-change-transform">
                                 <div class="h-full w-full rounded-full p-1 bg-[linear-gradient(145deg,#f1f1f5,#6b6f7a_40%,#d9dbe2_70%,#555a66)]">
                                     <div class="relative h-full w-full overflow-hidden rounded-full bg-[#0b1220]">
@@ -169,6 +172,7 @@
                                     </div>
                                 </div>
                             </article>
+                        </a>
 
                             <!-- rumah adat -->
                             <article class="disc absolute left-1/2 top-0 h-[var(--size)] w-[var(--size)] cursor-grab will-change-transform">
@@ -634,7 +638,7 @@
 
         <!-- isi -->
         <div id="alamModalBody" class="relative z-10 max-h-full overflow-y-auto px-16 pb-8 pt-24 text-center transition-opacity duration-200 md:px-20 md:pb-10">
-            <h3 id="alamModalTitle" class="m-0 font-['Playfair_Display'] text-3xl font-bold text-white md:text-5xl">&nbsp;</h3>
+            <h3 id="alamModalTitle" class="m-0 font-family text-3xl font-bold text-white md:text-5xl">&nbsp;</h3>
             <p class="m-0 mt-3 flex items-center justify-center gap-1.5 text-[0.65rem] uppercase tracking-[0.2em] text-secondary md:text-xs"><i class="ri-map-pin-line"></i><span id="alamModalLokasi"></span></p>
             <span class="mx-auto mt-5 block h-px w-12 bg-secondary/70"></span>
             <div id="alamModalDesc" class="mt-5 space-y-3 text-xs leading-relaxed text-white/80 md:text-sm"></div>
