@@ -673,6 +673,9 @@
   .table {
     display: table;
   }
+  .aspect-\[1\.1\/1\] {
+    aspect-ratio: 1.1/1;
+  }
   .aspect-\[1\.08\/1\] {
     aspect-ratio: 1.08/1;
   }
