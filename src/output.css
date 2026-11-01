@@ -1621,6 +1621,9 @@
   .text-right {
     text-align: right;
   }
+  .font-\[\'Playfair_Display\'\,serif\] {
+    font-family: 'Playfair Display',serif;
+  }
   .font-\[\'Playfair_Display\'\] {
     font-family: 'Playfair Display';
   }
@@ -2466,6 +2469,9 @@
     .md\:aspect-\[11\/10\] {
       aspect-ratio: 11/10;
     }
+    .md\:aspect-\[71\/32\] {
+      aspect-ratio: 71/32;
+    }
     .md\:aspect-auto {
       aspect-ratio: auto;
     }
@@ -2534,6 +2540,9 @@
     }
     .md\:max-w-\[24rem\] {
       max-width: 24rem;
+    }
+    .md\:max-w-\[46rem\] {
+      max-width: 46rem;
     }
     .md\:max-w-lg {
       max-width: var(--container-lg);
@@ -2712,6 +2721,9 @@
     .md\:pb-24 {
       padding-bottom: calc(var(--spacing) * 24);
     }
+    .md\:pb-28 {
+      padding-bottom: calc(var(--spacing) * 28);
+    }
     .md\:pb-32 {
       padding-bottom: calc(var(--spacing) * 32);
     }
@@ -2772,6 +2784,9 @@
     }
     .md\:text-\[0\.65rem\] {
       font-size: 0.65rem;
+    }
+    .md\:text-\[0\.95rem\] {
+      font-size: 0.95rem;
     }
     .md\:tracking-\[0\.3em\] {
       --tw-tracking: 0.3em;

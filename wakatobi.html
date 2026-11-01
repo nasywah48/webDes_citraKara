@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="src/output.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="icon" type="image/png" href="assets/logo.png">
+    <title>CitraKara | wakatobi</title>
+</head>
+
+<body class="bg-background">
+
+    <!-- background music -->
+    <audio id="bgMusic" loop preload="auto">
+        <source src="assets/sound_landing_page.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- music toggle -->
+    <button id="musicToggle" type="button" aria-label="Putar musik" aria-pressed="false" class="fixed bottom-6 right-6 z-50 flex items-center gap-3 rounded-full border border-white/30 bg-black/70 px-5 py-3 text-sm text-white shadow-xl backdrop-blur-md transition hover:bg-black/90">
+        <i id="musicIcon" class="ri-volume-mute-line text-lg"></i>
+        <span id="musicLabel">Music Off</span>
+    </button>
+
+    <!-- navbar -->
+    <nav id="navbar" class="fixed inset-x-0 top-0 z-50 bg-black/40 backdrop-blur-md">
+        <div class="mx-auto flex h-[88px] max-w-7xl items-center justify-between px-6 md:px-8">
+            <a href="index.html" class="w-40 md:w-44"><img src="assets/citraKara_logo.png" alt="CitraKara"></a>
+
+            <ul class="m-0 hidden list-none items-center gap-8 p-0 font-family text-sm md:flex">
+                <li><a href="index.html" class="text-white/80 no-underline transition hover:text-white">Beranda</a></li>
+                <li><a href="destinasi.html" class="text-white/80 no-underline transition hover:text-white">Destinasi</a></li>
+                <li><a href="seni_dan_budaya.html" class="text-white/80 no-underline transition hover:text-white">Seni &amp; Budaya</a></li>
+                <li><a href="cerita.html" class="text-white/80 no-underline transition hover:text-white">Cerita</a></li>
+            </ul>
+
+            <!-- tombol desktop -->
+            <a href="#" class="group hidden items-center gap-3 rounded-full border border-secondary/80 px-5 py-2 text-sm text-white no-underline transition hover:bg-secondary hover:text-black hover:font-medium md:inline-flex">Jelajahi Pusaka <i class="ri-arrow-right-line text-secondary group-hover:text-black"></i></a>
+
+            <!-- hamburger (mobile) -->
+            <button id="navToggle" type="button" aria-label="Buka menu" aria-expanded="false" aria-controls="navMenu" class="inline-flex h-10 w-10 items-center justify-center rounded-full text-white transition hover:bg-white/10 md:hidden">
+                <i id="navIcon" class="ri-menu-line text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- menu mobile -->
+        <div id="navMenu" inert data-open="false" class="grid grid-rows-[0fr] bg-black/70 transition-[grid-template-rows,border-color] duration-300 data-[open=true]:grid-rows-[1fr] data-[open=true]:border-white/10 md:hidden">
+            <div class="overflow-hidden">
+                <ul class="m-0 flex list-none flex-col gap-1 p-0 px-6 pb-6 pt-4 font-family text-base">
+                    <li><a href="index.html" class="block rounded-lg px-3 py-3 text-white/80 no-underline transition hover:bg-white/10 hover:text-white">Beranda</a></li>
+                    <li><a href="destinasi.html" class="block rounded-lg px-3 py-3 text-white/80 no-underline transition hover:bg-white/10 hover:text-white">Destinasi</a></li>
+                    <li><a href="seni_dan_budaya.html" class="block rounded-lg px-3 py-3 text-white/80 no-underline transition hover:bg-white/10 hover:text-white">Seni &amp; Budaya</a></li>
+                    <li><a href="cerita.html" class="block rounded-lg px-3 py-3 text-white/80 no-underline transition hover:bg-white/10 hover:text-white">Cerita</a></li>
+                    <li class="mt-3 font-jakarta">
+                        <a href="#" class="group flex items-center justify-center gap-3 rounded-full border border-secondary/80 px-5 py-3 text-sm text-white no-underline transition hover:bg-secondary hover:text-black">Jelajahi Pusaka <i class="ri-arrow-right-line text-secondary group-hover:text-black"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- hero -->
+    <section class="relative h-screen min-h-[420px] overflow-hidden font-jakarta">
+        <img src="assets/wakatobi/hero.png" alt="Pengrajin melukis motif batik" class="absolute inset-0 z-0 h-full w-full object-cover">
+        <div class="absolute inset-0 z-[1] bg-black/45"></div>
+    </section>
+
+    <!-- section 2 -->
+    <section id="makna" class="relative overflow-hidden bg-[#020611] pb-24 pt-16 font-jakarta text-white md:pb-32 md:pt-24">
+
+        <!-- megamendung -->
+        <img src="assets/megamendung_component.png" alt="" class="pointer-events-none absolute -left-24 top-10 z-0 w-56 select-none opacity-50 md:-left-16 md:top-12 md:w-80">
+
+        <div class="relative z-10 mx-auto grid max-w-6xl items-center gap-12 px-6 md:grid-cols-[1.15fr_0.85fr] md:gap-16 md:px-8">
+
+            <!-- teks -->
+            <div>
+                <h2 data-reveal class="m-0 mt-5 font-family capitalize text-3xl font-bold leading-[1.3] tracking-[0.06em] text-white/90 md:text-4xl">wakatobi</h2>
+
+                <div data-reveal class="mt-8 space-y-5 text-sm leading-[1.8] text-white/75 md:max-w-lg">
+                    <p class="m-0">Wakatobi merupakan salah satu kawasan bahari unggulan Indonesia yang terletak di Provinsi Sulawesi Tenggara. Nama Wakatobi berasal dari gabungan empat pulau utama, yaitu Wangi-Wangi, Kaledupa, Tomia, dan Binongko. Kawasan ini dikenal dengan keanekaragaman terumbu karang, ikan tropis, serta ekosistem laut yang menjadi bagian penting dari kekayaan alam Nusantara.</p>
+                    <br>
+                    <p class="m-0">Keindahan Wakatobi tidak hanya terletak pada dunia bawah lautnya, tetapi juga pada kehidupan masyarakat pesisir yang erat dengan tradisi bahari. Pengetahuan lokal mengenai laut, aktivitas nelayan, serta budaya masyarakat setempat menjadi bagian dari warisan yang terus dijaga dari generasi ke generasi.</p>
+                </div>
+            </div>
+
+            <!-- img -->
+            <div data-reveal class="relative mx-auto w-full max-w-[18rem] md:ml-auto md:mr-0 md:max-w-sm">
+                <img src="assets/wakatobi/section_2.png" alt="Kain batik bermotif emas" class="relative z-10 aspect-square w-full object-cover">
+            </div>
+        </div>
+
+        <!-- ornamen -->
+        <img src="assets/ornamen.png" alt="" class="pointer-events-none mx-auto mt-16 block w-20 select-none md:mt-24 md:w-24">
+    </section>
+
+    <!-- section 3 -->
+    <section id="sejarah" class="relative overflow-hidden bg-[#020611] pb-20 -pt-20 font-jakarta text-white md:pb-10 md:-pt-8">
+        <div class="mx-auto max-w-6xl px-6 md:px-8">
+
+            <div data-reveal class="overflow-hidden">
+                <img src="assets/wakatobi/section_3.png" alt="Pura di tepi danau dengan latar pegunungan berkabut" class="aspect-[16/9] w-full object-cover md:aspect-[71/32]">
+            </div>
+
+            <div class="mt-10 md:mt-14">
+                <h2 data-reveal class="m-0 font-family text-3xl font-medium tracking-[0.12em] text-white md:text-4xl">Sejarah Wakatobi</h2>
+
+                <div data-reveal class="mt-8 space-y-6 text-sm leading-[1.7] text-white/90 md:text-[0.95rem]">
+                    <p class="m-0">Wakatobi memiliki sejarah panjang yang erat kaitannya dengan kehidupan masyarakat kepulauan dan tradisi maritim. Jauh sebelum dikenal sebagai destinasi bahari, wilayah ini telah menjadi tempat tinggal masyarakat yang menggantungkan kehidupan pada laut, membangun hubungan antarpulau, serta mewariskan pengetahuan tentang lingkungan sekitarnya.</p>
+                    <br>
+                    <p class="m-0">Kehidupan budaya Wakatobi juga dipengaruhi oleh interaksi antarmasyarakat di kawasan Sulawesi Tenggara dan wilayah sekitarnya. Tradisi pelayaran, adat istiadat, bahasa, serta keterampilan lokal berkembang menjadi bagian dari identitas masyarakat yang tetap dijaga hingga kini.</p>
+                    <br>
+                    <p class="m-0">Nama Wakatobi sendiri berasal dari gabungan nama empat pulau utama, yaitu Wangi-Wangi, Kaledupa, Tomia, dan Binongko. Keempat pulau ini memiliki karakter dan kekayaan lokal yang beragam, membentuk warisan alam dan budaya yang menjadi bagian penting dari Nusantara.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- section 4 -->
+    <section id="alam" class="relative overflow-hidden bg-[#020611] pb-20 pt-10 font-jakarta text-white">
+
+        <!-- judul -->
+        <div class="mx-auto max-w-3xl px-6 text-center">
+            <p data-reveal class="m-0 text-[0.65rem] font-medium uppercase tracking-[0.2em] text-secondary md:text-xs">Inspirasi</p>
+            <h2 data-reveal class="m-0 mt-3 font-family text-2xl font-bold tracking-[0.08em] text-white/90 md:text-4xl">Ide Perjalanan</h2>
+        </div>
+
+        <!-- galeri -->
+        <div class="mx-auto mt-12 grid max-w-6xl grid-cols-2 grid-rows-[repeat(31,0.45rem)] gap-2 px-6 md:grid-cols-12 md:grid-rows-[16rem_21rem_16rem] md:gap-4">
+
+            <div data-reveal class="group relative overflow-hidden bg-black max-md:[grid-area:1/1/span_13/span_1] md:col-span-7 md:row-span-1">
+                <img src="assets/wakatobi/galeri_1.png" alt="galeri 2" class="h-full w-full rounded-md object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-50">
+            </div>
+
+            <div data-reveal class="group relative overflow-hidden bg-black max-md:[grid-area:1/2/span_8/span_1] md:col-span-5 md:row-span-1">
+                <img src="assets/wakatobi/galeri_2.png" alt="galeri 2" class="h-full w-full rounded-md object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-50">
+            </div>
+
+            <div data-reveal class="group relative overflow-hidden bg-black max-md:[grid-area:14/1/span_8/span_1] md:col-span-4 md:row-span-1">
+                <img src="assets/wakatobi/galeri_3.png" alt="galeri 3" class="h-full w-full rounded-md object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-50">
+            </div>
+
+            <div data-reveal class="group relative overflow-hidden bg-black max-md:[grid-area:22/1/span_10/span_1] md:col-span-4 md:row-span-1">
+                <img src="assets/wakatobi/galeri_4.png" alt="galeri 4" class="h-full w-full rounded-md object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-50">
+            </div>
+
+            <div data-reveal class="group relative hidden overflow-hidden bg-black md:col-span-4 md:row-span-1 md:block">
+                <img src="assets/wakatobi/galeri_5.png" alt="galeri 5" class="h-full w-full rounded-md object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-50">
+            </div>
+
+            <div data-reveal class="group relative overflow-hidden bg-black max-md:[grid-area:9/2/span_10/span_1] md:col-span-5 md:row-span-1">
+                <img src="assets/wakatobi/galeri_6.png" alt="galeri 6" class="h-full w-full rounded-md object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-50">
+            </div>
+
+            <div data-reveal class="group relative overflow-hidden bg-black max-md:[grid-area:19/2/span_13/span_1] md:col-span-7 md:row-span-1">
+                <img src="assets/wakatobi/galeri_7.png" alt="galeri 7" class="h-full w-full rounded-md object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-50">
+            </div>
+
+        </div>
+    </section>
+
+    <!-- footer -->
+    <footer class="relative overflow-hidden bg-[#151b27] font-jakarta text-white">
+        <img src="assets/footer_bg.png" alt="" class="pointer-events-none absolute inset-0 h-full w-full object-cover">
+
+        <div class="relative mx-auto max-w-6xl px-6 pb-8 pt-12 md:px-6 md:pt-20">
+            <div class="grid grid-cols-2 gap-x-4 gap-y-8 md:grid-cols-[1.3fr_1fr_1fr] md:gap-10 [&_h4]:text-sm [&_h4]:font-medium [&_h4]:text-white/90 [&_ul]:mt-3 [&_ul]:space-y-2 [&_ul]:text-xs [&_ul]:text-white/60 md:[&_ul]:mt-4 [&_a]:transition [&_a:hover]:text-white">
+
+                <div class="col-span-2 md:col-span-1">
+                    <a href="index.html" class="block w-44 md:w-40"><img src="assets/citraKara_logo.png" alt="CitraKara"></a>
+                    <p class="mt-4 text-xs leading-relaxed text-white/60 md:max-w-[12rem]">Dari setiap daerah, tersimpan cerita, tradisi, dan seni yang membentuk jati diri bangsa. CitraKara hadir untuk mendokumentasikan dan merayakan warisan budaya.</p>
+                </div>
+
+                <div>
+                    <h4>Beranda</h4>
+                    <ul>
+                        <li><a href="index.html#budayaScroll">Kekayaan Nusantara</a></li>
+                        <li><a href="#">Peta Nusantara</a></li>
+                        <li><a href="index.html#alam">Alam Nusantara</a></li>
+                        <li><a href="index.html#event">Festival &amp; Tradisi Nusantara</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4>Tentang Kami</h4>
+                    <ul>
+                        <li><a href="#">Bantuan</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <p class="mt-12 flex items-center justify-center gap-1.5 text-[0.65rem] text-white/50 md:mt-20 md:text-[0.7rem]"><i class="ri-copyright-line"></i> 2026 CitraKara. All rights reserved.</p>
+        </div>
+    </footer>
+
+<script src="script.js"></script>
+<script src="music.js"></script>
+</body>
+</html>
